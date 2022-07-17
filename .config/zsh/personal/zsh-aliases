@@ -1,0 +1,16 @@
+# alias lvim=/Users/henrywang/.local/bin/lvim
+
+# alias for the maven compiler
+alias mco='./mvnw compile'
+alias mcl='./mvnw clean'
+alias mte='./mvnw test'
+alias mcc='./mvnw clean compile'
+alias mct='./mvnw clean test'
+alias mej='./mvnw exec:java'
+
+# alias for git
+alias gta='git add'
+alias gtc='git commit -m'
+alias gtl='git log'
+alias gtp='git push'
+alias gts='git status'
