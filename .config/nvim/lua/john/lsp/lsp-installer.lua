@@ -24,31 +24,11 @@ lsp_installer.on_server_ready(function(server)
 		on_attach = require("john.lsp.handlers").on_attach,
 		capabilities = require("john.lsp.handlers").capabilities,
 	}
-	-- addtional settings {{{
-	-- if server.name == "jsonls" then
-	-- 	local jsonls_opts = require("john.lsp.settings.jsonls")
-	-- 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	-- end
-
-	if server.name == "sumneko_lua" then
-		local sumneko_opts = require("john.lsp.settings.sumneko_lua")
-		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+	local extra_settings = { ["sumneko_lua"] = true, ["rust_analyzer"] = true, ["ltex"] = true }
+	if extra_settings[server.name] then
+		local extra_opts = require("john.lsp.settings." .. server.name)
+		opts = vim.tbl_deep_extend("force", extra_opts, opts)
 	end
-	if server.name == "rust_analyzer" then
-		local rust_opts = require("john.lsp.settings.rust-analyzer")
-		opts = vim.tbl_deep_extend("force", rust_opts, opts)
-	end
-	if server.name == "ltex" then
-		local rust_opts = require("john.lsp.settings.ltex")
-		opts = vim.tbl_deep_extend("force", rust_opts, opts)
-	end
-
-	-- if server.name == "pyright" then
-	-- 	local pyright_opts = require("john.lsp.settings.pyright")
-	-- 	opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-	-- end
-	-- }}}
-
 	server:setup(opts)
 end)
 -- }}}

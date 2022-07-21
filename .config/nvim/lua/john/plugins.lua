@@ -132,7 +132,7 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- interface navigation
-	use({ "numToStr/Navigator.nvim", commit = "6bfcf7da965a03fd1e170aa6870b92b16bf739ee" })
+	use({ "numToStr/Navigator.nvim" })
 
 	-- commentary
 	use("numToStr/Comment.nvim")
@@ -166,6 +166,7 @@ return packer.startup(function(use)
 	}) -- undo viewer
 	use({ "akinsho/toggleterm.nvim", tag = "v1.*" }) -- toggle nvim terminal
 	use("tpope/vim-abolish") -- case coersion, substition, abbreviation
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use({
 		"RRethy/nvim-treesitter-textsubjects",
 		config = function()

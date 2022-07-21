@@ -1,31 +1,15 @@
 local function prequire(filename)
-  local status_ok, _ = pcall(require, filename)
-  if not status_ok then
-    print("An error has occured!")
-    print(string.format("%s failed to load", filename))
-    return
-  end
+	if not pcall(require, filename) then
+		error(string.format("%s failed to load", filename))
+		return
+	end
 end
 
 prequire("impatient")
-prequire("john.colourscheme")
-prequire("john.options")
+prequire("john.default")
 prequire("john.plugins")
-prequire("john.keymaps")
-prequire("john.autocommands")
-prequire("john.cmp")
 prequire("john.lsp")
 prequire("john.treesitter")
-prequire("john.telescope")
-prequire("john.comment")
-prequire("john.nvim-tree")
-prequire("john.autopairs")
-prequire("john.bufferline")
-prequire("john.lualine")
-prequire("john.gitsigns")
-prequire("john.navigator")
-prequire("john.signature")
-prequire("john.trouble")
-prequire("john.terminal")
+prequire("john.interface")
+prequire("john.qol")
 prequire("john.dap")
-prequire("john.whichkey")

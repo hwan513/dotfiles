@@ -6,7 +6,8 @@ alias mcl='./mvnw clean'
 alias mte='./mvnw test'
 alias mcc='./mvnw clean compile'
 alias mct='./mvnw clean test'
-alias mej='./mvnw exec:java'
+# alias mej='./mvnw clean exec:java'
+alias mjr='./mvnw clean javafx:run'
 
 # alias for git
 alias gta='git add'
