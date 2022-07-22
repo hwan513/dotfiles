@@ -22,6 +22,7 @@ configs.setup({
 	autotag = {
 		enable = true,
 	},
+	textobjects = require("john.treesitter.textobjects"),
 })
 
 -- enable folding determined by treesitter
