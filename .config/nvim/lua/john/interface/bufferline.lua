@@ -1,4 +1,5 @@
 local status_ok, bufferline = pcall(require, "bufferline")
+
 if not status_ok then
 	return
 end
@@ -69,7 +70,7 @@ bufferline.setup({
 		separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
 		enforce_regular_tabs = true,
 		always_show_bufferline = true,
-		sort_by = "relative_directory",
+		sort_by = "id",
 		-- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
 		--   -- add custom logic
 		--   return buffer_a.modified > buffer_b.modified
