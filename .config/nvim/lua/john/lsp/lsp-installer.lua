@@ -24,7 +24,7 @@ lsp_installer.on_server_ready(function(server)
 		on_attach = require("john.lsp.handlers").on_attach,
 		capabilities = require("john.lsp.handlers").capabilities,
 	}
-	local extra_settings = { ["sumneko_lua"] = true, ["rust_analyzer"] = true, ["ltex"] = true }
+	local extra_settings = { ["jdtls"] = true, ["sumneko_lua"] = true, ["rust_analyzer"] = true, ["ltex"] = true }
 	if extra_settings[server.name] then
 		local extra_opts = require("john.lsp.settings." .. server.name)
 		opts = vim.tbl_deep_extend("force", extra_opts, opts)
