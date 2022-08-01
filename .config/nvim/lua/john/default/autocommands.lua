@@ -14,11 +14,6 @@ vim.cmd([[
     " wrapping for writing documents 
     autocmd BufRead,BufNewFile *.txt,*.md,*.tex set wrap
 
-  augroup _comply
-    " comply with softeng281
-    autocmd BufRead,BufNewFile *.java set tabstop=4 softtabstop=0 shiftwidth=0 noexpandtab
-
-
  "resize window
   augroup _auto_resize
     autocmd!
