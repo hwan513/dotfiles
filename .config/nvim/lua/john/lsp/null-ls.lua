@@ -5,7 +5,7 @@ null_ls.setup({
 	sources = {
 		formatting.stylua,
 		formatting.black,
-		formatting.prettierd,
+		formatting.prettier,
 		diagnostics.flake8,
 		diagnostics.eslint,
 		diagnostics.vale,
