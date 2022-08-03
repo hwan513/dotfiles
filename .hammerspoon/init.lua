@@ -9,6 +9,7 @@ end
 hs.loadSpoon("SpoonInstall")
 -- spoon.SpoonInstall:asyncInstallSpoonFromRepo("MiroWindowsManager")
 -- spoon.SpoonInstall:andUse("EmmyLua")
+prequire("fakeServer")
 prequire("reloadConfig")
 prequire("windows")
 prequire("menuUtils")
