@@ -50,6 +50,8 @@ keymap("", "<Leader>p", [["+p]], opts)
 -- Motion commands work better {{{
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
+keymap("v", "j", "gj", opts)
+keymap("v", "k", "gk", opts)
 -- }}}
 -- Fast escape {{{
 keymap("i", "jk", "<ESC>", opts)
