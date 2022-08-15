@@ -13,6 +13,7 @@ brew "flake8"
 brew "fzf"
 brew "git"
 brew "luajit", args: ["HEAD"]
+brew "neofetch"
 brew "neovim", args: ["HEAD"]
 brew "node"
 brew "pandoc"
