@@ -164,7 +164,7 @@ return packer.startup(function(use)
 		"simnalamburt/vim-mundo",
 		cmd = { "MundoToggle" },
 	}) -- undo viewer
-	use({ "akinsho/toggleterm.nvim", tag = "v1.*" }) -- toggle nvim terminal
+	use({ "akinsho/toggleterm.nvim", tag = "v2.*" }) -- toggle nvim terminal
 	use("tpope/vim-abolish") -- case coersion, substition, abbreviation
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use({
