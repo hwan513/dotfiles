@@ -176,13 +176,16 @@ return packer.startup(function(use)
 					prev_selection = ",", -- (Optional) keymap to select the previous selection
 					keymaps = {
 						["."] = "textsubjects-smart",
-						[";"] = "textsubjects-container-outer",
-						["i;"] = "textsubjects-container-inner",
+						-- [";"] = "textsubjects-container-outer",
+						-- ["i;"] = "textsubjects-container-inner",
 					},
 				},
 			})
 		end,
 	})
+
+	-- cohub gitpilot
+	use("github/copilot.vim")
 
 	-- I have the funny
 	use({ "alec-gibson/nvim-tetris", opt = true, cmd = { "Tetris" } })
