@@ -16,6 +16,7 @@ brew "luajit", args: ["HEAD"]
 brew "neofetch"
 brew "neovim", args: ["HEAD"]
 brew "node"
+brew "nvm"
 brew "pandoc"
 brew "prettier"
 brew "ripgrep"
