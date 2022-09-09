@@ -188,9 +188,15 @@ return packer.startup(function(use)
 	use("github/copilot.vim")
 
 	-- I have the funny
-	use({ "alec-gibson/nvim-tetris", opt = true, cmd = { "Tetris" } })
-	use("vim-denops/denops.vim")
-	use("ryoppippi/bad-apple.vim")
+	-- use({ "alec-gibson/nvim-tetris", opt = true, cmd = { "Tetris" } })
+	-- use({ "vim-denops/denops.vim", opt = true })
+	-- use({
+	-- 	"ryoppippi/bad-apple.vim",
+	-- 	-- opt = true,
+	-- 	-- cmd = "BadApple",
+	-- 	requires = "denops.vim",
+	-- 	after = "denops.vim",
+	-- })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
