@@ -19,6 +19,8 @@ alias gts='git status'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gtb='git branch'
+alias gst='git stash'
+alias gsp='git stash pop'
 
 
 # alias for cargo
