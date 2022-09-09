@@ -1,4 +1,5 @@
 if not pcall(require, "lspconfig") then
+	print("lspconfig failed to load")
 	return
 end
 
