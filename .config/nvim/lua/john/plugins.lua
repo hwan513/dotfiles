@@ -20,7 +20,9 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync 
+    autocmd BufWritePost plugins.lua source <afile> | PackerSnapshotDelete packer_snapshot.lock
+    autocmd BufWritePost plugins.lua source <afile> | PackerSnapshot packer_snapshot.lock
   augroup end
 ]])
 -- }}}
@@ -32,6 +34,8 @@ end
 -- }}}
 -- Have packer use a popup window {{{
 packer.init({
+	-- snapshot = true, -- Name of the snapshot you would like to load at startup
+	snapshot_path = "./packer_backup", -- Default save directory for snapshots
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
