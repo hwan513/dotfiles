@@ -63,7 +63,7 @@ return packer.startup(function(use)
 	})
 	-- }}}
 	-- coloring things {{{
-	use("folke/tokyonight.nvim") -- colourscheme
+	use({ "folke/tokyonight.nvim", tag = "3c05c5ad8e2611da1514d1c633b677e956fbb0ce" }) -- colourscheme
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }) -- better syntax highlighting and other stuff
 	use("p00f/nvim-ts-rainbow") -- bracket pair matching
 	-- }}}
@@ -101,7 +101,7 @@ return packer.startup(function(use)
 	-- }}}
 	-- language server protocol {{{
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer-
+	use({ "williamboman/nvim-lsp-installer", cmd = { "LspInstallInfo" } }) -- simple to use language server installer-
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("folke/trouble.nvim") -- display the qf window for stuff
 	use("ray-x/lsp_signature.nvim") -- show function lsp signature
@@ -111,9 +111,10 @@ return packer.startup(function(use)
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
 		setup = function()
-			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_filetypes = { "markdown", "rmarkdown" }
 		end,
-		ft = { "markdown" },
+		ft = { "markdown", "rmarkdown" },
+		cmd = { "MarkdownPreview" },
 	})
 	-- use("davidgranstrom/nvim-markdown-preview") -- alternative preview plugin
 	--}}}
