@@ -75,12 +75,18 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<C-n>", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	-- keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	-- keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({async = true})']])
-	vim.cmd([[
-    augroup _format_on_save
-    autocmd! * <buffer>
-    autocmd BufWritePre * execute 'lua vim.lsp.buf.formatting_sync()'
-    ]])
+
+	vim.api.nvim_create_user_command("Format", function()
+		vim.lsp.buf.format({ async = true })
+	end, { nargs = 0 })
+
+	local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		callback = function()
+			vim.lsp.buf.formatting_sync()
+		end,
+		group = format_on_save,
+	})
 end
 
 M.on_attach = function(client, bufnr)
