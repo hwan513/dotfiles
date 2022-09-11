@@ -16,15 +16,25 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 -- }}}
--- Autocommand that reloads neovim whenever you save the plugins.lua file {{{
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync 
-    autocmd BufWritePost plugins.lua source <afile> | PackerSnapshotDelete packer_snapshot.lock
-    autocmd BufWritePost plugins.lua source <afile> | PackerSnapshot packer_snapshot.lock
-  augroup end
-]])
+-- Autocommand that reloads packer and creates snapshot when plugins.lua file  is written {{{
+
+local packer_user_config = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "plugins.lua",
+	callback = function()
+		vim.api.nvim_exec(
+			[[
+      source <afile>
+      PackerSync
+      PackerSnapshotDelete packer_snapshot.lock
+      PackerSnapshot packer_snapshot.lock
+      ]],
+			{ output = false }
+		)
+	end,
+	group = packer_user_config,
+})
+
 -- }}}
 -- Use a protected call so we don't error out on first use {{{
 local status_ok, packer = pcall(require, "packer")
@@ -32,6 +42,7 @@ if not status_ok then
 	return
 end
 -- }}}
+
 -- Have packer use a popup window {{{
 packer.init({
 	-- snapshot = true, -- Name of the snapshot you would like to load at startup
