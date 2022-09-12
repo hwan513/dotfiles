@@ -77,8 +77,13 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	local no_attach = { ["tsserver"] = true, ["jsonls"] = true, ["html"] = true, ["sumneko_lua"] = true }
-	if no_attach[client.name] then
+	local no_format = {
+		["tsserver"] = true,
+		["jsonls"] = true,
+		["html"] = true,
+		["sumneko_lua"] = true,
+	}
+	if no_format[client.name] then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	lsp_keymaps(bufnr)

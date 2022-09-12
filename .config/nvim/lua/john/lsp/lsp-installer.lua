@@ -4,33 +4,40 @@ if not status_ok then
 	print("nvim-lsp-installer failed to load")
 	return
 end
+
+local lspconfig = require("lspconfig")
+
 -- }}}
 -- Include default servers to install {{{
 local servers = {
-	"pyright",
 	"clangd",
+	"cssls",
+	"emmet_ls",
+	"html",
+	"jdtls",
+	"jsonls",
+	"ltex",
+	"pyright",
+	"rust_analyzer",
 	"sumneko_lua",
+	"tsserver",
+	"vimls",
 }
-for _, name in pairs(servers) do
-	local server_is_found, server = lsp_installer.get_server(name)
-	if server_is_found and not server:is_installed() then
-		print("Installing " .. name)
-		server:install()
-	end
-end
--- }}}
--- initalising lsp {{{
-lsp_installer.on_server_ready(function(server)
+
+lsp_installer.setup({
+	ensure_installed = servers,
+})
+
+-- see Neovim from Scratch
+for _, server in pairs(servers) do
 	local opts = {
 		on_attach = require("john.lsp.handlers").on_attach,
 		capabilities = require("john.lsp.handlers").capabilities,
 	}
-	local extra_settings = { ["jdtls"] = true, ["sumneko_lua"] = true, ["rust_analyzer"] = true, ["ltex"] = true }
-	if extra_settings[server.name] then
-		local extra_opts = require("john.lsp.settings." .. server.name)
-		opts = vim.tbl_deep_extend("force", extra_opts, opts)
+	local has_custom_opts, server_custom_opts = pcall(require, "john.lsp.settings." .. server)
+	-- use personal custom options if they exist
+	if has_custom_opts then
+		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
 	end
-	server:setup(opts)
-end)
--- }}}
--- vim:foldmethod=marker:foldlevel=2
+	lspconfig[server].setup(opts)
+end
