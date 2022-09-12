@@ -1,32 +1,108 @@
-vim.cmd([[
-  augroup _general
-    autocmd!
-    " close window with q
-    autocmd FileType qf,help,man,lspinfo,null-ls-info nnoremap <silent> <buffer> q :close<CR>
-    " open help window in right
-    autocmd FileType help wincmd L | vertical resize 100 | set wrap
-    " start at last exit point when entering buffer
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    " remove trailing spaces on save
-    " autocmd BufWritePre * :%s/\s\+$//e
-    " check external writes to buffer
-    autocmd FocusGained,BufEnter * checktime
-    " wrapping for writing documents 
-    autocmd BufRead,BufNewFile *.txt,*.md,*.tex set wrap
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local fn = vim.fn
 
- "resize window
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd =
-  augroup end
+local general = augroup("general", { clear = true })
 
-  " dim inactive windows
-  augroup _inactive_window_dimming
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline | setlocal winhighlight=Normal:ActiveWindow
-    autocmd WinLeave,VimLeave,FocusLost * setlocal nocursorline | setlocal winhighlight=Normal:InactiveWindow
-]])
+-- q to quit in certain file types
+autocmd("FileType", {
+	pattern = { "qf", "help", "man", "lspinfo", "null-ls-info" },
+	command = "nnoremap <silent> <buffer> q :close<CR>",
+	group = general,
+})
 
--- consistent cursor behaviour
--- au VimEnter,VimResume * set guicursor=v:block,c-i-ci-ve:ver25,n-r-cr-o:hor15
--- au VimLeave,VimSuspend * set guicursor=a:ver25
+autocmd("FocusLost", {
+	pattern = "*",
+	command = "silent! wa",
+	group = general,
+})
+
+-- Return to last edit position when opening files
+autocmd("BufReadPost", {
+	group = general,
+	pattern = "*",
+	callback = function()
+		if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+			fn.setpos(".", fn.getpos("'\""))
+			-- vim.cmd('normal zz')
+			vim.cmd("silent! foldopen")
+		end
+	end,
+})
+
+-- Check external writes to current buffer
+autocmd({ "FocusGained", "BufEnter" }, {
+	group = general,
+	pattern = "*",
+	command = "checktime",
+})
+
+-- Enable spell checking for certain file types and wrapping
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.txt", "*.md", "*.tex" },
+	callback = function()
+		vim.api.nvim_exec(
+			[[
+    setlocal spell
+    set wrap
+    ]],
+			{ output = false }
+		)
+	end,
+	group = general,
+})
+
+-- remove trailing spaces
+-- autocmd("BufWritePre", {
+-- 	pattern = "*",
+-- 	command = "%s/\\s\\+$//e",
+-- 	group = general,
+-- })
+
+-- highlight yanks
+-- autocmd("TextYankPost", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.highlight.on_yank({ timeout = 500 })
+-- 	end,
+-- 	group = general,
+-- })
+
+local window_sizing = augroup("window_sizing", { clear = true })
+
+-- help pane opens in right pane and is resized
+autocmd("FileType", {
+	pattern = { "help" },
+	callback = function()
+		vim.api.nvim_exec(
+			[[
+      wincmd L
+      vertical resize 100
+      set wrap
+      ]],
+			{ output = false }
+		)
+	end,
+	group = window_sizing,
+})
+
+-- splitting aligns nicely
+autocmd("VimResized", {
+	pattern = { "*" },
+	command = "tabdo wincmd =",
+	group = window_sizing,
+})
+
+local window_dimming = augroup("window_dimming", { clear = true })
+
+autocmd({ "VimEnter", "WinEnter", "BufWinEnter", "FocusGained" }, {
+	pattern = { "*" },
+	command = "setlocal cursorline | setlocal winhighlight=Normal:ActiveWindow",
+	group = window_dimming,
+})
+
+autocmd({ "WinLeave", "VimLeave", "FocusLost" }, {
+	pattern = { "*" },
+	command = "setlocal nocursorline | setlocal winhighlight=Normal:InactiveWindow",
+	group = window_dimming,
+})

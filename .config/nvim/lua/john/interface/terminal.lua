@@ -7,7 +7,7 @@ local api = vim.api
 local fn = vim.fn
 local bo = vim.bo
 
-function _G.set_terminal_keymaps()
+local function set_terminal_keymaps()
 	local opts = { noremap = true }
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
@@ -16,7 +16,15 @@ function _G.set_terminal_keymaps()
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+-- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+local terminal_open = vim.api.nvim_create_augroup("terminal_open", { clear = true })
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "term://*",
+	callback = function()
+		set_terminal_keymaps()
+	end,
+	group = terminal_open,
+})
 
 toggleterm.setup({
 	size = 50,
