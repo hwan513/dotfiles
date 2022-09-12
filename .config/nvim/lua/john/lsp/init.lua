@@ -12,6 +12,6 @@ local function prequire(filename)
 	return file
 end
 
-prequire("john.lsp.lsp-installer")
+prequire("john.lsp.mason")
 prequire("john.lsp.handlers").setup()
 prequire("john.lsp.null-ls")

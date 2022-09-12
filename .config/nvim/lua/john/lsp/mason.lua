@@ -1,11 +1,21 @@
 -- require statement {{{
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-	print("nvim-lsp-installer failed to load")
+local mason_status_ok, mason = pcall(require, "mason")
+local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+local lspconfig = require("lspconfig")
+if not (mason_status_ok or mason_lspconfig_status_ok) then
+	print("mason failed to load")
 	return
 end
 
-local lspconfig = require("lspconfig")
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
 
 -- }}}
 -- Include default servers to install {{{
@@ -24,7 +34,7 @@ local servers = {
 	"vimls",
 }
 
-lsp_installer.setup({
+mason_lspconfig.setup({
 	ensure_installed = servers,
 })
 

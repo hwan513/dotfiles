@@ -127,7 +127,8 @@ return packer.startup(function(use)
 	-- }}}
 	-- language server protocol {{{
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use({ "williamboman/nvim-lsp-installer", cmd = { "LspInstallInfo" } }) -- simple to use language server installer-
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("folke/trouble.nvim") -- display the qf window for stuff
 	use("ray-x/lsp_signature.nvim") -- show function lsp signature
