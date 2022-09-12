@@ -94,6 +94,21 @@ return packer.startup(function(use)
 		},
 	}) -- shows context at higher indent levels
 	use({ "norcalli/nvim-colorizer.lua", config = { require("colorizer").setup() } }) -- coloring viewer for html css stuff
+	-- highlights current thing under cursor
+	use({
+		"RRethy/vim-illuminate",
+		config = {
+			require("illuminate").configure({
+				delay = 500,
+				filetypes_denylist = {
+					"dirvish",
+					"fugitive",
+					"NvimTree",
+				},
+				modes_denylist = { "i", "v", "s" },
+			}),
+		},
+	})
 	-- }}}
 	-- completion {{{
 	use("hrsh7th/nvim-cmp") -- The completion plugin
