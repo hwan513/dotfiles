@@ -140,6 +140,7 @@ return packer.startup(function(use)
 			"mason.nvim",
 		},
 	})
+	use("simrat39/rust-tools.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("folke/trouble.nvim") -- display the qf window for stuff
 	use("ray-x/lsp_signature.nvim") -- show function lsp signature
