@@ -1,5 +1,15 @@
-local formatters = { "stylua", "black", "prettierd" }
-local linters = { "flake8", "eslint_d", "vale" }
+local formatters = {
+	-- "stylua",
+	"black",
+	"prettier",
+	"prettierd",
+}
+
+local linters = {
+	"flake8",
+	"eslint_d",
+	"vale",
+}
 
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
@@ -20,9 +30,12 @@ null_ls.setup({
 	sources = sources,
 })
 
-require("mason-null-ls").setup({
-	ensure_installed = ensure_installed,
+-- require("mason-null-ls").setup({
+-- 	ensure_installed = ensure_installed,
+-- 	automatic_installation = true,
+-- })
+-- require("mason-null-ls").check_install()
 
-	automatic_installation = true,
+require("mason-tool-installer").setup({
+	ensure_installed = ensure_installed,
 })
-require("mason-null-ls").check_install()
