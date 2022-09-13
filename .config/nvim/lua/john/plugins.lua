@@ -126,9 +126,20 @@ return packer.startup(function(use)
 	-- use("honza/vim-snippets") -- more snippets
 	-- }}}
 	-- language server protocol {{{
+
 	use("neovim/nvim-lspconfig") -- enable LSP
+	-- use mason for lsp installation
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
+	-- use mason for null ls installation
+	use("WhoIsSethDaniel/mason-tool-installer.nvim")
+	use({
+		"jayp0521/mason-null-ls.nvim",
+		after = {
+			"null-ls.nvim",
+			"mason.nvim",
+		},
+	})
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("folke/trouble.nvim") -- display the qf window for stuff
 	use("ray-x/lsp_signature.nvim") -- show function lsp signature
