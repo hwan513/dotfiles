@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			[[
       source <afile>
       PackerSync
-      PackerSnapshotDelete packer_snapshot.lock
-      PackerSnapshot packer_snapshot.lock
+      PackerSnapshotDelete plugins.lock
+      PackerSnapshot plugins.lock
       ]],
 			{ output = false }
 		)
@@ -46,7 +46,7 @@ end
 -- Have packer use a popup window {{{
 packer.init({
 	-- snapshot = true, -- Name of the snapshot you would like to load at startup
-	snapshot_path = fn.stdpath("config") .. "/packer_backup", -- Default save directory for snapshots
+	snapshot_path = fn.stdpath("config") .. "/lua/john", -- Default save directory for snapshots
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "rounded" })
