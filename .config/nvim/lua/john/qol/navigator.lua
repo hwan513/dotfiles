@@ -1,7 +1,7 @@
 -- Configuration
 require("Navigator").setup({
-	auto_save = "all",
-	disable_on_zoom = false,
+  auto_save = "all",
+  disable_on_zoom = false,
 })
 
 -- Keybindings

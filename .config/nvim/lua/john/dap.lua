@@ -2,30 +2,30 @@ local keymap = vim.api.nvim_set_keymap -- keymaps function shortened
 local opts = { noremap = true, silent = true }
 local status_ok_dap, _ = pcall(require, "dap")
 if not status_ok_dap then
-	return
+  return
 end
 
 local signs = {
-	active = false,
-	on_config_done = nil,
-	breakpoint = {
-		text = "",
-		texthl = "LspDiagnosticsSignError",
-		linehl = "",
-		numhl = "",
-	},
-	breakpoint_rejected = {
-		text = "",
-		texthl = "LspDiagnosticsSignHint",
-		linehl = "",
-		numhl = "",
-	},
-	stopped = {
-		text = "",
-		texthl = "LspDiagnosticsSignInformation",
-		linehl = "DiagnosticUnderlineInfo",
-		numhl = "LspDiagnosticsSignInformation",
-	},
+  active = false,
+  on_config_done = nil,
+  breakpoint = {
+    text = "",
+    texthl = "LspDiagnosticsSignError",
+    linehl = "",
+    numhl = "",
+  },
+  breakpoint_rejected = {
+    text = "",
+    texthl = "LspDiagnosticsSignHint",
+    linehl = "",
+    numhl = "",
+  },
+  stopped = {
+    text = "",
+    texthl = "LspDiagnosticsSignInformation",
+    linehl = "DiagnosticUnderlineInfo",
+    numhl = "LspDiagnosticsSignInformation",
+  },
 }
 
 vim.fn.sign_define("DapBreakpoint", signs.breakpoint)
@@ -48,10 +48,10 @@ keymap("n", "<Leader>dq", "<cmd>lua require'dap'.close()<cr>", opts)
 
 local status_ok_DI, dap_install = pcall(require, "dap-install")
 if not status_ok_DI then
-	return
+  return
 end
 local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
 
 for _, debugger in ipairs(dbg_list) do
-	dap_install.config(debugger)
+  dap_install.config(debugger)
 end

@@ -1,14 +1,14 @@
 local formatters = {
-	-- "stylua",
-	"black",
-	"prettier",
-	"prettierd",
+  -- "stylua",
+  "black",
+  "prettier",
+  "prettierd",
 }
 
 local linters = {
-	"flake8",
-	"eslint_d",
-	"vale",
+  "flake8",
+  "eslint_d",
+  "vale",
 }
 
 local null_ls = require("null-ls")
@@ -18,16 +18,16 @@ local diagnostics = null_ls.builtins.diagnostics
 local sources = {}
 local ensure_installed = {}
 for _, formatter in ipairs(formatters) do
-	table.insert(sources, formatting[formatter])
-	table.insert(ensure_installed, formatter)
+  table.insert(sources, formatting[formatter])
+  table.insert(ensure_installed, formatter)
 end
 for _, linter in ipairs(linters) do
-	table.insert(sources, diagnostics[linter])
-	table.insert(ensure_installed, linter)
+  table.insert(sources, diagnostics[linter])
+  table.insert(ensure_installed, linter)
 end
 
 null_ls.setup({
-	sources = sources,
+  sources = sources,
 })
 
 -- require("mason-null-ls").setup({
@@ -37,5 +37,5 @@ null_ls.setup({
 -- require("mason-null-ls").check_install()
 
 require("mason-tool-installer").setup({
-	ensure_installed = ensure_installed,
+  ensure_installed = ensure_installed,
 })
