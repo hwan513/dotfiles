@@ -45,7 +45,8 @@ end
 
 -- Have packer use a popup window {{{
 packer.init({
-  -- snapshot = true, -- Name of the snapshot you would like to load at startup
+  -- snapshot = "plugins.lock",
+  snapshot = nil,
   snapshot_path = fn.stdpath("config") .. "/lua/john", -- Default save directory for snapshots
   display = {
     open_fn = function()
