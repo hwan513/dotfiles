@@ -141,7 +141,7 @@ return packer.startup(function(use)
     },
   })
   use("simrat39/rust-tools.nvim")
-  use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+  use({ "jose-elias-alvarez/null-ls.nvim", tag = "bf027826eeb83606ef7153f312ef66750ef14961" }) -- for formatters and linters
   use("folke/trouble.nvim") -- display the qf window for stuff
   use("ray-x/lsp_signature.nvim") -- show function lsp signature
   -- }}}

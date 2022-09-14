@@ -2,7 +2,7 @@ local formatters = {
   -- "stylua",
   "black",
   "prettier",
-  "prettierd",
+  -- "prettierd",
 }
 
 local linters = {
