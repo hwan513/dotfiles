@@ -162,7 +162,10 @@ return packer.startup(function(use)
   -- debug adaptor protocol {{{}
   use("mfussenegger/nvim-dap")
   use("Pocco81/DAPInstall.nvim")
-  use("rcarriga/nvim-dap-ui")
+  use { "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    -- config = function() require("dapui").setup() end
+  }
   use("theHamsta/nvim-dap-virtual-text")
   use("jbyuki/one-small-step-for-vimkind")
   -- }}}

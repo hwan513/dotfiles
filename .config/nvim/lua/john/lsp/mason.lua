@@ -51,7 +51,7 @@ for _, server in pairs(servers) do
   end
 
   if server == "rust_analyzer" then
-    require("rust-tools").setup(opts)
+    require("rust-tools").setup({ server = opts, dap = require("john.lsp.settings.rust_dap") })
   else
     lspconfig[server].setup(opts)
   end
