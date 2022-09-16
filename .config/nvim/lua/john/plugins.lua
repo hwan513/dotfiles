@@ -126,8 +126,8 @@ return packer.startup(function(use)
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
   -- use("honza/vim-snippets") -- more snippets
   -- }}}
-  -- language server protocol {{{
 
+  -- language server protocol {{{
   use("neovim/nvim-lspconfig") -- enable LSP
   -- use mason for lsp installation
   use({ "williamboman/mason.nvim" })
@@ -142,6 +142,7 @@ return packer.startup(function(use)
     },
   })
   use("simrat39/rust-tools.nvim")
+  use("mfussenegger/nvim-jdtls")
   use({ "jose-elias-alvarez/null-ls.nvim", tag = "bf027826eeb83606ef7153f312ef66750ef14961" }) -- for formatters and linters
   use("folke/trouble.nvim") -- display the qf window for stuff
   use("ray-x/lsp_signature.nvim") -- show function lsp signature
