@@ -166,7 +166,9 @@ return packer.startup(function(use)
     requires = { "mfussenegger/nvim-dap" },
     config = function() require("dapui").setup() end,
   }
-  use("theHamsta/nvim-dap-virtual-text")
+  use({ "theHamsta/nvim-dap-virtual-text",
+    config = function() require("nvim-dap-virtual-text").setup() end,
+  })
   use("jbyuki/one-small-step-for-vimkind")
   -- }}}
 
