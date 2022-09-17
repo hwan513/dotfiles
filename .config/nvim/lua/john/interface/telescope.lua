@@ -6,16 +6,16 @@ end
 local keymap = vim.api.nvim_set_keymap -- keymaps function shortened
 local opts = { noremap = true, silent = true }
 
-keymap("n", "<Leader>ft", "<cmd>lua require('telescope.builtin').builtin()<cr>", opts)
-keymap("n", "<Leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-keymap("n", "<Leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", "<Leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-keymap("n", "<Leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>", opts)
-keymap("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
-keymap("n", "<Leader>fs", "<cmd>lua require('telescope.builtin').search_history()<cr>", opts)
-keymap("n", "<Leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>", opts)
+keymap("n", "<Leader>ft", ":Telescope builtin<cr>", opts)
+keymap("n", "<Leader>ff", ":Telescope find_files<cr>", opts)
+keymap("n", "<Leader>fg", ":Telescope live_grep<cr>", opts)
+keymap("n", "<Leader>fb", ":Telescope buffers<cr>", opts)
+keymap("n", "<Leader>fh", ":Telescope command_history<cr>", opts)
+keymap("n", "<Leader>fr", ":Telescope lsp_references<cr>", opts)
+keymap("n", "<Leader>fs", ":Telescope search_history<cr>", opts)
+keymap("n", "<Leader>fc", ":Telescope commands<cr>", opts)
 keymap("n", "<Leader>fp", ":Telescope projects<cr>", opts)
-keymap("n", "<Leader><Space>", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", opts)
+keymap("n", "<Leader><Space>", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
