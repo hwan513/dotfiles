@@ -182,7 +182,10 @@ return packer.startup(function(use)
   -- git stuff
   use("lewis6991/gitsigns.nvim")
   use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
-  use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
+  use { "TimUntersberger/neogit",
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("neogit").setup { integrations = { diffview = true } } end,
+  }
 
   -- interface navigation
   use({ "numToStr/Navigator.nvim" })
