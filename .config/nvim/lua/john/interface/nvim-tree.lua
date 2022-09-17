@@ -24,6 +24,8 @@ nvim_tree.setup({
   open_on_tab = false,
   sort_by = "name",
   update_cwd = true,
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
   view = {
     width = 30,
     height = 30,
@@ -82,7 +84,8 @@ nvim_tree.setup({
   },
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_root = true,
+    -- update_cwd = true,
     ignore_list = {},
   },
   ignore_ft_on_setup = {},

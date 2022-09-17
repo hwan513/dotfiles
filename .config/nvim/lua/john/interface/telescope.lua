@@ -14,10 +14,12 @@ keymap("n", "<Leader>fh", "<cmd>lua require('telescope.builtin').command_history
 keymap("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
 keymap("n", "<Leader>fs", "<cmd>lua require('telescope.builtin').search_history()<cr>", opts)
 keymap("n", "<Leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>", opts)
+keymap("n", "<Leader>fp", ":Telescope projects<cr>", opts)
 keymap("n", "<Leader><Space>", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", opts)
 
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
+telescope.load_extension("projects")
 
 local actions = require("telescope.actions")
 -- trouble integration with telescope

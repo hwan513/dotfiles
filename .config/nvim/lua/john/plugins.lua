@@ -216,6 +216,12 @@ return packer.startup(function(use)
       require("persistence").setup()
     end,
   }) -- session manager
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {}
+    end,
+  } -- project managing
   use({
     "simnalamburt/vim-mundo",
     cmd = { "MundoToggle" },
