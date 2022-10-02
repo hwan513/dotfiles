@@ -70,7 +70,7 @@ local function lsp_keymaps(bufnr)
   local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
   vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
-      vim.lsp.buf.formatting_sync()
+      vim.lsp.buf.format({ async = false })
     end,
     group = format_on_save,
   })
