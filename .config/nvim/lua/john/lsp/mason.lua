@@ -21,6 +21,7 @@ mason.setup({
 -- Include default servers to install {{{
 local servers = {
   "clangd",
+  "omnisharp",
   "cssls",
   "emmet_ls",
   "html",
