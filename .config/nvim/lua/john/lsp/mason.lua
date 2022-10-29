@@ -20,6 +20,7 @@ mason.setup({
 -- }}}
 -- Include default servers to install {{{
 local servers = {
+  "bashls",
   "clangd",
   "omnisharp",
   "cssls",
