@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+ss_flag="0"
+t_flag=""
+fps_flag="12"
+scale_flag="720"
+file=""
+
+print_usage() {
+	printf "Usage:"
+	echo "  -i    <input file>"
+	echo "        -s    <start time>"
+	echo "        -t    <length of gif>"
+	echo "        -f    <fps rate>"
+	echo "        -c    <vertical resolution>"
+	echo "        -h    help"
+}
+
+while getopts s:t:f:c:i:h opt; do
+	case $opt in
+	s) ss_flag=$OPTARG ;;
+	t) t_flag="$OPTARG" ;;
+	f) fps_flag="$OPTARG" ;;
+	c) scale_flag="$OPTARG" ;;
+	i) file="$OPTARG" ;;
+	h)
+		print_usage
+		exit 1
+		;;
+	*)
+		print_usage
+		exit 1
+		;;
+	esac
+done
+
+if [[ $file == "" ]]; then
+	echo "Input file is not provide, see -i"
+	print_usage
+	exit 1
+elif ! [[ -r $file ]]; then
+	echo "File is not found: Provided with \"$file\""
+	exit 1
+elif ! [[ $file =~ .*\.(mp4|mov) ]]; then
+	echo "File format is incorrect:"
+	echo "File \"$file\" should have extension .mp4 or .mov"
+	exit 1
+fi
+
+command="ffmpeg -ss $ss_flag"
+if [[ $t_flag != "" ]]; then
+	command+=" -t $t_flag"
+fi
+command+=" -i $file"
+command+=" -filter_complex"
+command+=" '[0:v] fps=${fps_flag},"
+command+="scale=w=${scale_flag}:h=-1,"
+command+="split [a][b];"
+command+="[a] palettegen=stats_mode=single [p];"
+command+="[b][p] paletteuse=new=1:dither=floyd_steinberg'"
+command+=" ${file%.*}.gif"
+
+eval $command

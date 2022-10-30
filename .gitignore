@@ -33,6 +33,7 @@
 !.config/zsh/.p10k.zsh
 !.config/zsh/zsh-functions
 !.config/zsh/personal
+!.config/zsh/scripts
 
 .hammerspoon/Spoons
 !.hammerspoon/Spoons/SpoonInstall.spoon/

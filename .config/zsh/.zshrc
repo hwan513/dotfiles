@@ -50,6 +50,9 @@ zsh_add_plugin "kutsan/zsh-system-clipboard"
 bindkey -M vicmd Y zsh-system-clipboard-vicmd-vi-yank-eol
 zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_folder "personal"
+
+# Add scripts to the path
+zsh_add_scripts
 # }}}
 # completions again {{{
 autoload -Uz compinit && compinit

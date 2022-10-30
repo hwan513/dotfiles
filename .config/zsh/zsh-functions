@@ -21,3 +21,8 @@ function zsh_add_folder() {
         source $FILE;
     done
 }
+
+function zsh_add_scripts() {
+  PATH="$ZDOTDIR/scripts:${PATH}"
+  export PATH
+}
