@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
       [[
       source <afile>
       PackerSync
-      PackerSnapshotDelete plugins.lock
-      PackerSnapshot plugins.lock
+      PackerSnapshotDelete plugins.json
+      PackerSnapshot plugins.json
       ]],
       { output = false }
     )
@@ -48,11 +48,7 @@ packer.init({
   -- snapshot = "plugins.lock",
   snapshot = nil,
   snapshot_path = fn.stdpath("config") .. "/lua/john", -- Default save directory for snapshots
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
+  display = { open_fn = function() return require("packer.util").float({ border = "rounded" }) end, },
 })
 -- }}}
 
@@ -67,12 +63,7 @@ return packer.startup(function(use)
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
   use({ "dstein64/vim-startuptime", opt = true, cmd = { "Startup" } }) -- startup timer
-  use({
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup({})
-    end,
-  })
+  use({ "folke/which-key.nvim", config = function() require("which-key").setup({}) end, })
   -- }}}
   -- coloring things {{{
   use({ "folke/tokyonight.nvim", tag = "3c05c5ad8e2611da1514d1c633b677e956fbb0ce" }) -- colourscheme
@@ -163,13 +154,8 @@ return packer.startup(function(use)
   -- debug adaptor protocol {{{}
   use("mfussenegger/nvim-dap")
   use("Pocco81/DAPInstall.nvim")
-  use { "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
-    config = function() require("dapui").setup() end,
-  }
-  use({ "theHamsta/nvim-dap-virtual-text",
-    config = function() require("nvim-dap-virtual-text").setup() end,
-  })
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" }, config = function() require("dapui").setup() end, }
+  use({ "theHamsta/nvim-dap-virtual-text", config = function() require("nvim-dap-virtual-text").setup() end, })
   use("jbyuki/one-small-step-for-vimkind")
   -- }}}
 
@@ -200,14 +186,7 @@ return packer.startup(function(use)
   use("machakann/vim-sandwich") -- surrounding stuff with stuff
 
   -- utility
-  use({
-    "gbprod/cutlass.nvim",
-    config = function()
-      require("cutlass").setup({
-        cut_key = "m",
-      })
-    end,
-  })
+  use({ "gbprod/cutlass.nvim", config = function() require("cutlass").setup({ cut_key = "m", }) end, })
   use({
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
@@ -216,16 +195,8 @@ return packer.startup(function(use)
       require("persistence").setup()
     end,
   }) -- session manager
-  use {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {}
-    end,
-  } -- project managing
-  use({
-    "simnalamburt/vim-mundo",
-    cmd = { "MundoToggle" },
-  }) -- undo viewer
+  use({ "ahmedkhalf/project.nvim", config = function() require("project_nvim").setup({}) end, }) -- project managing
+  use({ "simnalamburt/vim-mundo", cmd = { "MundoToggle" }, }) -- undo viewer
   use({ "akinsho/toggleterm.nvim", tag = "v2.*" }) -- toggle nvim terminal
   use("tpope/vim-abolish") -- case coersion, substition, abbreviation
   use("nvim-treesitter/nvim-treesitter-textobjects")
@@ -253,11 +224,11 @@ return packer.startup(function(use)
   -- use({ "alec-gibson/nvim-tetris", opt = true, cmd = { "Tetris" } })
   -- use({ "vim-denops/denops.vim", opt = true })
   -- use({
-  -- 	"ryoppippi/bad-apple.vim",
-  -- 	-- opt = true,
-  -- 	-- cmd = "BadApple",
-  -- 	requires = "denops.vim",
-  -- 	after = "denops.vim",
+  --  "ryoppippi/bad-apple.vim",
+  --  -- opt = true,
+  --  -- cmd = "BadApple",
+  --  requires = "denops.vim",
+  --  after = "denops.vim",
   -- })
 
   -- Automatically set up your configuration after cloning packer.nvim
