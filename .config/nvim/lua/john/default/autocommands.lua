@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
       [[
     setlocal spell
     set wrap
-    ]] ,
+    ]],
       { output = false }
     )
   end,
@@ -54,18 +54,18 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- remove trailing spaces
 -- autocmd("BufWritePre", {
--- 	pattern = "*",
--- 	command = "%s/\\s\\+$//e",
--- 	group = general,
+--  pattern = "*",
+--  command = "%s/\\s\\+$//e",
+--  group = general,
 -- })
 
 -- highlight yanks
 -- autocmd("TextYankPost", {
--- 	pattern = "*",
--- 	callback = function()
--- 		vim.highlight.on_yank({ timeout = 500 })
--- 	end,
--- 	group = general,
+--  pattern = "*",
+--  callback = function()
+--    vim.highlight.on_yank({ timeout = 500 })
+--  end,
+--  group = general,
 -- })
 
 local window_sizing = augroup("window_sizing", { clear = true })
@@ -105,4 +105,12 @@ autocmd({ "WinLeave", "VimLeave", "FocusLost" }, {
   pattern = { "*" },
   command = "setlocal nocursorline | setlocal winhighlight=Normal:InactiveWindow",
   group = window_dimming,
+})
+
+local formatting = augroup("formatting", { clear = true })
+
+autocmd({ "BufWritePost" }, {
+  pattern = { "*.lua" },
+  command = "retab | noau w",
+  group = formatting,
 })
