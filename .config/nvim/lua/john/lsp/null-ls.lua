@@ -1,16 +1,16 @@
 local formatters = {
   -- "stylua",
   "black",
-  "prettier",
+  -- "prettier",
   "shfmt",
   "shellharden",
-  -- "prettierd",
+  "prettierd",
 }
 
 local linters = {
   "flake8",
   "eslint_d",
-  "vale",
+  -- "vale",
   "shellcheck",
 }
 
@@ -34,11 +34,12 @@ null_ls.setup({
 })
 
 -- require("mason-null-ls").setup({
--- 	ensure_installed = ensure_installed,
--- 	automatic_installation = true,
+--  ensure_installed = ensure_installed,
+--  automatic_installation = true,
 -- })
 -- require("mason-null-ls").check_install()
 
 require("mason-tool-installer").setup({
   ensure_installed = ensure_installed,
+  automatic_installation = true,
 })

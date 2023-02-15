@@ -107,10 +107,10 @@ autocmd({ "WinLeave", "VimLeave", "FocusLost" }, {
   group = window_dimming,
 })
 
-local formatting = augroup("formatting", { clear = true })
-
-autocmd({ "BufWritePost" }, {
-  pattern = { "*.lua" },
-  command = "retab | noau w",
-  group = formatting,
-})
+-- local formatting = augroup("formatting", { clear = true })
+--
+-- autocmd({ "BufWritePost" }, {
+--   pattern = { "*.lua" },
+--   command = "retab | noau w",
+--   group = formatting,
+-- })
