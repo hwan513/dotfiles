@@ -19,7 +19,6 @@ nvim_tree.setup({
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = true,
   ignore_buffer_on_setup = false,
-  open_on_setup = true,
   open_on_setup_file = false,
   open_on_tab = false,
   sort_by = "name",
@@ -28,7 +27,7 @@ nvim_tree.setup({
   respect_buf_cwd = true,
   view = {
     width = 30,
-    height = 30,
+    -- height = 30, -- for horizontal tree viewer
     hide_root_folder = false,
     side = "left",
     preserve_window_proportions = true,
@@ -38,8 +37,8 @@ nvim_tree.setup({
     mappings = {
       custom_only = false,
       list = {
-        { key = "<C-e>", action = "" },
-        { key = { "d", "D" }, action = "trash" },
+        { key = "<C-e>",                            action = "" },
+        { key = { "d", "D" },                       action = "trash" },
         { key = { "<2-RightMouse>", "<C-]>", "_" }, action = "cd" },
       },
     },
@@ -112,7 +111,6 @@ nvim_tree.setup({
     ignore = true,
     timeout = 500,
   },
-
   actions = {
     use_system_clipboard = true,
     change_dir = {
