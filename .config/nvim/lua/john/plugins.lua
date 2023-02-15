@@ -59,7 +59,6 @@ return packer.startup(function(use)
   -- initial plugins {{{
   use("lewis6991/impatient.nvim") -- faster loading
   use("wbthomason/packer.nvim") -- Have packer manage itself
-  use("nathom/filetype.nvim") -- faster loading
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
   use({ "dstein64/vim-startuptime", opt = true, cmd = { "Startup" } }) -- startup timer
