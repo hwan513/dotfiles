@@ -1,3 +1,3 @@
-local prequire = require("utils").prequire
+local prequire = require("john.utils").prequire
 
 prequire("john.treesitter.treesitter")

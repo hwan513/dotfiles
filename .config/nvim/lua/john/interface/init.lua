@@ -1,4 +1,4 @@
-local prequire = require("utils").prequire
+local prequire = require("john.utils").prequire
 
 prequire("john.interface.bufferline")
 prequire("john.interface.gitsigns")
