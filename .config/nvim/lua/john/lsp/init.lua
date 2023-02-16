@@ -1,17 +1,6 @@
-if not pcall(require, "lspconfig") then
-  print("lspconfig failed to load")
-  return
-end
+local prequire = require("utils").prequire
 
-local function prequire(filename)
-  local status_ok, file = pcall(require, filename)
-  if not status_ok then
-    print(string.format("%s failed to load", filename))
-    return
-  end
-  return file
-end
-
+prequire("lspconfig")
 prequire("john.lsp.mason")
 prequire("john.lsp.handlers").setup()
 prequire("john.lsp.null-ls")

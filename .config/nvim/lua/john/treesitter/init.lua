@@ -1,8 +1,3 @@
-local function prequire(filename)
-  if not pcall(require, filename) then
-    error(string.format("%s failed to load", filename))
-    return
-  end
-end
+local prequire = require("utils").prequire
 
 prequire("john.treesitter.treesitter")

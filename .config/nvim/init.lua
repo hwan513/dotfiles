@@ -1,13 +1,7 @@
-local function prequire(filename)
-  if not pcall(require, filename) then
-    print(string.format("%s failed to load", filename))
-    return
-  end
-end
+local prequire = require("utils").prequire
 
-prequire("impatient")
 prequire("john.default")
-prequire("john.plugins")
+prequire("john.lazy").setup()
 prequire("john.lsp")
 prequire("john.treesitter")
 prequire("john.interface")
