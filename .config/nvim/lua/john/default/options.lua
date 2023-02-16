@@ -96,8 +96,8 @@ O.wildignore = "*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
 -- }}}
 -- highlight {{{
 H.Visual = "gui=bold"
-H.ActiveWindow = "guibg=#black"
-H.InactiveWindow = "guibg=#1F202E"
-O.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow"
+-- H.ActiveWindow = "guibg=#black"
+-- H.InactiveWindow = "guibg=#1F202E"
+-- O.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow"
 -- }}}
 -- vim:foldmethod=marker:foldlevel=2
