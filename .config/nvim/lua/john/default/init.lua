@@ -5,7 +5,6 @@ local function prequire(filename)
   end
 end
 
-prequire("john.default.colourscheme")
 prequire("john.default.options")
 prequire("john.default.keymaps")
 prequire("john.default.autocommands")
