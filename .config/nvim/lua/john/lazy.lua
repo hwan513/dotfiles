@@ -17,10 +17,10 @@ local plugins = {
   { "p00f/nvim-ts-rainbow" }, -- bracket pair matching
   -- }}}
   -- user interface {{{
-  { "kyazdani42/nvim-web-devicons" },
-  { "kyazdani42/nvim-tree.lua" },
+  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "nvim-tree/nvim-tree.lua" },
   { "akinsho/bufferline.nvim",
-    version = "*", dependencies = "kyazdani42/nvim-web-devicons" },
+    config = function() require("john.interface.bufferline") end },
   { "famiu/bufdelete.nvim",
     cmd = "Bdelete" }, -- delete buffers nice
   { "nvim-lualine/lualine.nvim" }, -- status line plugin
