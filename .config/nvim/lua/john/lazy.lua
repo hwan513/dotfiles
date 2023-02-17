@@ -1,6 +1,6 @@
 local M = {}
 
-local req = function(name) return function() require(name) end end
+local req = function(modname) return function() require(modname) end end
 
 local plugins = {
   { "nvim-lua/plenary.nvim",    lazy = true }, -- Useful lua functions used ny lots of plugins
@@ -15,10 +15,29 @@ local plugins = {
   }, -- colourscheme
 
 
+  -- pairing plugins
+  { "machakann/vim-sandwich" }, -- surrounding stuff with stuff
+
   -- treesitter
   { "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate" }, -- better syntax highlighting and other stuff
-  { "p00f/nvim-ts-rainbow" }, -- bracket pair matching
+    config = req("john.treesitter.treesitter"),
+    build = ":TSUpdate", event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      { "lukas-reineke/indent-blankline.nvim",        config = req("john.interface.indentline") }, -- shows indent level with line
+      { "windwp/nvim-autopairs",                      config = req("john.qol.autopairs") }, -- autopair brackets and quotations
+      { "windwp/nvim-ts-autotag" }, -- automatically add tags to end of documents
+      { "JoosepAlviste/nvim-ts-context-commentstring" },
+      { "p00f/nvim-ts-rainbow" }, -- bracket pair matching
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+      { "RRethy/nvim-treesitter-textsubjects",        config = req("john.treesitter.textsubjects") },
+      { "romgrk/nvim-treesitter-context",
+        config = function() require("treesitter-context").setup({ enable = false, }) end },
+      -- highlights current thing under cursor
+      { "RRethy/vim-illuminate", config = req("john.qol.illuminate")
+      },
+    }
+
+  }, -- better syntax highlighting and other stuff
 
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
@@ -31,36 +50,28 @@ local plugins = {
     cmd = "Bdelete" }, -- delete buffers nice
   { "nvim-lualine/lualine.nvim", event = "VeryLazy",
     config = req("john.interface.lualine") }, -- status line plugin
-  { "lukas-reineke/indent-blankline.nvim" }, -- shows indent level with line
-  { "romgrk/nvim-treesitter-context",
-    config = function() require("treesitter-context").setup({ enable = false, }) end },
   -- }, -- shows context at higher indent levels
   { "norcalli/nvim-colorizer.lua",
     config = function() require("colorizer").setup() end }, -- coloring viewer for html css stuff
 
-  -- highlights current thing under cursor
-  { "RRethy/vim-illuminate",
-    config = function()
-      require("illuminate").configure({
-        delay = 500,
-        filetypes_denylist = { "dirvish", "fugitive", "NvimTree", },
-        modes_denylist = { "i", "v", "s" },
-      })
-    end,
-  },
 
   -- }}}
   -- completion and snippets
-  { "hrsh7th/nvim-cmp" }, -- The completion plugin
-  { "hrsh7th/cmp-buffer" }, -- buffer completions
-  { "hrsh7th/cmp-path" }, -- path completions
-  { "hrsh7th/cmp-cmdline" }, -- cmdline completions
-  { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
-  { "hrsh7th/cmp-nvim-lsp" }, -- lsp completions
-  { "hrsh7th/cmp-nvim-lua" }, -- lua completions for nvim config
-  { "andersevenrud/cmp-tmux" }, -- tmux completions
-  { "L3MON4D3/LuaSnip" }, --snippet engine
-  { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
+  { "hrsh7th/nvim-cmp",
+    config = req("john.qol.cmp"),
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      { "hrsh7th/cmp-buffer" }, -- buffer completions
+      { "hrsh7th/cmp-path" }, -- path completions
+      { "hrsh7th/cmp-cmdline" }, -- cmdline completions
+      { "saadparwaiz1/cmp_luasnip" }, -- snippet completions
+      { "hrsh7th/cmp-nvim-lsp" }, -- lsp completions
+      { "hrsh7th/cmp-nvim-lua" }, -- lua completions for nvim config
+      { "andersevenrud/cmp-tmux" }, -- tmux completions
+      { "L3MON4D3/LuaSnip" }, --snippet engine
+      { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
+    }
+  }, -- The completion plugin
 
   -- language server protocol {{{
   { "neovim/nvim-lspconfig" }, -- enable LSP
@@ -106,15 +117,8 @@ local plugins = {
   -- interface navigation
   { "numToStr/Navigator.nvim" },
 
-  -- commentary
-  { "numToStr/Comment.nvim",
-    keys = "gcc", config = req("john.qol.comment") },
-  { "JoosepAlviste/nvim-ts-context-commentstring" },
-
-  -- pairing plugins
-  { "windwp/nvim-autopairs" }, -- autopair brackets and quotations
-  { "windwp/nvim-ts-autotag" }, -- automatically add tags to end of documents
-  { "machakann/vim-sandwich" }, -- surrounding stuff with stuff
+  -- commenting
+  { "numToStr/Comment.nvim",  keys = { { "gcc" }, { "gc", mode = "v" } }, config = req("john.qol.comment") },
 
   -- utility
   { "gbprod/cutlass.nvim",
@@ -129,34 +133,14 @@ local plugins = {
   -- TODO Need to replace { "simnalamburt/vim-mundo", cmd =  "MundoToggle" , }, -- undo viewer
   { "akinsho/toggleterm.nvim",
     version = "*", keys = "<C-\\>",
-    config = function() require("john.interface.terminal") end }, -- toggle nvim terminal
+    config = req("john.interface.terminal") }, -- toggle nvim terminal
   { "tpope/vim-abolish" }, -- case coersion, substition, abbreviation
-  { "nvim-treesitter/nvim-treesitter-textobjects" },
-  { "RRethy/nvim-treesitter-textsubjects",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        textsubjects = {
-          enable = true,
-          prev_selection = ",", -- (Optional) keymap to select the previous selection
-          keymaps = {
-            ["."] = "textsubjects-smart",
-            -- ["<C-space>"] = "textsubjects-container-outer",
-            -- ["<bs>"] = "textsubjects-container-inner",
-          },
-        },
-      })
-    end,
-  },
   -- cohub gitpilot
-  { "github/copilot.vim",    cmd = "Copilot" },
+  { "github/copilot.vim",      cmd = "Copilot" },
 
   -- I have the funny
-  { "alec-gibson/nvim-tetris",
-    cmd = "Tetris" },
-  { "vim-denops/denops.vim", lazy = true },
-  { "ryoppippi/bad-apple.vim",
-    cmd = "BadApple",
-    dependencies = "denops.vim",
+  { "alec-gibson/nvim-tetris", cmd = "Tetris" },
+  { "ryoppippi/bad-apple.vim", cmd = "BadApple", dependencies = "vim-denops/denops.vim",
   }
 }
 
