@@ -1,12 +1,13 @@
 local M = {}
 
+local req = function(name) return function() require(name) end end
+
 local plugins = {
   { "nvim-lua/plenary.nvim",    lazy = true }, -- Useful lua functions used ny lots of plugins
   { "dstein64/vim-startuptime", cmd = { "StartupTime" }, }, -- startup timer,
   { "folke/which-key.nvim", event = "VeryLazy",
-    config = function() require("which-key").setup() end, },
-  -- }}}
-  -- coloring things {{{
+    config = function() require("which-key").setup() end, }, -- need to finish which-key config
+  -- coloring things
   { "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -15,17 +16,21 @@ local plugins = {
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate" }, -- better syntax highlighting and other stuff
   { "p00f/nvim-ts-rainbow" }, -- bracket pair matching
-  -- }}}
+
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "nvim-tree/nvim-tree.lua", keys = "<C-e>",
-    config = function() require("john.interface.nvim-tree") end, },
+    config = req("john.interface.nvim-tree") },
+  -- config = function() require("john.interface.nvim-tree") end, },
   { "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    config = function() require("john.interface.bufferline") end },
+    -- config = function() require("john.interface.bufferline") end },
+    config = req("john.interface.bufferline") },
   { "famiu/bufdelete.nvim",
     cmd = "Bdelete" }, -- delete buffers nice
-  { "nvim-lualine/lualine.nvim" }, -- status line plugin
+  { "nvim-lualine/lualine.nvim", event = "VeryLazy",
+    -- config = function() require("john.interface.lualine") end }, -- status line plugin
+    config = req("john.interface.lualine") }, -- status line plugin
   { "lukas-reineke/indent-blankline.nvim" }, -- shows indent level with line
   { "romgrk/nvim-treesitter-context",
     config = function() require("treesitter-context").setup({ enable = false, }) end },
