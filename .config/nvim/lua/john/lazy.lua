@@ -18,8 +18,10 @@ local plugins = {
   -- }}}
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  { "nvim-tree/nvim-tree.lua" },
+  { "nvim-tree/nvim-tree.lua", keys = "<C-e>",
+    config = function() require("john.interface.nvim-tree") end, },
   { "akinsho/bufferline.nvim",
+    event = "VeryLazy",
     config = function() require("john.interface.bufferline") end },
   { "famiu/bufdelete.nvim",
     cmd = "Bdelete" }, -- delete buffers nice

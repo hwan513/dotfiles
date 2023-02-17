@@ -3,15 +3,7 @@ if not status_ok then
   return
 end
 
--- local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
--- if not config_status_ok then
--- 	return
--- end
--- local tree_cb = nvim_tree_config.nvim_tree_callback
-
--- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-
 nvim_tree.setup({
   auto_reload_on_write = true,
   disable_netrw = true,
@@ -55,23 +47,23 @@ nvim_tree.setup({
     icons = {
       webdev_colors = true,
       glyphs = {
-        default = "",
-        symlink = "",
+        default = " ",
+        symlink = " ",
         git = {
-          unstaged = "",
-          staged = "S",
-          unmerged = "",
-          renamed = "➜",
-          deleted = "",
-          untracked = "U",
-          ignored = "◌",
+          unstaged = " ",
+          staged = "S ",
+          unmerged = " ",
+          renamed = "➜ ",
+          deleted = " ",
+          untracked = "U ",
+          ignored = "◌ ",
         },
         folder = {
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
+          default = " ",
+          open = " ",
+          empty = " ",
+          empty_open = " ",
+          symlink = " ",
         },
       },
     },
@@ -95,10 +87,10 @@ nvim_tree.setup({
   diagnostics = {
     enable = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = " ",
+      info = " ",
+      warning = " ",
+      error = " ",
     },
   },
   filters = {
