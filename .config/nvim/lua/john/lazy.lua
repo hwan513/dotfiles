@@ -13,6 +13,9 @@ local plugins = {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
   }, -- colourscheme
+
+
+  -- treesitter
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate" }, -- better syntax highlighting and other stuff
   { "p00f/nvim-ts-rainbow" }, -- bracket pair matching
@@ -21,15 +24,12 @@ local plugins = {
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "nvim-tree/nvim-tree.lua", keys = "<C-e>",
     config = req("john.interface.nvim-tree") },
-  -- config = function() require("john.interface.nvim-tree") end, },
   { "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    -- config = function() require("john.interface.bufferline") end },
     config = req("john.interface.bufferline") },
   { "famiu/bufdelete.nvim",
     cmd = "Bdelete" }, -- delete buffers nice
   { "nvim-lualine/lualine.nvim", event = "VeryLazy",
-    -- config = function() require("john.interface.lualine") end }, -- status line plugin
     config = req("john.interface.lualine") }, -- status line plugin
   { "lukas-reineke/indent-blankline.nvim" }, -- shows indent level with line
   { "romgrk/nvim-treesitter-context",
@@ -50,7 +50,7 @@ local plugins = {
   },
 
   -- }}}
-  -- completion {{{
+  -- completion and snippets
   { "hrsh7th/nvim-cmp" }, -- The completion plugin
   { "hrsh7th/cmp-buffer" }, -- buffer completions
   { "hrsh7th/cmp-path" }, -- path completions
@@ -59,12 +59,8 @@ local plugins = {
   { "hrsh7th/cmp-nvim-lsp" }, -- lsp completions
   { "hrsh7th/cmp-nvim-lua" }, -- lua completions for nvim config
   { "andersevenrud/cmp-tmux" }, -- tmux completions
-  -- }}}
-  -- snippets {{{
   { "L3MON4D3/LuaSnip" }, --snippet engine
   { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
-  -- {"honza/vim-snippets"} -- more snippets
-  -- }}}
 
   -- language server protocol {{{
   { "neovim/nvim-lspconfig" }, -- enable LSP
@@ -74,6 +70,7 @@ local plugins = {
   -- use mason for null ls installation
   { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   { "jayp0521/mason-null-ls.nvim", },
+
   { "simrat39/rust-tools.nvim", },
   { "mfussenegger/nvim-jdtls", },
   { "jose-elias-alvarez/null-ls.nvim", },
@@ -84,12 +81,12 @@ local plugins = {
 
   -- debug adaptor protocol
   -- one day I'll work more on lazy loading eveything
-  { "mfussenegger/nvim-dap",
-    dependencies = { "rcarriga/nvim-dap-ui", "nvim-dap-virtual-text", "jbyuki/one-small-step-for-vimkind" },
+  { "mfussenegger/nvim-dap", lazy = true,
+    dependencies = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text", "jbyuki/one-small-step-for-vimkind" },
   },
-  { "rcarriga/nvim-dap-ui",
+  { "rcarriga/nvim-dap-ui", lazy = true,
     config = function() require("dapui").setup() end, },
-  { "theHamsta/nvim-dap-virtual-text",
+  { "theHamsta/nvim-dap-virtual-text", lazy = true,
     config = function() require("nvim-dap-virtual-text").setup() end, },
   { "jbyuki/one-small-step-for-vimkind",        ft = "lua" },
 
@@ -111,7 +108,7 @@ local plugins = {
 
   -- commentary
   { "numToStr/Comment.nvim",
-    keys = "gcc" },
+    keys = "gcc", config = req("john.qol.comment") },
   { "JoosepAlviste/nvim-ts-context-commentstring" },
 
   -- pairing plugins
@@ -143,8 +140,8 @@ local plugins = {
           prev_selection = ",", -- (Optional) keymap to select the previous selection
           keymaps = {
             ["."] = "textsubjects-smart",
-            -- [";"] = "textsubjects-container-outer",
-            -- ["i;"] = "textsubjects-container-inner",
+            -- ["<C-space>"] = "textsubjects-container-outer",
+            -- ["<bs>"] = "textsubjects-container-inner",
           },
         },
       })
