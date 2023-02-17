@@ -13,31 +13,41 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
-  Text = "",
-  Method = "m",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
+  Array = " ",
+  Boolean = " ",
+  Class = " ",
+  Color = " ",
+  Constant = " ",
+  Constructor = " ",
+  Copilot = " ",
+  Enum = " ",
+  EnumMember = " ",
+  Event = " ",
+  Field = " ",
+  File = " ",
+  Folder = " ",
+  Function = " ",
+  Interface = " ",
+  Key = " ",
+  Keyword = " ",
+  Method = "m ",
+  Module = " ",
+  Namespace = " ",
+  Null = "ﳠ ",
+  Number = " ",
+  Object = " ",
+  Operator = " ",
+  Package = " ",
+  Property = " ",
+  Reference = " ",
+  Snippet = " ",
+  String = " ",
+  Struct = " ",
+  Text = " ",
+  TypeParameter = " ",
+  Unit = " ",
+  Value = " ",
+  Variable = " ",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -53,7 +63,7 @@ cmp.setup({
     end,
   },
   mapping = {
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i" }),
+    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs( -4), { "i" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i" }),
     ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
@@ -80,7 +90,7 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      elseif luasnip.jumpable( -1) then
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
         -- luasnip.jump(-1)
       else
@@ -93,8 +103,8 @@ cmp.setup({
       end
     end, { "i", "s" }),
     ["<C-k>"] = cmp.mapping(function()
-      if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      if luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       end
     end, { "i", "s" }),
   },
@@ -106,13 +116,13 @@ cmp.setup({
       vim_item.abbr = string.sub(vim_item.abbr, 1, 40)
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
-        luasnip = "snip",
-        buffer = "file",
-        path = "path",
-        nvim_lsp = "lsp ",
-        nvim_lua = "lua ",
-        tmux = "tmux",
-      })[entry.source.name]
+          luasnip = "snip",
+          buffer = "file",
+          path = "path",
+          nvim_lsp = "lsp ",
+          nvim_lua = "lua ",
+          tmux = "tmux",
+        })[entry.source.name]
       return vim_item
     end,
   },
