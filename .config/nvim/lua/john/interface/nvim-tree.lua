@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require("john.misc.icons")
+
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 nvim_tree.setup({
   auto_reload_on_write = true,
@@ -87,10 +89,10 @@ nvim_tree.setup({
   diagnostics = {
     enable = true,
     icons = {
-      hint = " ",
-      info = " ",
-      warning = " ",
-      error = " ",
+      error = icons.diagnostics.Error,
+      warning = icons.diagnostics.Warn,
+      hint = icons.diagnostics.Hint,
+      info = icons.diagnostics.Info,
     },
   },
   filters = {
