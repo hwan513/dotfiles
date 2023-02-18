@@ -9,7 +9,7 @@ local plugins = {
   { "folke/which-key.nvim",     event = "VeryLazy",      config = setup("which-key"), }, -- need to finish which-key config
   { "folke/tokyonight.nvim", lazy = false, priority = 1000,
     config = function() vim.cmd([[colorscheme tokyonight-night]]) end, }, -- colourscheme
-  { "catppuccin/nvim",        name = "catppuccin" },
+  { "catppuccin/nvim",        name = "catppuccin", event = "VeryLazy" },
 
 
   -- pairing plugins
@@ -62,6 +62,9 @@ local plugins = {
   }, -- The completion plugin
 
   -- language server protocol {{{
+  { "folke/noice.nvim", config = req("john.interface.noice"),
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", },
+    event = "VeryLazy" },
   { "neovim/nvim-lspconfig",
     config = req("lspconfig"),
     event = { "BufReadPre", "BufNewFile" },
@@ -74,8 +77,6 @@ local plugins = {
       { "mfussenegger/nvim-jdtls", },
       { "jose-elias-alvarez/null-ls.nvim",          config = req("john.lsp.null-ls") },
       { "folke/trouble.nvim",                       config = require("john.interface.trouble") }, -- display the qf window for stuff
-      { "folke/noice.nvim", config = req("john.interface.noice"),
-        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } },
       -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     }
   }, -- enable LSP
@@ -94,7 +95,7 @@ local plugins = {
   },
 
   -- telescope
-  { "ahmedkhalf/project.nvim", event = "VeryLazy",                      config = setup("project_nvim"), }, -- project managing
+  { "ahmedkhalf/project.nvim", event = "VeryLazy",                     config = setup("project_nvim"), }, -- project managing
   { "AckslD/nvim-neoclip.lua", event = "VeryLazy", config = setup("neoclip", { enable_persistent_history = true, }),
     dependencies = { 'kkharji/sqlite.lua' }, },
   { "nvim-telescope/telescope.nvim",
@@ -109,9 +110,11 @@ local plugins = {
   },
 
   -- git stuff
-  { "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" },  config = req("john.interface.gitsigns") },
+  { "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, config = req("john.interface.gitsigns") },
   { "sindrets/diffview.nvim",  cmd = "DiffviewOpen" },
-  { "TimUntersberger/neogit",  cmd = "Neogit",                          config = setup("neogit", { integrations = { diffview = true }, }) },
+  { "TimUntersberger/neogit", cmd = "Neogit",
+    config = setup("neogit", { integrations = { diffview = true }, disable_commit_confirmation = true }),
+  },
 
   -- utility
   { "numToStr/Navigator.nvim", event = "VeryLazy",                      config = req("john.qol.navigator") },
