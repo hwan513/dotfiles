@@ -9,9 +9,11 @@ local plugins = {
   { "folke/which-key.nvim",     event = "VeryLazy",      config = setup("which-key"), }, -- need to finish which-key config
   { "folke/tokyonight.nvim", lazy = false, priority = 1000,
     config = function() vim.cmd([[colorscheme tokyonight-night]]) end, }, -- colourscheme
+  { "catppuccin/nvim",        name = "catppuccin" },
+
 
   -- pairing plugins
-  { "machakann/vim-sandwich",      event = "VeryLazy" }, -- surrounding stuff with stuff
+  { "machakann/vim-sandwich", event = "VeryLazy" }, -- surrounding stuff with stuff
 
   -- treesitter
   { "nvim-treesitter/nvim-treesitter",
@@ -78,7 +80,6 @@ local plugins = {
     }
   }, -- enable LSP
 
-
   -- {"davidgranstrom/nvim-markdown-preview"} -- alternative preview plugin
 
   -- debug adaptor protocol
@@ -109,23 +110,17 @@ local plugins = {
   { "sindrets/diffview.nvim",  cmd = "DiffviewOpen" },
   { "TimUntersberger/neogit",  cmd = "Neogit",                          config = setup("neogit", { integrations = { diffview = true }, }) },
 
-  -- interface navigation
-  { "numToStr/Navigator.nvim", event = "VeryLazy",                      config = req("john.qol.navigator") },
-
-  -- commenting
-  { "numToStr/Comment.nvim",   keys = { "gcc", { "gc", mode = "v" } },  config = req("john.qol.comment") },
-
   -- utility
+  { "numToStr/Navigator.nvim", event = "VeryLazy",                      config = req("john.qol.navigator") },
+  { "numToStr/Comment.nvim",   keys = { "gcc", { "gc", mode = "v" } },  config = req("john.qol.comment") },
   { "gbprod/cutlass.nvim",     keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m", }) },
   { "folke/persistence.nvim",  event = "BufReadPre",                    config = setup("persistence"), }, -- session manager
-
-  -- TODO Need to replace { "simnalamburt/vim-mundo", cmd =  "MundoToggle" , }, -- undo viewer
-
   { "akinsho/toggleterm.nvim", version = "*", keys = "<C-\\>",
     config = req("john.interface.terminal") }, -- toggle nvim terminal
-
   { "tpope/vim-abolish",       event = "VeryLazy" }, -- case coersion, substition, abbreviation
   { "github/copilot.vim",      cmd = "Copilot",   config = req("john.qol.copilot") },
+  -- TODO Need to replace { "simnalamburt/vim-mundo", cmd =  "MundoToggle" , }, -- undo viewer
+
 
   -- I have the funny
   { "alec-gibson/nvim-tetris", cmd = "Tetris" },
