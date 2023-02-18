@@ -14,11 +14,12 @@ vim.g.maplocalleader = ","
 --   command_mode = "c",
 --   }}}
 -- General stuff {{{
+keymap("n", "<C-c>", "<cmd>qa!<cr>", opts)
+keymap("i", "<C-c>", "<cmd>qa!<cr>", opts)
 keymap("n", "<Leader>w", ":silent w!<CR>", opts) -- quick save
 keymap("n", "<Leader>W", ":wqa!<CR>", opts) -- quick save all and quit
 keymap("n", "<Leader>a", ":<C-P><CR>", opts) -- repeat last executed command
 -- keymap("n", "<Leader><CR>", ":nohlsearch<CR>", opts) -- remove search highlighting
-keymap("n", "<Leader>1", ":source $MYVIMRC<CR>", opts) -- quick source config
 keymap("n", "<Leader>v", "ggVG", opts) -- select all
 -- keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts) -- cd to current file then pwd
 -- keymap("n", "<Space>", "/", opts) -- space will / (search)
