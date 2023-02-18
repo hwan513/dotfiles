@@ -72,7 +72,7 @@ O.termguicolors = true -- better terminal coloring
 -- }}}
 -- interface behaviour {{{
 O.linebreak = true -- break lines at end of word
-O.lazyredraw = true -- don't redraw during macros
+O.lazyredraw = false -- redraw during macros
 O.guicursor = "v:block,c-i-ci-ve-sm:ver25,n-r-cr-o:hor15"
 O.matchtime = 2 -- tenths of a secnd to blink when matching pair
 O.showmatch = true -- matching brackets blink

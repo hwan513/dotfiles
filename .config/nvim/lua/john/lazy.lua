@@ -17,7 +17,7 @@ local plugins = {
 
   -- treesitter
   { "nvim-treesitter/nvim-treesitter",
-    config = req("john.treesitter.treesitter"), build = ":TSUpdate", event = { "BufReadPre", "BufNewFile" },
+    config = req("john.treesitter.treesitter"), build = ":TSUpdate", event = { "VeryLazy" },
     dependencies = {
       { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
       { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") }, -- autopair brackets and quotations
@@ -26,7 +26,6 @@ local plugins = {
       "p00f/nvim-ts-rainbow", -- bracket pair matching
       "nvim-treesitter/nvim-treesitter-textobjects",
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
-      { "romgrk/nvim-treesitter-context",      config = setup("treesitter-context", { enable = false }) },
       { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor
     }
 
@@ -39,7 +38,6 @@ local plugins = {
   { "famiu/bufdelete.nvim",        cmd = "Bdelete" }, -- delete buffers nicely
   { "nvim-lualine/lualine.nvim",   event = "VeryLazy",                     config = req("john.interface.lualine") }, -- status line plugin
   { "norcalli/nvim-colorizer.lua", event = { "BufNewFile", "BufReadPre" }, config = setup("colorizer") }, -- coloring viewer for html css stuff
-
 
   -- }}}
   -- completion and snippets
@@ -76,7 +74,9 @@ local plugins = {
       { "mfussenegger/nvim-jdtls", },
       { "jose-elias-alvarez/null-ls.nvim",          config = req("john.lsp.null-ls") },
       { "folke/trouble.nvim",                       config = require("john.interface.trouble") }, -- display the qf window for stuff
-      { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
+      { "folke/noice.nvim", config = req("john.interface.noice"),
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } },
+      -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     }
   }, -- enable LSP
 
@@ -95,13 +95,16 @@ local plugins = {
 
   -- telescope
   { "ahmedkhalf/project.nvim", event = "VeryLazy",                      config = setup("project_nvim"), }, -- project managing
+  { "AckslD/nvim-neoclip.lua", event = "VeryLazy", config = setup("neoclip", { enable_persistent_history = true, }),
+    dependencies = { 'kkharji/sqlite.lua' }, },
   { "nvim-telescope/telescope.nvim",
     config = setup("john.interface.telescope"),
     keys = require("john.interface.telescope").keys,
     cmd = "Telescope",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      { "nvim-telescope/telescope-ui-select.nvim" },
+      "nvim-telescope/telescope-ui-select.nvim",
+      "debugloop/telescope-undo.nvim",
     },
   },
 
@@ -117,14 +120,15 @@ local plugins = {
   { "folke/persistence.nvim",  event = "BufReadPre",                    config = setup("persistence"), }, -- session manager
   { "akinsho/toggleterm.nvim", version = "*", keys = "<C-\\>",
     config = req("john.interface.terminal") }, -- toggle nvim terminal
-  { "tpope/vim-abolish",       event = "VeryLazy" }, -- case coersion, substition, abbreviation
-  { "github/copilot.vim",      cmd = "Copilot",   config = req("john.qol.copilot") },
-  -- TODO Need to replace { "simnalamburt/vim-mundo", cmd =  "MundoToggle" , }, -- undo viewer
+  { "tpope/vim-abolish",  event = "VeryLazy" }, -- case coersion, substition, abbreviation
+  { "github/copilot.vim", cmd = "Copilot",   config = req("john.qol.copilot") },
+  { "ggandor/leap.nvim",
+    dependencies = { { "ggandor/flit.nvim", config = setup("flit") }, } },
 
 
   -- I have the funny
   { "alec-gibson/nvim-tetris", cmd = "Tetris" },
-  { "ryoppippi/bad-apple.vim", cmd = "BadApple",  dependencies = "vim-denops/denops.vim", }
+  { "ryoppippi/bad-apple.vim", cmd = "BadApple", dependencies = "vim-denops/denops.vim", }
 }
 
 M.setup = function()

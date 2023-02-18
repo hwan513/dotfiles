@@ -7,6 +7,8 @@ local setup = function()
   telescope.load_extension("fzf")
   telescope.load_extension("ui-select")
   telescope.load_extension("projects")
+  telescope.load_extension("undo")
+  telescope.load_extension('neoclip')
 
   local actions = require("telescope.actions")
   -- trouble integration with telescope
@@ -98,6 +100,9 @@ local setup = function()
         require("telescope.themes").get_dropdown({
           -- even more opts
         }),
+        undo = {
+          -- telescope-undo.nvim config, see below
+        },
         -- Your extension configuration goes here:
         -- extension_name = {
         --   extension_config_key = value,
@@ -111,7 +116,7 @@ end
 return {
   keys = {
     { "<Leader>ft",      ":Telescope builtin<cr>",                   desc = "Open Telescope" },
-    { "<Leader>ff",      ":Telescope find_files<cr>",                desc = "Find Files" },
+    { "<Leader>ff",      "<cmd>Telescope find_files<cr>",            desc = "Find Files" },
     { "<Leader>fg",      ":Telescope live_grep<cr>",                 desc = "Grep Repo" },
     { "<Leader>fb",      ":Telescope buffers<cr>",                   desc = "Buffers" },
     { "<Leader>fh",      ":Telescope command_history<cr>",           desc = "Command History" },
@@ -119,7 +124,9 @@ return {
     { "<Leader>fs",      ":Telescope search_history<cr>",            desc = "Search History" },
     { "<Leader>fc",      ":Telescope commands<cr>",                  desc = "Commands" },
     { "<Leader>fp",      ":Telescope projects<cr>",                  desc = "Projects" },
+    { "<Leader>fu",      ":Telescope undo<cr>",                      desc = "Undo" },
     { "<Leader><Space>", ":Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Search Buffer" },
+    { "<Leader>'",       ":Telescope neoclip<cr>",                   desc = "Clipboard" },
   },
   setup = setup,
 }
