@@ -12,7 +12,7 @@ configs.setup({
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { "" } }, -- autoindent behaviour
+  indent = { enable = true, disable = { "python" } }, -- autoindent behaviour
   context_commentstring = { -- commenting behaviour
     enable = true,
     enable_autocmd = false,
