@@ -52,7 +52,7 @@ zsh_add_plugin "MichaelAquilina/zsh-you-should-use"
 zsh_add_folder "personal"
 
 # Add scripts to the path
-zsh_add_scripts
+# zsh_add_scripts
 # }}}
 # completions again {{{
 autoload -Uz compinit && compinit
@@ -63,4 +63,4 @@ zmodload zsh/complist
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
-# vim:foldmethod=marker:foldlevel=1
+#} vim:foldmethod=marker:foldlevel=1
