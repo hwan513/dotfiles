@@ -83,16 +83,17 @@ local plugins = {
 
   -- {"davidgranstrom/nvim-markdown-preview"} -- alternative preview plugin
 
-  -- debug adaptor protocol
-  -- one day I'll work more on lazy loading eveything
-  { "mfussenegger/nvim-dap", lazy = true,
-    config = req("john.dap"),
-    dependencies = {
-      { "rcarriga/nvim-dap-ui",              config = setup("dapui"), },
-      { "theHamsta/nvim-dap-virtual-text",   config = setup("nvim-dap-virtual-text"), },
-      { "jbyuki/one-small-step-for-vimkind", ft = "lua" },
-    },
-  },
+  -- -- debug adaptor protocol
+  -- -- one day I'll work more on lazy loading eveything
+  -- { "mfussenegger/nvim-dap", lazy = true,
+  --   config = req("john.dap"),
+  --   dependencies = {
+  --     -- issue with lazy loading this plugin causes bufferline.nvim and gitsigns.nvim to create insert mode bugs while using telescope to launch a file from an emtpy buffer
+  --     { "rcarriga/nvim-dap-ui",              config = setup("dapui"), },
+  --     { "theHamsta/nvim-dap-virtual-text",   config = setup("nvim-dap-virtual-text"), },
+  --     { "jbyuki/one-small-step-for-vimkind", ft = "lua" },
+  --   },
+  -- },
 
   -- telescope
   { "ahmedkhalf/project.nvim", event = "VeryLazy",                     config = setup("project_nvim"), }, -- project managing
