@@ -76,7 +76,7 @@ local plugins = {
       { "simrat39/rust-tools.nvim", },
       { "mfussenegger/nvim-jdtls", },
       { "jose-elias-alvarez/null-ls.nvim",          config = req("john.lsp.null-ls") },
-      { "folke/trouble.nvim",                       config = require("john.interface.trouble") }, -- display the qf window for stuff
+      { "folke/trouble.nvim",                       config = req("john.interface.trouble") }, -- display the qf window for stuff
       -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     }
   }, -- enable LSP
