@@ -2,14 +2,14 @@
 
 # whitelist files & folders
 !.gitignore
+!.gitignore_apple
+!.gitconfig
 !README.md
 
-!.vale.ini
 !zprofile
 !.hammerspoon
 !Brewfile
 
-!.gitignore_apple
 
 !.config
 .config/*
@@ -38,5 +38,3 @@
 
 .hammerspoon/Spoons
 !.hammerspoon/Spoons/SpoonInstall.spoon/
-
-
