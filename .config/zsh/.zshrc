@@ -9,10 +9,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 # }}}
 # zsh history storing {{{
-HISTFILE="$ZDOTDIR/.zsh_history"
-HISTSIZE=10000000
-SAVEHIST=10000000
-setopt APPEND_HISTORY SHARE_HISTORY # commands exist across shells
+export HISTFILE="$ZDOTDIR/.zsh_history"
+export HISTSIZE=10000000 # size of cached shell history
+export SAVEHIST=10000000 # size of shell history file
+setopt APPEND_HISTORY # zsh history is appended to instead of being rewritten
+setopt SHARE_HISTORY # zsh history is written immediately to histfile
+setopt EXTENDED_HISTORY # zsh history timestamp is also written to histfile
 # }}}
 # options (run man zshoptions) {{{
 setopt auto_cd extended_glob nomatch menu_complete
