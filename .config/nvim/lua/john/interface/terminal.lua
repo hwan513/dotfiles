@@ -58,8 +58,8 @@ local function CompileRun()
   local rf = {
     c = string.format("gcc %s -Wall -lm -o %s && time ./%s", fp, fe, fe),
     cpp = string.format("g++ %s -Wall -lm -o %s && time ./%s", fp, fe, fe),
-    -- java = string.format("javac %s && time java %s", fp, fe),
-    java = "mjr",
+    java = string.format("javac %s && time java %s", fp, fe),
+    -- java = "mjr",
     rust = "cargo run",
     lua = string.format("time luajit %s", fp),
     sh = string.format("time bash %s", fp),
