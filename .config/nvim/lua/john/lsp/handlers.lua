@@ -17,7 +17,7 @@ M.setup = function()
   local config = {
     virtual_text = false, -- virtual text
     signs = {
-      active = signs, -- show signs
+      active = signs,     -- show signs
     },
     update_in_insert = false,
     underline = true,
@@ -57,6 +57,7 @@ local function lsp_keymaps(bufnr)
   -- keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   keymap(bufnr, "n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   keymap(bufnr, "n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  keymap(bufnr, "v", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   -- keymap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
@@ -80,9 +81,9 @@ end
 
 M.on_attach = function(client, bufnr)
   local no_format = {
-    ["tsserver"] = true,
-    ["jsonls"] = true,
-    ["html"] = true,
+      ["tsserver"] = true,
+      ["jsonls"] = true,
+      ["html"] = true,
     -- ["sumneko_lua"] = true,
   }
   if no_format[client.name] then
