@@ -3,7 +3,6 @@
 # whitelist files & folders
 !.gitignore
 !.gitignore_apple
-!.gitconfig
 !README.md
 
 !zprofile
