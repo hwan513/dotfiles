@@ -14,6 +14,7 @@ local plugins = {
     config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
   }, -- colourscheme
   { "catppuccin/nvim",        name = "catppuccin", event = "VeryLazy" },
+  { "rose-pine/neovim",       name = "rose-pine",  event = "VeryLazy" },
 
 
   -- pairing plugins
@@ -75,6 +76,8 @@ local plugins = {
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", },
     event = "VeryLazy"
   },
+  { "folke/neodev.nvim" },
+  { "folke/neoconf.nvim" },
   {
     "neovim/nvim-lspconfig",
     config = req("lspconfig"),
@@ -171,8 +174,9 @@ local plugins = {
 
 
   -- I have the funny
-  { "alec-gibson/nvim-tetris", cmd = "Tetris" },
-  { "ryoppippi/bad-apple.vim", cmd = "BadApple", dependencies = "vim-denops/denops.vim", }
+  { "alec-gibson/nvim-tetris",      cmd = "Tetris" },
+  { "ryoppippi/bad-apple.vim",      cmd = "BadApple", dependencies = "vim-denops/denops.vim", },
+  { dir = "~/projects/typing-test", },
 }
 
 M.setup = function()
