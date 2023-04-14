@@ -16,11 +16,13 @@ vim.g.maplocalleader = ","
 -- General stuff {{{
 keymap("n", "<C-c>", "<cmd>qa!<cr>", opts)
 keymap("i", "<C-c>", "<cmd>qa!<cr>", opts)
+keymap("n", "<C-r>", ":silent redo<CR>", opts)   -- quick save
+keymap("n", "u", ":silent undo<CR>", opts)       -- quick save
 keymap("n", "<Leader>w", ":silent w!<CR>", opts) -- quick save
-keymap("n", "<Leader>W", ":wqa!<CR>", opts) -- quick save all and quit
-keymap("n", "<Leader>a", ":<C-P><CR>", opts) -- repeat last executed command
+keymap("n", "<Leader>W", ":wqa!<CR>", opts)      -- quick save all and quit
+keymap("n", "<Leader>a", ":<C-P><CR>", opts)     -- repeat last executed command
 -- keymap("n", "<Leader><CR>", ":nohlsearch<CR>", opts) -- remove search highlighting
-keymap("n", "<Leader>v", "ggVG", opts) -- select all
+keymap("n", "<Leader>v", "ggVG", opts)           -- select all
 -- keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts) -- cd to current file then pwd
 -- keymap("n", "<Space>", "/", opts) -- space will / (search)
 keymap("n", "<CR>", ":<c-u>put =repeat([''],v:count)<bar>'[+0<CR>", opts) -- enter will create new line
@@ -32,8 +34,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- }}}
 -- Buffer commands {{{
-keymap("n", "H", ":bprevious<CR>", opts) -- move to previous buffer
-keymap("n", "L", ":bnext<CR>", opts) -- move to next buffer
+keymap("n", "H", ":bprevious<CR>", opts)        -- move to previous buffer
+keymap("n", "L", ":bnext<CR>", opts)            -- move to next buffer
 keymap("n", "<leader>c", ":Bdelete!<CR>", opts) -- delete current buffer
 -- }}}
 -- Tab commands {{{
