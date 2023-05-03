@@ -13,12 +13,13 @@ local plugins = {
     priority = 1000,
     config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
   }, -- colourscheme
-  { "catppuccin/nvim",        name = "catppuccin", event = "VeryLazy" },
-  { "rose-pine/neovim",       name = "rose-pine",  event = "VeryLazy" },
+  { "catppuccin/nvim",            name = "catppuccin", event = "VeryLazy" },
+  { "rose-pine/neovim",           name = "rose-pine",  event = "VeryLazy" },
+  { 'maxmx03/fluoromachine.nvim', event = "VeryLazy" },
 
 
   -- pairing plugins
-  { "machakann/vim-sandwich", event = "VeryLazy" }, -- surrounding stuff with stuff
+  { "machakann/vim-sandwich",     event = "VeryLazy" }, -- surrounding stuff with stuff
 
   -- treesitter
   {
@@ -97,21 +98,8 @@ local plugins = {
 
 
   -- Markdown Editing
-  {
-    "abeleinin/papyrus",
-    config = function()
-      vim.cmd([[
-        let g:papyrus_latex_engine = 'pdflatex'
-        let g:papyrus_viewer = 'preview'
-      ]])
-    end,
-    dependencies = { "vim-pandoc/vim-pandoc-syntax" },
-    cmd = { "PapyrusAutoCompile" },
-  },
-
-  -- {"davidgranstrom/nvim-markdown-preview"} -- alternative preview plugin
-
-
+  { "vim-pandoc/vim-pandoc-syntax", ft = "markdown" },
+  { dir = "~/projects/pandoccer",   cmd = { "PandoccerSetup", "PandoccerOpen" } },
 
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
@@ -126,7 +114,7 @@ local plugins = {
   -- },
 
   -- telescope
-  { "ahmedkhalf/project.nvim", event = "VeryLazy",                     config = setup("project_nvim"), }, -- project managing
+  { "ahmedkhalf/project.nvim",      event = "VeryLazy",                         config = setup("project_nvim"), }, -- project managing
   {
     "AckslD/nvim-neoclip.lua",
     event = "VeryLazy",
