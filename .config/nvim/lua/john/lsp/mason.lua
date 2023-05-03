@@ -29,6 +29,7 @@ local servers = {
   "jdtls",
   "jsonls",
   "ltex",
+  "marksman",
   "pyright",
   "rust_analyzer",
   "lua_ls",
