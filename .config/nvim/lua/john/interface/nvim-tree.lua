@@ -13,9 +13,9 @@ local function my_on_attach(bufnr)
   end
   api.config.mappings.default_on_attach(bufnr)
 
-  -- -- You might tidy things by removing these along with their default mapping.
-  -- vim.keymap.set("n", "<C-e>", "", { buffer = bufnr })
-  -- vim.keymap.del("n", "<C-e>", { buffer = bufnr })
+  -- You might tidy things by removing these along with their default mapping.
+  vim.keymap.set("n", "<C-e>", "", { buffer = bufnr })
+  vim.keymap.del("n", "<C-e>", { buffer = bufnr })
 
 
   -- Mappings migrated from view.mappings.list
