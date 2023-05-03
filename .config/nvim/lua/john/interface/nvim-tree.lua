@@ -5,15 +5,39 @@ end
 
 local icons = require("john.misc.icons")
 
+local function my_on_attach(bufnr)
+  local api = require('nvim-tree.api')
+
+  local function opts(desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- -- You might tidy things by removing these along with their default mapping.
+  -- vim.keymap.set("n", "<C-e>", "", { buffer = bufnr })
+  -- vim.keymap.del("n", "<C-e>", { buffer = bufnr })
+
+
+  -- Mappings migrated from view.mappings.list
+  --
+  -- You will need to insert "your code goes here" for any mappings with a custom action_cb
+  vim.keymap.set("n", "d", api.fs.trash, opts("Trash"))
+  vim.keymap.set("n", "D", api.fs.trash, opts("Trash"))
+  vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
+  vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
+  vim.keymap.set("n", "_", api.tree.change_root_to_node, opts("CD"))
+end
+
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 nvim_tree.setup({
+  on_attach = my_on_attach,
   auto_reload_on_write = true,
   disable_netrw = true,
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = true,
-  ignore_buffer_on_setup = false,
-  open_on_setup_file = false,
+  -- ignore_buffer_on_setup = false,
+  -- open_on_setup_file = false,
   open_on_tab = false,
   sort_by = "name",
   update_cwd = true,
@@ -28,14 +52,14 @@ nvim_tree.setup({
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = "<C-e>",                            action = "" },
-        { key = { "d", "D" },                       action = "trash" },
-        { key = { "<2-RightMouse>", "<C-]>", "_" }, action = "cd" },
-      },
-    },
+    -- mappings = {
+    --   custom_only = false,
+    --   list = {
+    --     { key = "<C-e>",                            action = "" },
+    --     { key = { "d", "D" },                       action = "trash" },
+    --     { key = { "<2-RightMouse>", "<C-]>", "_" }, action = "cd" },
+    --   },
+    -- },
   },
   renderer = {
     indent_markers = {
@@ -81,7 +105,7 @@ nvim_tree.setup({
     -- update_cwd = true,
     ignore_list = {},
   },
-  ignore_ft_on_setup = {},
+  -- ignore_ft_on_setup = {},
   system_open = {
     cmd = "",
     args = {},
