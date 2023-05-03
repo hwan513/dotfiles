@@ -59,6 +59,7 @@ gitsigns.setup({
 
     -- Actions
     map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
+    map({ "v" }, "<leader>hs", ":'<,'>Gitsigns stage_hunk<CR>")
     map({ "n", "v" }, "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
     map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
     map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>")
