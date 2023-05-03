@@ -12,8 +12,8 @@ gitsigns.setup({
     changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-  numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+  numhl = false,     -- Toggle with `:Gitsigns toggle_numhl`
+  linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
@@ -58,7 +58,7 @@ gitsigns.setup({
     map("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 
     -- Actions
-    map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
+    map({ "n" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
     map({ "v" }, "<leader>hs", ":'<,'>Gitsigns stage_hunk<CR>")
     map({ "n", "v" }, "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
     map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
