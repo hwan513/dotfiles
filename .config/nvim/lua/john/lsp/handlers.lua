@@ -81,9 +81,9 @@ end
 
 M.on_attach = function(client, bufnr)
   local no_format = {
-      ["tsserver"] = true,
-      ["jsonls"] = true,
-      ["html"] = true,
+    ["tsserver"] = true,
+    ["jsonls"] = true,
+    ["html"] = true,
     -- ["sumneko_lua"] = true,
   }
   if no_format[client.name] then
