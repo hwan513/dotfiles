@@ -4,16 +4,37 @@ if not status_ok then
 end
 
 configs.setup({
-  ensure_installed = { "lua", "python", "rust", "java", "javascript", "c_sharp", "vim", "regex", "bash", "markdown", "markdown_inline" }, -- one of "all", or a list of languages
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ensure_installed = {
+    -- main development languages
+    "lua",
+    "python",
+    "rust",
+    "java",
+    "c",
+
+    -- web tech
+    "html",
+    "css",
+    "javascript",
+
+    -- other
+    "c_sharp",
+    "vim",
+    "regex",
+    "bash",
+    "markdown",
+    "markdown_inline"
+  },                             -- one of "all", or a list of languages
+  sync_install = false,          -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
   highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
+    enable = true,               -- false will disable the whole extension
+    disable = { "" },            -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true, disable = { "python" } }, -- autoindent behaviour
-  context_commentstring = { -- commenting behaviour
+  context_commentstring = {
+    -- commenting behaviour
     enable = true,
     enable_autocmd = false,
   },
