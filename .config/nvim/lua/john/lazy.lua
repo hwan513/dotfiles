@@ -100,6 +100,8 @@ local plugins = {
   -- Markdown Editing
   { "vim-pandoc/vim-pandoc-syntax", ft = "markdown" },
   { dir = "~/projects/pandoccer",   cmd = { "PandoccerSetup", "PandoccerOpen" } },
+  { "preservim/vim-markdown",       ft = "markdown" },
+  { "lukas-reineke/headlines.nvim", ft = "markdown" },
 
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
