@@ -116,7 +116,12 @@ local plugins = {
   -- },
 
   -- telescope
-  { "ahmedkhalf/project.nvim",      event = "VeryLazy",                         config = setup("project_nvim"), }, -- project managing
+  {
+    "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
+    config = setup("project_nvim",
+      { manual_mode = true }),
+  }, -- project managing
   {
     "AckslD/nvim-neoclip.lua",
     event = "VeryLazy",
