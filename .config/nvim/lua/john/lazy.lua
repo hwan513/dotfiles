@@ -103,6 +103,10 @@ local plugins = {
   { "preservim/vim-markdown",       ft = "markdown" },
   { "lukas-reineke/headlines.nvim", ft = "markdown" },
 
+  -- Typst Editing
+  { "kaarmu/typst.vim",             ft = { "typst", "typ" },                    lazy = false, },
+
+
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
   -- { "mfussenegger/nvim-dap", lazy = true,

@@ -35,6 +35,7 @@ local servers = {
   "lua_ls",
   "tsserver",
   "vimls",
+  "typst_lsp",
 }
 
 mason_lspconfig.setup({
