@@ -55,14 +55,14 @@ for _, server in pairs(servers) do
 
   if server == "rust_analyzer" then
     require("rust-tools").setup({ server = opts, dap = require("john.lsp.settings.rust_dap") })
-    -- elseif server == "jdtls" then
-    --   opts = vim.tbl_deep_extend("force", opts, require("john.lsp.settings.nvim-jdtls"))
-    --   local group = vim.api.nvim_create_augroup("jdtls", { clear = true })
-    --   vim.api.nvim_create_augroup("FileType", {
-    --     pattern = "java",
-    --     callback = require("jdtls").start_or_attach(opts),
-    --     group = group,
-    --   })
+  elseif server == "jdtls" then
+    local config = vim.tbl_deep_extend("force", opts, require("john.lsp.settings.nvim-jdtls"))
+    local group = vim.api.nvim_create_augroup("jdtls", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "java",
+      callback = function() require("jdtls").start_or_attach(config) end,
+      group = group,
+    })
   else
     lspconfig[server].setup(opts)
   end
