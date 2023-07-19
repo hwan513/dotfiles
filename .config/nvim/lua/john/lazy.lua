@@ -172,6 +172,8 @@ local plugins = {
   },
 
 
+  { "hsanson/vim-android" },
+
   -- I have the funny
   { "alec-gibson/nvim-tetris",      cmd = "Tetris" },
   { "ryoppippi/bad-apple.vim",      cmd = "BadApple", dependencies = "vim-denops/denops.vim", },
