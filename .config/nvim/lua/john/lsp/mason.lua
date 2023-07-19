@@ -22,20 +22,20 @@ mason.setup({
 local servers = {
   "bashls",
   "clangd",
-  "omnisharp",
   "cssls",
   "emmet_ls",
   "html",
   "jdtls",
   "jsonls",
   "ltex",
+  "lua_ls",
   "marksman",
+  "omnisharp",
   "pyright",
   "rust_analyzer",
-  "lua_ls",
   "tsserver",
-  "vimls",
   "typst_lsp",
+  "vimls",
 }
 
 mason_lspconfig.setup({
