@@ -95,6 +95,22 @@ local plugins = {
       -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     }
   }, -- enable LSP
+  {
+    url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+    ft = { "python", "cpp", "java" },
+    dependencies = {
+      "mfussenegger/nvim-jdtls",
+      "williamboman/mason.nvim"
+    },
+    config = function()
+      local opts = {
+        on_attach = require("john.lsp.handlers").on_attach,
+        capabilities = require("john.lsp.handlers").capabilities,
+      }
+      local config = vim.tbl_deep_extend("force", opts, require("john.lsp.settings.sonar_lint"))
+      require("sonarlint").setup(config)
+    end
+  },
 
 
   -- Markdown Editing
