@@ -166,6 +166,7 @@ local plugins = {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
+    pin = true,
     config = setup("neogit", { integrations = { diffview = true }, disable_commit_confirmation = true }),
   },
 
