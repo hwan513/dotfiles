@@ -27,6 +27,7 @@ local servers = {
   "html",
   "jdtls",
   "jsonls",
+  "lemminx",
   "ltex",
   "lua_ls",
   "marksman",
