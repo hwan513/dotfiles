@@ -4,6 +4,7 @@
 !.gitignore
 !.gitignore_apple
 !README.md
+!.editorconfig
 
 !zprofile
 !.hammerspoon
