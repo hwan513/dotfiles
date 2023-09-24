@@ -32,7 +32,6 @@ local plugins = {
       { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") },        -- autopair brackets and quotations
       "windwp/nvim-ts-autotag",                                                             -- automatically add tags to end of documents
       "JoosepAlviste/nvim-ts-context-commentstring",
-      "p00f/nvim-ts-rainbow",                                                               -- bracket pair matching
       "nvim-treesitter/nvim-treesitter-textobjects",
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
       { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor

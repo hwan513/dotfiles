@@ -38,8 +38,6 @@ configs.setup({
     enable = true,
     enable_autocmd = false,
   },
-  -- TODO extract rainbow into separate file
-  rainbow = require("john.treesitter.rainbow"),
   autotag = {
     enable = true,
   },
