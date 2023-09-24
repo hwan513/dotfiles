@@ -33,6 +33,7 @@ local servers = {
   "marksman",
   "omnisharp",
   "pyright",
+  "quick_lint_js",
   "rust_analyzer",
   "tsserver",
   "typst_lsp",
