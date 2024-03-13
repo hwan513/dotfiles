@@ -17,6 +17,10 @@ return {
         ['en-US'] = { 'PROFANITY' },
         ['en-GB'] = { 'PROFANITY' },
       },
+      enabled =
+      { "bibtex", "context", "context.tex", "html", "latex", "markdown", "org", "restructuredtext", "rsweave", "typ",
+        "typst" },
+
       dictionary = {
         ['en-US'] = words,
         ['en-GB'] = words,
