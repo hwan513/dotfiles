@@ -6,4 +6,4 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 export ZDOTDIR=$HOME/.config/zsh
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export BROWSER=firefox
+export BROWSER=safari
