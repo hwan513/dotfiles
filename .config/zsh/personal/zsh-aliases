@@ -21,6 +21,7 @@ alias gcb='git checkout -b'
 alias gtb='git branch'
 alias gst='git stash'
 alias gsp='git stash pop'
+alias gitprune='git branch --merged main | grep -v "^\* main" | xargs -n 1 -r git branch -d'
 
 
 # alias for cargo
@@ -29,3 +30,7 @@ alias crd="cargo run"
 alias ccl="cargo clean"
 alias cbu="cargo build"
 alias cte="cargo test"
+
+# rosetta version of homebrew
+alias ibrew="arch -x86_64 /usr/local/bin/brew"
+alias idotnet="arch -x86_64 /usr/local/Cellar/dotnet/7.0.100/bin/dotnet"
