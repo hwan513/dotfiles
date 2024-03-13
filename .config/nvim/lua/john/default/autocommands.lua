@@ -39,7 +39,7 @@ autocmd({ "FocusGained", "BufEnter" }, {
 
 -- Enable spell checking for certain file types and wrapping
 autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.txt", "*.md", "*.tex" },
+  pattern = { "*.txt", "*.md", "*.tex", "*.typ" },
   callback = function()
     vim.api.nvim_exec(
       [[
