@@ -21,9 +21,11 @@ mason.setup({
 -- Include default servers to install {{{
 local servers = {
   "bashls",
+  "biome",
   "clangd",
   "cssls",
   "emmet_ls",
+  "eslint",
   "html",
   "jdtls",
   "jsonls",
@@ -35,6 +37,7 @@ local servers = {
   "pyright",
   "quick_lint_js",
   "rust_analyzer",
+  "ruff_lsp",
   "tsserver",
   "typst_lsp",
   "vimls",

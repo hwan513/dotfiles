@@ -1,17 +1,12 @@
 local formatters = {
   -- "stylua",
   "black",
-  -- "prettier",
   "shfmt",
   "shellharden",
-  "prettierd",
+  -- "prettierd",
 }
 
 local linters = {
-  "flake8",
-  "eslint_d",
-  -- "vale",
-  "shellcheck",
 }
 
 local null_ls = require("null-ls")
