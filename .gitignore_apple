@@ -27,5 +27,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Ignore pdf in general
+# General file ignores
 *.pdf
