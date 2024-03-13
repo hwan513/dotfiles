@@ -16,6 +16,8 @@ configs.setup({
     "html",
     "css",
     "javascript",
+    "typescript",
+    "tsx",
 
     -- other
     "c_sharp",
@@ -33,9 +35,6 @@ configs.setup({
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true, disable = { "python" } }, -- autoindent behaviour
-  autotag = {
-    enable = true,
-  },
   textobjects = require("john.treesitter.textobjects"),
 })
 
