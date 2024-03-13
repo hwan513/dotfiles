@@ -31,8 +31,16 @@ local plugins = {
       { "lukas-reineke/indent-blankline.nvim", main = "ibl",                      opts = {} },
       -- { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
       { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") }, -- autopair brackets and quotations
-      "windwp/nvim-ts-autotag",                                                      -- automatically add tags to end of documents
-      "JoosepAlviste/nvim-ts-context-commentstring",
+      { "windwp/nvim-ts-autotag",              config = setup("nvim-ts-autotag") },  -- automatically add tags to end of documents
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        config = function()
+          require('ts_context_commentstring').setup {
+            enable_autocmd = false,
+          }
+          vim.g.skip_ts_context_commentstring_module = true
+        end
+      },
       "nvim-treesitter/nvim-treesitter-textobjects",
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
       { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor
