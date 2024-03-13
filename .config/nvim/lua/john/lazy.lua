@@ -28,9 +28,10 @@ local plugins = {
     build = ":TSUpdate",
     event = { "VeryLazy" },
     dependencies = {
-      { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
-      { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") },        -- autopair brackets and quotations
-      "windwp/nvim-ts-autotag",                                                             -- automatically add tags to end of documents
+      { "lukas-reineke/indent-blankline.nvim", main = "ibl",                      opts = {} },
+      -- { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
+      { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") }, -- autopair brackets and quotations
+      "windwp/nvim-ts-autotag",                                                      -- automatically add tags to end of documents
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter-textobjects",
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
