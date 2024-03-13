@@ -16,7 +16,8 @@ return {
         enabled = true,
         settings = {
           -- url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
-          url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+          -- url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+          url = "/Users/henrywang/.config/nvim/lua/john/lsp/settings/jdtls.xml"
         },
       },
       maven = { downloadSources = true },
