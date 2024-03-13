@@ -1,15 +1,8 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return
-end
-
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-  return
-end
+local prequire = require("john.utils").prequire
+local cmp = prequire("cmp")
+local luasnip = prequire("luasnip")
 
 luasnip.filetype_extend("markdown", { "tex" })
-
 require("luasnip/loaders/from_vscode").lazy_load()
 -- require("luasnip/loaders/from_snipmate").lazy_load()
 

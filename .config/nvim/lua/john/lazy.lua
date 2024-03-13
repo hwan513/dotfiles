@@ -63,7 +63,6 @@ local plugins = {
       require("john.qol.cmp")
       require("john.lsp.handlers").setup()
     end,
-    -- config = req("john.qol.cmp"),
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",           -- buffer completions
