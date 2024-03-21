@@ -179,7 +179,6 @@ local plugins = {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
-    commit = "09e6ec985aae1f6d4b6ae27d827b29ae5b411f90",
     config = setup("neogit", { integrations = { diffview = true, telescope = true } }),
   },
 
