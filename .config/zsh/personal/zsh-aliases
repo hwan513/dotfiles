@@ -33,4 +33,4 @@ alias cte="cargo test"
 
 # rosetta version of homebrew
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
-alias idotnet="arch -x86_64 /usr/local/Cellar/dotnet/7.0.100/bin/dotnet"
+alias idotnet="arch -x86_64 /usr/local/bin/dotnet"
