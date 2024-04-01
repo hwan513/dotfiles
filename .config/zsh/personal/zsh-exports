@@ -1,8 +1,9 @@
-# manually installed GStreamer binaries
 export PATH="/opt/homebrew/bin:${PATH}"
 
+# export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$JAVA_HOME/bin:$PATH
-export JAVA_HOME=$(/usr/libexec/java_home)
 
 export CARGO_HOME=$HOME/.config/cargo
 export RUSTUP_HOME=$HOME/.config/rustup
@@ -20,13 +21,21 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # nvm stuff
 # export NVM_DIR="$HOME/.config/nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" # This loads nvm
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PATH="$ZDOTDIR/scripts:${PATH}"
 
+# manually installed GStreamer binaries
 # Tell pkg-config where to find the .pc files
-export PKG_CONFIG_PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/lib/pkgconfig
+# export PKG_CONFIG_PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/lib/pkgconfig
 # We will use the pkg-config provided by the GStreamer.framework
-export PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/bin:$PATH
-export RUSTFLAGS="-C link-args=-Wl,-rpath,/Library/Frameworks/GStreamer.framework/Versions/1.0/lib"
+# export PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/bin:$PATH
+# export RUSTFLAGS="-C link-args=-Wl,-rpath,/Library/Frameworks/GStreamer.framework/Versions/1.0/lib"
+
+# export ANDROID_HOME="/Users/henrywang/Library/Android/sdk"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools/:$PATH
+export NDK_HOME="$ANDROID_HOME/ndk/25.2.9519653"

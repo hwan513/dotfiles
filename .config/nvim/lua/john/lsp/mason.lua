@@ -28,7 +28,7 @@ local servers = {
   "eslint",
   "html",
   "jdtls",
-  "jsonls",
+  -- "jsonls",
   "lemminx",
   "ltex",
   "lua_ls",

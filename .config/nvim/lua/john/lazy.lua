@@ -104,7 +104,7 @@ local plugins = {
           "nvimtools/none-ls-extras.nvim",
         },
       },
-      { "folke/trouble.nvim", config = req("john.interface.trouble") },     -- display the qf window for stuff
+      { "folke/trouble.nvim", config = req("john.interface.trouble") }, -- display the qf window for stuff
       -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     }
   }, -- enable LSP

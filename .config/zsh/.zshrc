@@ -66,3 +66,11 @@ zmodload zsh/complist
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
 #} vim:foldmethod=marker:foldlevel=1
+
+# pnpm
+export PNPM_HOME="/Users/henrywang/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
