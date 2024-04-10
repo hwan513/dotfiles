@@ -85,7 +85,7 @@ local plugins = {
     event = "VeryLazy"
   },
   { "folke/neodev.nvim" },
-  { "folke/neoconf.nvim" },
+  { "folke/neoconf.nvim", config = setup("neoconf") },
   {
     "neovim/nvim-lspconfig",
     config = req("lspconfig"),
