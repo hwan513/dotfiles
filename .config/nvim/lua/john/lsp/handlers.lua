@@ -34,6 +34,10 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
+  vim.lsp.inlay_hints = {
+    enabled = true,
+  }
+
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
   })
@@ -88,6 +92,10 @@ M.on_attach = function(client, bufnr)
   }
   if no_format[client.name] then
     client.server_capabilities.documentFormattingProvider = false
+  end
+  if client.server_capabilities.inlayHintProvider then
+    vim.g.inlay_hints_visible = true
+    vim.lsp.inlay_hint.enable(bufnr, true)
   end
   lsp_keymaps(bufnr)
 end

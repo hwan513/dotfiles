@@ -60,7 +60,8 @@ for _, server in pairs(servers) do
   end
 
   if server == "rust_analyzer" then
-    require("rust-tools").setup({ server = opts, dap = require("john.lsp.settings.rust_dap") })
+    -- require("rust-tools").setup({ server = opts, dap = require("john.lsp.settings.rust_dap") })
+    require("john.lsp.settings.rustaceanvim").setup({ server = opts })
   elseif server == "jdtls" then
     local config = vim.tbl_deep_extend("force", opts, require("john.lsp.settings.nvim-jdtls"))
     local group = vim.api.nvim_create_augroup("jdtls", { clear = true })
