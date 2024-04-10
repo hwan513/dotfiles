@@ -31,7 +31,7 @@ local plugins = {
       { "lukas-reineke/indent-blankline.nvim", main = "ibl",                      opts = {} },
       -- { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
       { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") }, -- autopair brackets and quotations
-      { "windwp/nvim-ts-autotag",              config = setup("nvim-ts-autotag") },  -- automatically add tags to end of documents
+      -- { "windwp/nvim-ts-autotag",              config = setup("nvim-ts-autotag") },  -- automatically add tags to end of documents
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
         config = function()
@@ -46,6 +46,17 @@ local plugins = {
       { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor
     }
   },                                                                                  -- better syntax highlighting and other stuff
+  {
+    "rayliwell/tree-sitter-rstml",
+    dependencies = { "nvim-treesitter" },
+    build = ":TSUpdate",
+    config = setup("tree-sitter-rstml"),
+  },
+  -- Experimental automatic tag closing and renaming (optional)
+  {
+    "rayliwell/nvim-ts-autotag",
+    config = setup("nvim-ts-autotag"),
+  },
 
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
