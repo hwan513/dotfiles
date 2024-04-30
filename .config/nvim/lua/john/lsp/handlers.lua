@@ -47,7 +47,7 @@ M.setup = function()
   })
 end
 
-local function lsp_keymaps(bufnr)
+local function lsp_keymaps(bufnr, client)
   local keymap = vim.api.nvim_buf_set_keymap -- keymaps function shortened
   local opts = { noremap = true, silent = true }
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -74,6 +74,11 @@ local function lsp_keymaps(bufnr)
     vim.lsp.buf.format({ async = true })
   end, { nargs = 0 })
 
+  vim.api.nvim_create_user_command("ToggleInlay", function()
+    local inlay_hint = vim.lsp.inlay_hint
+    inlay_hint.enable(bufnr, not inlay_hint.is_enabled())
+  end, { nargs = 0 })
+
   local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
   vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
@@ -93,10 +98,10 @@ M.on_attach = function(client, bufnr)
   if no_format[client.name] then
     client.server_capabilities.documentFormattingProvider = false
   end
-  if client.server_capabilities.inlayHintProvider then
-    vim.g.inlay_hints_visible = true
-    vim.lsp.inlay_hint.enable(bufnr, true)
-  end
+  -- if client.server_capabilities.inlayHintProvider then
+  --   vim.g.inlay_hints_visible = true
+  --   vim.lsp.inlay_hint.enable(bufnr, true)
+  -- end
   lsp_keymaps(bufnr)
 end
 
