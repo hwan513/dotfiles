@@ -123,7 +123,6 @@ local plugins = {
       { "williamboman/mason-lspconfig.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       { "jayp0521/mason-null-ls.nvim", },
-      { "simrat39/rust-tools.nvim", },
       { "mfussenegger/nvim-jdtls", },
       {
         "nvimtools/none-ls.nvim",
@@ -136,6 +135,9 @@ local plugins = {
       -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     }
   }, -- enable LSP
+  {
+    'mrcjkb/rustaceanvim', version = '^4', ft = { 'rust' },
+  },
   -- {
   --   url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
   --   ft = { "python", "cpp", "java" },
@@ -163,6 +165,13 @@ local plugins = {
   -- Typst Editing
   { "kaarmu/typst.vim",             ft = { "typst", "typ" },                    lazy = false, },
 
+  {
+    "lervag/vimtex",
+    init = function()
+      vim.g.vimtex_view_method = "sioyek"
+      vim.g.vimtex_compiler_method = "tectonic"
+    end
+  },
 
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
@@ -207,6 +216,7 @@ local plugins = {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
+    branch = "nightly",
     config = setup("neogit", { integrations = { diffview = true, telescope = true } }),
   },
 
@@ -220,9 +230,10 @@ local plugins = {
     version = "*",
     keys = "<C-\\>",
     config = req("john.interface.terminal")
-  },                                            -- toggle nvim terminal
-  { "tpope/vim-abolish",  event = "VeryLazy" }, -- case coersion, substition, abbreviation
-  { "github/copilot.vim", cmd = "Copilot",   config = req("john.qol.copilot") },
+  },                                                -- toggle nvim terminal
+  { "tpope/vim-abolish",      event = "VeryLazy" }, -- case coersion, substition, abbreviation
+  -- { "github/copilot.vim",     cmd = "Copilot",   config = req("john.qol.copilot") },
+  { "Exafunction/codeium.vim" },
   {
     "ggandor/leap.nvim",
     dependencies = { { "ggandor/flit.nvim", config = setup("flit") }, }
