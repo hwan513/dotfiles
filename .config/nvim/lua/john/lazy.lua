@@ -11,15 +11,32 @@ local plugins = {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
+    -- config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
   }, -- colourscheme
   { "catppuccin/nvim",            name = "catppuccin", event = "VeryLazy" },
   { "rose-pine/neovim",           name = "rose-pine",  event = "VeryLazy" },
   { 'maxmx03/fluoromachine.nvim', event = "VeryLazy" },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("cyberdream").setup({
+        -- Recommended - see "Configuring" below for more config options
+        transparent = true,
+        italic_comments = true,
+        hide_fillchars = true,
+        borderless_telescope = true,
+        terminal_colors = true,
+      })
+      vim.cmd("colorscheme cyberdream") -- set the colorscheme
+    end,
+  },
+
 
 
   -- pairing plugins
-  { "machakann/vim-sandwich",     event = "VeryLazy" }, -- surrounding stuff with stuff
+  { "machakann/vim-sandwich",      event = "VeryLazy" }, -- surrounding stuff with stuff
 
   -- treesitter
   {
