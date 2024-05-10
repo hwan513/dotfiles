@@ -78,7 +78,7 @@ local plugins = {
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "nvim-tree/nvim-tree.lua",     keys = "<C-e>",                         config = req("john.interface.nvim-tree") },
-  { "akinsho/bufferline.nvim",     event = "VeryLazy",                     config = req("john.interface.bufferline") },
+  { "akinsho/bufferline.nvim",     event = "VeryLazy",                     commit = "f6f00d9ac1a51483ac78418f9e63126119a70709", config = req("john.interface.bufferline") },
   { "famiu/bufdelete.nvim",        cmd = "Bdelete" },                                                                -- delete buffers nicely
   { "nvim-lualine/lualine.nvim",   event = "VeryLazy",                     config = req("john.interface.lualine") }, -- status line plugin
   { "norcalli/nvim-colorizer.lua", event = { "BufNewFile", "BufReadPre" }, config = setup("colorizer") },            -- coloring viewer for html css stuff
