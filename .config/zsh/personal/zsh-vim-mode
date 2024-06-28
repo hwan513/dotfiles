@@ -39,9 +39,6 @@ bindkey -M menuselect '^[[Z' vi-up-line-or-history
 bindkey -M menuselect '^e' send-break
 bindkey -v '^?' backward-delete-char
 
-# Let autopairs work
-[[ -n $AUTOPAIR_INHIBIT_INIT ]] || autopair-init
-
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
 if [[ $ZLE_STATE == *overwrite* ]] && [[ $KEYMAP == (viins|main) ]]; then
@@ -70,3 +67,9 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
+
+## scrolling keybinds
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search

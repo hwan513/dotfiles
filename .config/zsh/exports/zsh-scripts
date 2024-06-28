@@ -1,0 +1,2 @@
+# Custom bash scripts to add to path
+export PATH="$ZDOTDIR/scripts:${PATH}"

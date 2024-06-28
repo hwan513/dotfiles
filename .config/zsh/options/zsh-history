@@ -1,0 +1,7 @@
+# zsh history storing
+export HISTFILE="$ZDOTDIR/.zsh_history"
+export HISTSIZE=10000000 # size of cached shell history
+export SAVEHIST=10000000 # size of shell history file
+setopt APPEND_HISTORY # zsh history is appended to instead of being rewritten
+setopt SHARE_HISTORY # zsh history is written immediately to histfile
+setopt EXTENDED_HISTORY # zsh history timestamp is also written to histfile

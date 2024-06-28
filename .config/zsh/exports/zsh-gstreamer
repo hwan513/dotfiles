@@ -1,0 +1,6 @@
+# Work around to get gstreamer working on macOS with manually installed GStreamer binaries
+# Tell pkg-config where to find the .pc files
+export PKG_CONFIG_PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/lib/pkgconfig
+# We will use the pkg-config provided by the GStreamer.framework
+export PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/bin:$PATH
+export RUSTFLAGS="-C link-args=-Wl,-rpath,/Library/Frameworks/GStreamer.framework/Versions/2.0/lib"

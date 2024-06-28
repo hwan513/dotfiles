@@ -1,0 +1,7 @@
+# Android ENV variables
+export ANDROID_HOME="$HOME/Library/Android/sdk" # if have android studio
+export ANDROID_HOME="$HOMEBREW_PREFIX/share/android-commandlinetools" # if installing via brew
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools/:$PATH
+export NDK_HOME="$ANDROID_HOME/ndk/25.2.9519653"

@@ -1,4 +1,7 @@
-# alias lvim=/Users/henrywang/.local/bin/lvim
+# aliases for better commands in general
+alias z='nocorrect z'
+alias cd='z'
+alias ls='lsd'
 
 # alias for the maven compiler
 alias mco='mvn compile'
@@ -23,7 +26,6 @@ alias gst='git stash'
 alias gsp='git stash pop'
 alias gitprune='git branch --merged main | grep -v "^\* main" | xargs -n 1 -r git branch -d'
 
-
 # alias for cargo
 alias crr="cargo run --release"
 alias crd="cargo run"
@@ -34,3 +36,4 @@ alias cte="cargo test"
 # rosetta version of homebrew
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 alias idotnet="arch -x86_64 /usr/local/bin/dotnet"
+alias ipipx="arch -x86_64 /usr/local/bin/pipx"
