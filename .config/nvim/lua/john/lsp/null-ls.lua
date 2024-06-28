@@ -1,9 +1,9 @@
 local formatters = {
   -- "stylua",
-  "black",
+  -- "black",
   "shfmt",
   "shellharden",
-  -- "prettierd",
+  "prettierd",
 }
 
 local linters = {

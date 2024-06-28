@@ -4,6 +4,9 @@ return {
       checkOnSave = {
         command = "clippy",
       },
+      rustfmt = {
+        overrideCommand = { "leptosfmt", "--stdin", "--rustfmt" },
+      },
     },
   },
 }

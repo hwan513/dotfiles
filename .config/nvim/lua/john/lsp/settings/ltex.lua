@@ -6,6 +6,7 @@ for word in io.open(path, 'r'):lines() do
 end
 
 return {
+  -- filetypes = { "typst", "typ" }, --  <-- add this
   settings = {
     ltex = {
       -- install ngrams from https://dev.languagetool.org/finding-errors-using-n-gram-data.html
@@ -13,6 +14,7 @@ return {
       --   additionalRules = {
       --     languageModel = "~/ngrams/",
       --   },
+      language = "en-NZ",
       disabledRules = {
         ['en-US'] = { 'PROFANITY' },
         ['en-GB'] = { 'PROFANITY' },

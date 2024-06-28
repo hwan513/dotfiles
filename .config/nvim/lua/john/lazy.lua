@@ -15,7 +15,8 @@ local plugins = {
   }, -- colourscheme
   { "catppuccin/nvim",            name = "catppuccin", event = "VeryLazy" },
   { "rose-pine/neovim",           name = "rose-pine",  event = "VeryLazy" },
-  { 'maxmx03/fluoromachine.nvim', event = "VeryLazy" },
+  { 'maxmx03/fluoromachine.nvim', },
+  { "dundargoc/fakedonalds.nvim", },
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
@@ -58,7 +59,7 @@ local plugins = {
           vim.g.skip_ts_context_commentstring_module = true
         end
       },
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      -- { "nvim-treesitter/nvim-treesitter-textobjects", config = setup("john.treesitter.textobjects") },
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
       { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor
     }
@@ -232,9 +233,9 @@ local plugins = {
     keys = "<C-\\>",
     config = req("john.interface.terminal")
   },                                                -- toggle nvim terminal
-  { "tpope/vim-abolish",      event = "VeryLazy" }, -- case coersion, substition, abbreviation
+  { "tpope/vim-abolish",       event = "VeryLazy" }, -- case coersion, substition, abbreviation
   -- { "github/copilot.vim",     cmd = "Copilot",   config = req("john.qol.copilot") },
-  { "Exafunction/codeium.vim" },
+  { "Exafunction/codeium.vim", commit = "289eb72" },
   {
     "ggandor/leap.nvim",
     dependencies = { { "ggandor/flit.nvim", config = setup("flit") }, }

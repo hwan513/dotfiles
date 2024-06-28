@@ -18,12 +18,13 @@ mason.setup({
 })
 
 -- }}}
--- Include default servers to install {{{
+-- Include servers to run {{{
 local servers = {
   "bashls",
   "biome",
   "clangd",
   "cssls",
+  -- "css_variables",
   "emmet_ls",
   "eslint",
   "html",
@@ -35,9 +36,11 @@ local servers = {
   "marksman",
   "omnisharp",
   "pyright",
-  "quick_lint_js",
+  -- "quick_lint_js",
   "rust_analyzer",
   "ruff_lsp",
+  "taplo",
+  "texlab",
   "tsserver",
   "typst_lsp",
   "vimls",
@@ -60,7 +63,6 @@ for _, server in pairs(servers) do
   end
 
   if server == "rust_analyzer" then
-    -- require("rust-tools").setup({ server = opts, dap = require("john.lsp.settings.rust_dap") })
     require("john.lsp.settings.rustaceanvim").setup({ server = opts })
   elseif server == "jdtls" then
     local config = vim.tbl_deep_extend("force", opts, require("john.lsp.settings.nvim-jdtls"))

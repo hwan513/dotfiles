@@ -20,6 +20,7 @@ configs.setup({
     "tsx",
 
     -- other
+    "typst",
     "c_sharp",
     "vim",
     "regex",
@@ -35,7 +36,6 @@ configs.setup({
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true, disable = { "python" } }, -- autoindent behaviour
-  textobjects = require("john.treesitter.textobjects"),
 })
 
 -- enable folding determined by treesitter

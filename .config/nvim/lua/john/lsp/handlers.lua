@@ -3,22 +3,16 @@ local M = {}
 local icons = require("john.misc.icons")
 
 M.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warn },
-    { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
-    { name = "DiagnosticSignInfo",  text = icons.diagnostics.Info },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
-
   local config = {
-    virtual_text = false, -- virtual text
     signs = {
-      active = signs,     -- show signs
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+        [vim.diagnostic.severity.INFO] = icons.diagnostics.Hint,
+        [vim.diagnostic.severity.HINT] = icons.diagnostics.Info,
+      }
     },
+    virtual_text = false, -- virtual text
     update_in_insert = false,
     underline = true,
     severity_sort = true,
