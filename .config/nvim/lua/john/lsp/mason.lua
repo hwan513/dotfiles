@@ -69,7 +69,9 @@ for _, server in pairs(servers) do
     local group = vim.api.nvim_create_augroup("jdtls", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "java",
-      callback = function() require("jdtls").start_or_attach(config) end,
+      callback = function()
+        require("jdtls").start_or_attach(config)
+      end,
       group = group,
     })
   else

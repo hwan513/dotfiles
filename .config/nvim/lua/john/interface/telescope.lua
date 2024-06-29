@@ -27,8 +27,9 @@ local setup = function()
         "--line-number",
         "--column",
         "--smart-case", -- optional
-        "--hidden",     -- searh hidden files
-        "-g", "!.git/", -- don't search git folders
+        "--hidden", -- searh hidden files
+        "-g",
+        "!.git/", -- don't search git folders
       },
       mappings = {
         i = {
@@ -60,7 +61,7 @@ local setup = function()
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           ["<C-l>"] = actions.complete_tag,
           ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
-          ["<c-t>"] = trouble.open,      -- trouble integration
+          ["<c-t>"] = trouble.open, -- trouble integration
         },
 
         n = {
@@ -125,18 +126,18 @@ end
 
 return {
   keys = {
-    { "<Leader>ft",      "<cmd>Telescope builtin<cr>",                            desc = "Open Telescope" },
-    { "<Leader>ff",      "<cmd>Telescope fd find_command=fd,-H<cr>",              desc = "Find Files" },
-    { "<Leader>fg",      "<cmd>Telescope live_grep find_command=rg,--hidden<cr>", desc = "Grep Repo" },
-    { "<Leader>fb",      "<cmd>Telescope buffers<cr>",                            desc = "Buffers" },
-    { "<Leader>fh",      "<cmd>Telescope command_history<cr>",                    desc = "Command History" },
-    { "<Leader>fr",      "<cmd>Telescope lsp_references<cr>",                     desc = "Lsp Reference" },
-    { "<Leader>fs",      "<cmd>Telescope search_history<cr>",                     desc = "Search History" },
-    { "<Leader>fc",      "<cmd>Telescope commands<cr>",                           desc = "Commands" },
-    { "<Leader>fp",      "<cmd>Telescope projects<cr>",                           desc = "Projects" },
-    { "<Leader>fu",      "<cmd>Telescope undo<cr>",                               desc = "Undo" },
-    { "<Leader><Space>", "<cmd>Telescope current_buffer_fuzzy_find<cr>",          desc = "Fuzzy Search Buffer" },
-    { "<Leader>'",       "<cmd>Telescope neoclip<cr>",                            desc = "Clipboard" },
+    { "<Leader>ft", "<cmd>Telescope builtin<cr>", desc = "Open Telescope" },
+    { "<Leader>ff", "<cmd>Telescope fd find_command=fd,-H<cr>", desc = "Find Files" },
+    { "<Leader>fg", "<cmd>Telescope live_grep find_command=rg,--hidden<cr>", desc = "Grep Repo" },
+    { "<Leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<Leader>fh", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+    { "<Leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Lsp Reference" },
+    { "<Leader>fs", "<cmd>Telescope search_history<cr>", desc = "Search History" },
+    { "<Leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+    { "<Leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
+    { "<Leader>fu", "<cmd>Telescope undo<cr>", desc = "Undo" },
+    { "<Leader><Space>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Search Buffer" },
+    { "<Leader>'", "<cmd>Telescope neoclip<cr>", desc = "Clipboard" },
   },
   setup = setup,
 }

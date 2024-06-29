@@ -125,9 +125,7 @@ local mappings = {
   --     q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
   --   }
 
-  f = {
-
-  },
+  f = {},
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -213,7 +211,7 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-  ["/"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
 }
 
 -- which_key.setup(setup)

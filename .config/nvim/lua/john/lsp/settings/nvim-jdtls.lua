@@ -7,7 +7,7 @@ return {
     jdtls_path,
     "--jvm-arg=-javaagent:" .. lombok_path,
   },
-  root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+  root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
   settings = {
     java = {
       eclipse = { downloadSources = true },
@@ -17,7 +17,7 @@ return {
         settings = {
           -- url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
           -- url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
-          url = "/Users/henrywang/.config/nvim/lua/john/lsp/settings/jdtls.xml"
+          url = "/Users/henrywang/.config/nvim/lua/john/lsp/settings/jdtls.xml",
         },
       },
       maven = { downloadSources = true },
@@ -41,7 +41,7 @@ return {
         "java",
         "javax",
         "com",
-        "org"
+        "org",
       },
     },
     sources = {
@@ -73,5 +73,4 @@ return {
   --     },
   --
   --   },
-
 }

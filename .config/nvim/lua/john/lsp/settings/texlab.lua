@@ -8,7 +8,7 @@ return {
           "%f",
           "--synctex",
           "--keep-logs",
-          "--keep-intermediates"
+          "--keep-intermediates",
         },
       },
     },

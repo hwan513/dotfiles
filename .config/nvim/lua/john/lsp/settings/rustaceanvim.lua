@@ -3,8 +3,7 @@ local M = {}
 M.setup = function(input)
   vim.g.rustaceanvim = {
     -- Plugin configuration
-    tools = {
-    },
+    tools = {},
     -- LSP configuration
     server = input.server,
     -- DAP configuration

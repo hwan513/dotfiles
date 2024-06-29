@@ -7,7 +7,7 @@ M = {
       return
     end
     return result
-  end
+  end,
 }
 
 return M

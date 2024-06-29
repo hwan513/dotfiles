@@ -1,7 +1,7 @@
-local path = vim.fn.stdpath 'config' .. '/spell/en.utf-8.add'
+local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 local words = {}
 
-for word in io.open(path, 'r'):lines() do
+for word in io.open(path, "r"):lines() do
   table.insert(words, word)
 end
 
@@ -16,16 +16,26 @@ return {
       --   },
       language = "en-NZ",
       disabledRules = {
-        ['en-US'] = { 'PROFANITY' },
-        ['en-GB'] = { 'PROFANITY' },
+        ["en-US"] = { "PROFANITY" },
+        ["en-GB"] = { "PROFANITY" },
       },
-      enabled =
-      { "bibtex", "context", "context.tex", "html", "latex", "markdown", "org", "restructuredtext", "rsweave", "typ",
-        "typst" },
+      enabled = {
+        "bibtex",
+        "context",
+        "context.tex",
+        "html",
+        "latex",
+        "markdown",
+        "org",
+        "restructuredtext",
+        "rsweave",
+        "typ",
+        "typst",
+      },
 
       dictionary = {
-        ['en-US'] = words,
-        ['en-GB'] = words,
+        ["en-US"] = words,
+        ["en-GB"] = words,
       },
     },
   },

@@ -1,20 +1,28 @@
 local M = {}
 
-local req = function(modname) return function() require(modname) end end
-local setup = function(modname, args) return function() require(modname).setup(args) end end
+local req = function(modname)
+  return function()
+    require(modname)
+  end
+end
+local setup = function(modname, args)
+  return function()
+    require(modname).setup(args)
+  end
+end
 
 local plugins = {
-  { "nvim-lua/plenary.nvim",    lazy = true },                                           -- Useful lua functions used ny lots of plugins
-  { "dstein64/vim-startuptime", cmd = { "StartupTime" } },                               -- startup timer,
-  { "folke/which-key.nvim",     event = "VeryLazy",      config = setup("which-key") },  -- need to finish which-key config
+  { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used ny lots of plugins
+  { "dstein64/vim-startuptime", cmd = { "StartupTime" } }, -- startup timer,
+  { "folke/which-key.nvim", event = "VeryLazy", config = setup("which-key") }, -- need to finish which-key config
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     -- config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
   }, -- colourscheme
-  { "catppuccin/nvim",            name = "catppuccin", event = "VeryLazy" },
-  { "rose-pine/neovim",           name = "rose-pine",  event = "VeryLazy" },
+  { "catppuccin/nvim", name = "catppuccin", event = "VeryLazy" },
+  { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy" },
   { "maxmx03/fluoromachine.nvim" },
   { "dundargoc/fakedonalds.nvim" },
   {
@@ -34,10 +42,8 @@ local plugins = {
     end,
   },
 
-
-
   -- pairing plugins
-  { "machakann/vim-sandwich",      event = "VeryLazy" }, -- surrounding stuff with stuff
+  { "machakann/vim-sandwich", event = "VeryLazy" }, -- surrounding stuff with stuff
 
   -- treesitter
   {
@@ -46,24 +52,24 @@ local plugins = {
     build = ":TSUpdate",
     event = { "VeryLazy" },
     dependencies = {
-      { "lukas-reineke/indent-blankline.nvim", main = "ibl",                      opts = {} },
+      { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
       -- { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
-      { "windwp/nvim-autopairs",               config = req("john.qol.autopairs") }, -- autopair brackets and quotations
+      { "windwp/nvim-autopairs", config = req("john.qol.autopairs") }, -- autopair brackets and quotations
       -- { "windwp/nvim-ts-autotag",              config = setup("nvim-ts-autotag") },  -- automatically add tags to end of documents
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
         config = function()
-          require("ts_context_commentstring").setup {
+          require("ts_context_commentstring").setup({
             enable_autocmd = false,
-          }
+          })
           vim.g.skip_ts_context_commentstring_module = true
         end,
       },
       -- { "nvim-treesitter/nvim-treesitter-textobjects", config = setup("john.treesitter.textobjects") },
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
-      { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor
+      { "RRethy/vim-illuminate", config = req("john.qol.illuminate") }, -- highlights current thing under cursor
     },
-  },                                                                                  -- better syntax highlighting and other stuff
+  }, -- better syntax highlighting and other stuff
   {
     "rayliwell/tree-sitter-rstml",
     dependencies = { "nvim-treesitter" },
@@ -78,12 +84,12 @@ local plugins = {
 
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  { "nvim-tree/nvim-tree.lua",     keys = "<C-e>",                         config = req("john.interface.nvim-tree") },
-  { "stevearc/oil.nvim",           config = setup("oil") },
-  { "akinsho/bufferline.nvim",     event = "VeryLazy",                     config = req("john.interface.bufferline") },
-  { "famiu/bufdelete.nvim",        cmd = "Bdelete" },                                                                -- delete buffers nicely
-  { "nvim-lualine/lualine.nvim",   event = "VeryLazy",                     config = req("john.interface.lualine") }, -- status line plugin
-  { "norcalli/nvim-colorizer.lua", event = { "BufNewFile", "BufReadPre" }, config = setup("colorizer") },            -- coloring viewer for html css stuff
+  { "nvim-tree/nvim-tree.lua", keys = "<C-e>", config = req("john.interface.nvim-tree") },
+  { "stevearc/oil.nvim", config = setup("oil") },
+  { "akinsho/bufferline.nvim", event = "VeryLazy", config = req("john.interface.bufferline") },
+  { "famiu/bufdelete.nvim", cmd = "Bdelete" }, -- delete buffers nicely
+  { "nvim-lualine/lualine.nvim", event = "VeryLazy", config = req("john.interface.lualine") }, -- status line plugin
+  { "norcalli/nvim-colorizer.lua", event = { "BufNewFile", "BufReadPre" }, config = setup("colorizer") }, -- coloring viewer for html css stuff
 
   -- }}}
   -- completion and snippets
@@ -95,17 +101,17 @@ local plugins = {
     end,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-      "hrsh7th/cmp-buffer",           -- buffer completions
-      "hrsh7th/cmp-path",             -- path completions
-      "hrsh7th/cmp-cmdline",          -- cmdline completions
-      "saadparwaiz1/cmp_luasnip",     -- snippet completions
-      "hrsh7th/cmp-nvim-lsp",         -- lsp completions
-      "hrsh7th/cmp-nvim-lua",         -- lua completions for nvim config
-      "andersevenrud/cmp-tmux",       -- tmux completions
-      "L3MON4D3/LuaSnip",             --snippet engine
+      "hrsh7th/cmp-buffer", -- buffer completions
+      "hrsh7th/cmp-path", -- path completions
+      "hrsh7th/cmp-cmdline", -- cmdline completions
+      "saadparwaiz1/cmp_luasnip", -- snippet completions
+      "hrsh7th/cmp-nvim-lsp", -- lsp completions
+      "hrsh7th/cmp-nvim-lua", -- lua completions for nvim config
+      "andersevenrud/cmp-tmux", -- tmux completions
+      "L3MON4D3/LuaSnip", --snippet engine
       "rafamadriz/friendly-snippets", -- a bunch of snippets to use
     },
-  },                                  -- The completion plugin
+  }, -- The completion plugin
 
   -- language server protocol {{{
   {
@@ -121,7 +127,7 @@ local plugins = {
     config = req("lspconfig"),
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "williamboman/mason.nvim",                  config = req("john.lsp.mason") },
+      { "williamboman/mason.nvim", config = req("john.lsp.mason") },
       { "williamboman/mason-lspconfig.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       { "jayp0521/mason-null-ls.nvim" },
@@ -138,7 +144,9 @@ local plugins = {
     },
   }, -- enable LSP
   {
-    "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" },
+    "mrcjkb/rustaceanvim",
+    version = "^4",
+    ft = { "rust" },
   },
   -- {
   --   url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
@@ -157,15 +165,14 @@ local plugins = {
   --   end
   -- },
 
-
   -- Markdown Editing
   { "vim-pandoc/vim-pandoc-syntax", ft = "markdown" },
-  { dir = "~/projects/pandoccer",   cmd = { "PandoccerSetup", "PandoccerOpen" } },
-  { "preservim/vim-markdown",       ft = "markdown" },
+  { dir = "~/projects/pandoccer", cmd = { "PandoccerSetup", "PandoccerOpen" } },
+  { "preservim/vim-markdown", ft = "markdown" },
   { "lukas-reineke/headlines.nvim", ft = "markdown" },
 
   -- Typst Editing
-  { "kaarmu/typst.vim",             ft = { "typst", "typ" },                    lazy = false },
+  { "kaarmu/typst.vim", ft = { "typst", "typ" }, lazy = false },
 
   {
     "lervag/vimtex",
@@ -191,8 +198,7 @@ local plugins = {
   {
     "ahmedkhalf/project.nvim",
     event = "VeryLazy",
-    config = setup("project_nvim",
-      { manual_mode = true }),
+    config = setup("project_nvim", { manual_mode = true }),
   }, -- project managing
   {
     "AckslD/nvim-neoclip.lua",
@@ -214,7 +220,7 @@ local plugins = {
 
   -- git stuff
   { "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, config = req("john.interface.gitsigns") },
-  { "sindrets/diffview.nvim",  cmd = "DiffviewOpen" },
+  { "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
@@ -224,17 +230,17 @@ local plugins = {
   },
 
   -- utility
-  { "numToStr/Navigator.nvim", event = "VeryLazy",                      config = req("john.qol.navigator") },
-  { "numToStr/Comment.nvim",   keys = { "gcc", { "gc", mode = "v" } },  config = req("john.qol.comment") },
-  { "gbprod/cutlass.nvim",     keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m" }) },
-  { "folke/persistence.nvim",  event = "BufReadPre",                    config = setup("persistence") },  -- session manager
+  { "numToStr/Navigator.nvim", event = "VeryLazy", config = req("john.qol.navigator") },
+  { "numToStr/Comment.nvim", keys = { "gcc", { "gc", mode = "v" } }, config = req("john.qol.comment") },
+  { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m" }) },
+  { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = "<C-\\>",
     config = req("john.interface.terminal"),
-  },                                                 -- toggle nvim terminal
-  { "tpope/vim-abolish",       event = "VeryLazy" }, -- case coersion, substition, abbreviation
+  }, -- toggle nvim terminal
+  { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
   -- { "github/copilot.vim",     cmd = "Copilot",   config = req("john.qol.copilot") },
   { "Exafunction/codeium.vim", commit = "289eb72" },
   {
@@ -242,16 +248,15 @@ local plugins = {
     dependencies = { { "ggandor/flit.nvim", config = setup("flit") } },
   },
 
-
   { "hsanson/vim-android" },
 
   -- I have the funny
-  { "alec-gibson/nvim-tetris",        cmd = "Tetris" },
-  { "seandewar/nvimesweeper",         cmd = "Nvimesweeper" },
-  { "seandewar/killersheep.nvim",     cmd = "KillKillKill" },
+  { "alec-gibson/nvim-tetris", cmd = "Tetris" },
+  { "seandewar/nvimesweeper", cmd = "Nvimesweeper" },
+  { "seandewar/killersheep.nvim", cmd = "KillKillKill" },
   { "rktjmp/shenzhen-solitaire.nvim", cmd = "ShenzhenSolitaireNewGame" },
-  { "alanfortlink/blackjack.nvim",    cmd = "BlackJackNewGame" },
-  { "ryoppippi/bad-apple.vim",        cmd = "BadApple",                dependencies = "vim-denops/denops.vim" },
+  { "alanfortlink/blackjack.nvim", cmd = "BlackJackNewGame" },
+  { "ryoppippi/bad-apple.vim", cmd = "BadApple", dependencies = "vim-denops/denops.vim" },
   { dir = "~/projects/typing-test" },
 }
 

@@ -6,8 +6,7 @@ local formatters = {
   "prettierd",
 }
 
-local linters = {
-}
+local linters = {}
 
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
