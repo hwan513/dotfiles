@@ -10,7 +10,7 @@ M.setup = function()
         [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
         [vim.diagnostic.severity.INFO] = icons.diagnostics.Hint,
         [vim.diagnostic.severity.HINT] = icons.diagnostics.Info,
-      }
+      },
     },
     virtual_text = false, -- virtual text
     update_in_insert = false,
@@ -62,7 +62,7 @@ local function lsp_keymaps(bufnr, client)
   keymap(bufnr, "n", "<C-p>", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
   keymap(bufnr, "n", "<C-n>", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   -- keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  keymap(bufnr, 'n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  keymap(bufnr, "n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   vim.api.nvim_create_user_command("Format", function()
     vim.lsp.buf.format({ async = true })
@@ -70,7 +70,7 @@ local function lsp_keymaps(bufnr, client)
 
   vim.api.nvim_create_user_command("ToggleInlay", function()
     local inlay_hint = vim.lsp.inlay_hint
-    inlay_hint.enable(bufnr, not inlay_hint.is_enabled())
+    inlay_hint.enable(not inlay_hint.is_enabled())
   end, { nargs = 0 })
 
   local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
