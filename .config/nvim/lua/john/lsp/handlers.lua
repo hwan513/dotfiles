@@ -87,7 +87,7 @@ M.on_attach = function(client, bufnr)
     ["tsserver"] = true,
     ["jsonls"] = true,
     ["html"] = true,
-    -- ["sumneko_lua"] = true,
+    ["lua_ls"] = true,
   }
   if no_format[client.name] then
     client.server_capabilities.documentFormattingProvider = false

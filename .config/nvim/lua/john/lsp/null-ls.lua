@@ -1,5 +1,5 @@
 local formatters = {
-  -- "stylua",
+  "stylua",
   -- "black",
   "shfmt",
   "shellharden",
