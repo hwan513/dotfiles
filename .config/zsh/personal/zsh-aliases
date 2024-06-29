@@ -1,5 +1,6 @@
 # aliases for better commands in general
 alias z='nocorrect z'
+alias mkdir='nocorrect mkdir'
 alias cd='z'
 alias ls='lsd'
 
