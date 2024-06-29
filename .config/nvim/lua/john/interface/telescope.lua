@@ -8,7 +8,7 @@ local setup = function()
   telescope.load_extension("ui-select")
   telescope.load_extension("projects")
   telescope.load_extension("undo")
-  telescope.load_extension('neoclip')
+  telescope.load_extension("neoclip")
 
   local actions = require("telescope.actions")
   -- trouble integration with telescope
@@ -19,6 +19,17 @@ local setup = function()
       prompt_prefix = "  ",
       selection_caret = "  ",
       path_display = { "smart" },
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case", -- optional
+        "--hidden",     -- searh hidden files
+        "-g", "!.git/", -- don't search git folders
+      },
       mappings = {
         i = {
           ["<C-n>"] = actions.move_selection_next,
@@ -87,7 +98,6 @@ local setup = function()
       },
     },
     pickers = {
-      -- Default configuration for builtin pickers goes here:
       -- picker_name = {
       --   picker_config_key = value,
       --   ...
@@ -115,18 +125,18 @@ end
 
 return {
   keys = {
-    { "<Leader>ft",      "<cmd>Telescope builtin<cr>",                   desc = "Open Telescope" },
-    { "<Leader>ff",      "<cmd>Telescope find_files<cr>",                desc = "Find Files" },
-    { "<Leader>fg",      "<cmd>Telescope live_grep<cr>",                 desc = "Grep Repo" },
-    { "<Leader>fb",      "<cmd>Telescope buffers<cr>",                   desc = "Buffers" },
-    { "<Leader>fh",      "<cmd>Telescope command_history<cr>",           desc = "Command History" },
-    { "<Leader>fr",      "<cmd>Telescope lsp_references<cr>",            desc = "Lsp Reference" },
-    { "<Leader>fs",      "<cmd>Telescope search_history<cr>",            desc = "Search History" },
-    { "<Leader>fc",      "<cmd>Telescope commands<cr>",                  desc = "Commands" },
-    { "<Leader>fp",      "<cmd>Telescope projects<cr>",                  desc = "Projects" },
-    { "<Leader>fu",      "<cmd>Telescope undo<cr>",                      desc = "Undo" },
-    { "<Leader><Space>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Search Buffer" },
-    { "<Leader>'",       "<cmd>Telescope neoclip<cr>",                   desc = "Clipboard" },
+    { "<Leader>ft",      "<cmd>Telescope builtin<cr>",                            desc = "Open Telescope" },
+    { "<Leader>ff",      "<cmd>Telescope fd find_command=fd,-H<cr>",              desc = "Find Files" },
+    { "<Leader>fg",      "<cmd>Telescope live_grep find_command=rg,--hidden<cr>", desc = "Grep Repo" },
+    { "<Leader>fb",      "<cmd>Telescope buffers<cr>",                            desc = "Buffers" },
+    { "<Leader>fh",      "<cmd>Telescope command_history<cr>",                    desc = "Command History" },
+    { "<Leader>fr",      "<cmd>Telescope lsp_references<cr>",                     desc = "Lsp Reference" },
+    { "<Leader>fs",      "<cmd>Telescope search_history<cr>",                     desc = "Search History" },
+    { "<Leader>fc",      "<cmd>Telescope commands<cr>",                           desc = "Commands" },
+    { "<Leader>fp",      "<cmd>Telescope projects<cr>",                           desc = "Projects" },
+    { "<Leader>fu",      "<cmd>Telescope undo<cr>",                               desc = "Undo" },
+    { "<Leader><Space>", "<cmd>Telescope current_buffer_fuzzy_find<cr>",          desc = "Fuzzy Search Buffer" },
+    { "<Leader>'",       "<cmd>Telescope neoclip<cr>",                            desc = "Clipboard" },
   },
   setup = setup,
 }
