@@ -2,13 +2,12 @@
 
 Configurations for macOS
 
-### Setup on new machine
+```sh
+# Install Homebrew first to get git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-```
-cd ~
-git init
-git remote add origin https://github.com/hwan513/dotfiles.git
-git fetch
-git checkout -f master
-brew bundle
+git clone https://github.com/hwan513/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
+./bootstrap
 ```
