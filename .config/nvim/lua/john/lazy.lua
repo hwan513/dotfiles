@@ -5,8 +5,8 @@ local setup = function(modname, args) return function() require(modname).setup(a
 
 local plugins = {
   { "nvim-lua/plenary.nvim",    lazy = true },                                           -- Useful lua functions used ny lots of plugins
-  { "dstein64/vim-startuptime", cmd = { "StartupTime" }, },                              -- startup timer,
-  { "folke/which-key.nvim",     event = "VeryLazy",      config = setup("which-key"), }, -- need to finish which-key config
+  { "dstein64/vim-startuptime", cmd = { "StartupTime" } },                               -- startup timer,
+  { "folke/which-key.nvim",     event = "VeryLazy",      config = setup("which-key") },  -- need to finish which-key config
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -15,8 +15,8 @@ local plugins = {
   }, -- colourscheme
   { "catppuccin/nvim",            name = "catppuccin", event = "VeryLazy" },
   { "rose-pine/neovim",           name = "rose-pine",  event = "VeryLazy" },
-  { 'maxmx03/fluoromachine.nvim', },
-  { "dundargoc/fakedonalds.nvim", },
+  { "maxmx03/fluoromachine.nvim" },
+  { "dundargoc/fakedonalds.nvim" },
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
@@ -53,16 +53,16 @@ local plugins = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
         config = function()
-          require('ts_context_commentstring').setup {
+          require("ts_context_commentstring").setup {
             enable_autocmd = false,
           }
           vim.g.skip_ts_context_commentstring_module = true
-        end
+        end,
       },
       -- { "nvim-treesitter/nvim-treesitter-textobjects", config = setup("john.treesitter.textobjects") },
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
       { "RRethy/vim-illuminate",               config = req("john.qol.illuminate") }, -- highlights current thing under cursor
-    }
+    },
   },                                                                                  -- better syntax highlighting and other stuff
   {
     "rayliwell/tree-sitter-rstml",
@@ -79,6 +79,7 @@ local plugins = {
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "nvim-tree/nvim-tree.lua",     keys = "<C-e>",                         config = req("john.interface.nvim-tree") },
+  { "stevearc/oil.nvim",           config = setup("oil") },
   { "akinsho/bufferline.nvim",     event = "VeryLazy",                     config = req("john.interface.bufferline") },
   { "famiu/bufdelete.nvim",        cmd = "Bdelete" },                                                                -- delete buffers nicely
   { "nvim-lualine/lualine.nvim",   event = "VeryLazy",                     config = req("john.interface.lualine") }, -- status line plugin
@@ -103,15 +104,15 @@ local plugins = {
       "andersevenrud/cmp-tmux",       -- tmux completions
       "L3MON4D3/LuaSnip",             --snippet engine
       "rafamadriz/friendly-snippets", -- a bunch of snippets to use
-    }
+    },
   },                                  -- The completion plugin
 
   -- language server protocol {{{
   {
     "folke/noice.nvim",
     config = req("john.interface.noice"),
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", },
-    event = "VeryLazy"
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    event = "VeryLazy",
   },
   { "folke/neodev.nvim" },
   { "folke/neoconf.nvim", config = setup("neoconf") },
@@ -123,8 +124,8 @@ local plugins = {
       { "williamboman/mason.nvim",                  config = req("john.lsp.mason") },
       { "williamboman/mason-lspconfig.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
-      { "jayp0521/mason-null-ls.nvim", },
-      { "mfussenegger/nvim-jdtls", },
+      { "jayp0521/mason-null-ls.nvim" },
+      { "mfussenegger/nvim-jdtls" },
       {
         "nvimtools/none-ls.nvim",
         config = req("john.lsp.null-ls"),
@@ -134,10 +135,10 @@ local plugins = {
       },
       { "folke/trouble.nvim", config = req("john.interface.trouble") }, -- display the qf window for stuff
       -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
-    }
+    },
   }, -- enable LSP
   {
-    'mrcjkb/rustaceanvim', version = '^4', ft = { 'rust' },
+    "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" },
   },
   -- {
   --   url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
@@ -164,14 +165,14 @@ local plugins = {
   { "lukas-reineke/headlines.nvim", ft = "markdown" },
 
   -- Typst Editing
-  { "kaarmu/typst.vim",             ft = { "typst", "typ" },                    lazy = false, },
+  { "kaarmu/typst.vim",             ft = { "typst", "typ" },                    lazy = false },
 
   {
     "lervag/vimtex",
     init = function()
       vim.g.vimtex_view_method = "sioyek"
       vim.g.vimtex_compiler_method = "tectonic"
-    end
+    end,
   },
 
   -- -- debug adaptor protocol
@@ -196,8 +197,8 @@ local plugins = {
   {
     "AckslD/nvim-neoclip.lua",
     event = "VeryLazy",
-    config = setup("neoclip", { enable_persistent_history = true, }),
-    dependencies = { 'kkharji/sqlite.lua' },
+    config = setup("neoclip", { enable_persistent_history = true }),
+    dependencies = { "kkharji/sqlite.lua" },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -225,20 +226,20 @@ local plugins = {
   -- utility
   { "numToStr/Navigator.nvim", event = "VeryLazy",                      config = req("john.qol.navigator") },
   { "numToStr/Comment.nvim",   keys = { "gcc", { "gc", mode = "v" } },  config = req("john.qol.comment") },
-  { "gbprod/cutlass.nvim",     keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m", }) },
-  { "folke/persistence.nvim",  event = "BufReadPre",                    config = setup("persistence"), }, -- session manager
+  { "gbprod/cutlass.nvim",     keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m" }) },
+  { "folke/persistence.nvim",  event = "BufReadPre",                    config = setup("persistence") },  -- session manager
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = "<C-\\>",
-    config = req("john.interface.terminal")
-  },                                                -- toggle nvim terminal
+    config = req("john.interface.terminal"),
+  },                                                 -- toggle nvim terminal
   { "tpope/vim-abolish",       event = "VeryLazy" }, -- case coersion, substition, abbreviation
   -- { "github/copilot.vim",     cmd = "Copilot",   config = req("john.qol.copilot") },
   { "Exafunction/codeium.vim", commit = "289eb72" },
   {
     "ggandor/leap.nvim",
-    dependencies = { { "ggandor/flit.nvim", config = setup("flit") }, }
+    dependencies = { { "ggandor/flit.nvim", config = setup("flit") } },
   },
 
 
@@ -250,8 +251,8 @@ local plugins = {
   { "seandewar/killersheep.nvim",     cmd = "KillKillKill" },
   { "rktjmp/shenzhen-solitaire.nvim", cmd = "ShenzhenSolitaireNewGame" },
   { "alanfortlink/blackjack.nvim",    cmd = "BlackJackNewGame" },
-  { "ryoppippi/bad-apple.vim",        cmd = "BadApple",                dependencies = "vim-denops/denops.vim", },
-  { dir = "~/projects/typing-test", },
+  { "ryoppippi/bad-apple.vim",        cmd = "BadApple",                dependencies = "vim-denops/denops.vim" },
+  { dir = "~/projects/typing-test" },
 }
 
 M.setup = function()
