@@ -9,3 +9,8 @@ git config --global core.excludesfile .gitignore_apple
 
 # Link dotfiles to the home directory
 stow .
+
+# Setup hammmerspoon
+curl -L https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip -o SpoonInstall.spoon.zip
+unzip SpoonInstall.spoon.zip -d .hammerspoon/Spoons
+rm SpoonInstall.spoon.zip
