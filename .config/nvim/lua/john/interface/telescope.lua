@@ -9,6 +9,7 @@ local setup = function()
   telescope.load_extension("projects")
   telescope.load_extension("undo")
   telescope.load_extension("neoclip")
+  telescope.load_extension("frecency")
 
   local actions = require("telescope.actions")
   -- trouble integration with telescope
@@ -128,6 +129,7 @@ return {
   keys = {
     { "<Leader>ft", "<cmd>Telescope builtin<cr>", desc = "Open Telescope" },
     { "<Leader>ff", "<cmd>Telescope fd find_command=fd,-H<cr>", desc = "Find Files" },
+    { "<Leader>fe", "<cmd>Telescope frecency<cr>", desc = "Find Most Frecent Files" },
     { "<Leader>fg", "<cmd>Telescope live_grep find_command=rg,--hidden<cr>", desc = "Grep Repo" },
     { "<Leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     { "<Leader>fh", "<cmd>Telescope command_history<cr>", desc = "Command History" },
