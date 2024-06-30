@@ -6,11 +6,13 @@ local function prequire(call)
   end
 end
 
-hs.loadSpoon("SpoonInstall")
--- spoon.SpoonInstall:asyncInstallSpoonFromRepo("MiroWindowsManager")
-spoon.SpoonInstall:andUse("EmmyLua")
 prequire("reloadConfig")
-prequire("windows")
 prequire("menuUtils")
 prequire("keyUtils")
 prequire("finderOpen")
+
+-- First install spoon install manually from the web
+hs.loadSpoon("SpoonInstall")
+spoon.SpoonInstall:andUse("MiroWindowsManager")
+spoon.SpoonInstall:andUse("EmmyLua")
+prequire("windows")

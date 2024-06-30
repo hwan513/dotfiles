@@ -3,3 +3,4 @@
 *.zsh_history
 */nvim/undo
 */zsh/plugins
+.hammerspoon/Spoons/
