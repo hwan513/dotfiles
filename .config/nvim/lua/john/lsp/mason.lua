@@ -20,6 +20,7 @@ mason.setup({
 -- }}}
 -- Include servers to run {{{
 local servers = {
+  "basedpyright",
   "bashls",
   "biome",
   "clangd",
@@ -35,7 +36,6 @@ local servers = {
   "lua_ls",
   "marksman",
   "omnisharp",
-  "pyright",
   -- "quick_lint_js",
   "rust_analyzer",
   "ruff_lsp",
