@@ -128,7 +128,7 @@ end
 return {
   keys = {
     { "<Leader>ft", "<cmd>Telescope builtin<cr>", desc = "Open Telescope" },
-    { "<Leader>ff", "<cmd>Telescope fd find_command=fd,-H<cr>", desc = "Find Files" },
+    { "<Leader>ff", "<cmd>Telescope find_files find_command=fd,-H,--type,file<cr>", desc = "Find Files" },
     { "<Leader>fe", "<cmd>Telescope frecency<cr>", desc = "Find Most Frecent Files" },
     { "<Leader>fg", "<cmd>Telescope live_grep find_command=rg,--hidden<cr>", desc = "Grep Repo" },
     { "<Leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
@@ -136,7 +136,7 @@ return {
     { "<Leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Lsp Reference" },
     { "<Leader>fs", "<cmd>Telescope search_history<cr>", desc = "Search History" },
     { "<Leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
-    { "<Leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
+    -- { "<Leader>fp", "<cmd>Telescope projects<cr>", desc = "Projects" },
     { "<Leader>fu", "<cmd>Telescope undo<cr>", desc = "Undo" },
     { "<Leader><Space>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Search Buffer" },
     { "<Leader>'", "<cmd>Telescope neoclip<cr>", desc = "Clipboard" },
