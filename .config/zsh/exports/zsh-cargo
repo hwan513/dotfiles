@@ -1,5 +1,5 @@
-export CARGO_HOME=$HOME/.config/cargo
-export RUSTUP_HOME=$HOME/.config/rustup
+export CARGO_HOME=$XDG_CONFIG_HOME/cargo
+export RUSTUP_HOME=$XDG_CONFIG_HOME/rustup
 
 export PATH="/Users/henrywang/.config/cargo/bin:$PATH" # binaries installed by cargo install
-source $HOME/.config/cargo/env
+source $XDG_CONFIG_HOME/cargo/env
