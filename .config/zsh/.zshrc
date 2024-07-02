@@ -2,6 +2,7 @@
 source "$ZDOTDIR/zsh-functions"
 zsh_add_file "options/zsh-brew"
 # TODO: one day move fzf, powerlevel10k, mise and zoxide installation into here
+# TODO: cargo and mise boostrap in a separate file
 
 # General
 zsh_add_file zsh-plugins
