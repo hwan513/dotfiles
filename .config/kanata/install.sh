@@ -12,7 +12,8 @@ cargo binstall kanata
 # Install kanata tray
 gh release download -R "https://github.com/rszyma/kanata-tray.git" --pattern "*macos"
 sudo chmod +x kanata-tray-macos
-sudo chmod +x "Kanata Tray"
+# sudo chmod +x "Kanata Tray"
 mkdir -p "/Applications/Kanata Tray.app/Contents/MacOS/"
-sudo cp -r $XDG_CONFIG_HOME/kanata/ "/Applications/Kanata Tray.app/Contents/MacOS/"
-rm kanata-tray-macos
+sudo cp -r "$XDG_CONFIG_HOME/kanata/Kanata Tray/" "/Applications/Kanata Tray.app/Contents/MacOS/"
+mv kanata-tray-macos "/Applications/Kanata Tray.app/Contents/MacOS/kanata-tray-macos"
+cp "$XDG_CONFIG_HOME/kanata/Info.plist" "/Applications/Kanata Tray.app/Contents/"
