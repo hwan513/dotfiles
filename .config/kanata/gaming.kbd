@@ -1,39 +1,3 @@
-;; ;; Hold f activates arrows for keys: i j k l
-;; (defsrc f i j k l)
-;; (defalias f (tap-hold 50 50 f
-;;   (layer-while-held arrows)))
-;; (deflayer base   @f   i    j    k    l)
-;; (deflayer arrows _    up   left down right)
-;; 
-;; ;; Hold caps lock for control, tap for escape
-;; ;; Basic home row mods example using QWERTY
-;; ;; For a more complex but perhaps usable configuration,
-;; ;; see home-row-mod-advanced.kbd
-
-;; (defcfg process-unmapped-keys yes)
-;; (defsrc caps a   s   d   f   j   k   l   ;)
-;; (defvar 
-;;   tap-time 120
-;;   hold-time 120
-;;   tt $tap-time
-;;   ht $hold-time
-;; )
-;; (defalias
-;;   caps (tap-hold $tt $ht esc lctl)
-;;   a (tap-hold $tt $ht a lalt)
-;;   s (tap-hold $tt $ht s lctl)
-;;   d (tap-hold $tt $ht d lsft)
-;;   f (tap-hold $tt $ht f lmet)
-;;   j (tap-hold $tt $ht j rmet)
-;;   k (tap-hold $tt $ht k rsft)
-;;   l (tap-hold $tt $ht l rctl)
-;;   ; (tap-hold $tt $ht ; ralt)
-;; )
-;; 
-;; (deflayer base
-;;   @caps @a  @s  @d  @f  @j  @k  @l  @;
-;; )
-
 (defsrc
   esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   del
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc  pgup
@@ -43,13 +7,9 @@
   fn    lctl  lalt  lmet          spc             rmet  f20   ralt  rctl  left  down  rght
 )
 
-(defalias
-  fnl (tap-hold 150 150 fn (layer-toggle fn))
-)
 
-
-(deflayer main
-  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  lrnx
+(deflayer gaming
+  esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   lrnx
   grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc  pgup
   tab   q     w     e     r     t     y     u     i     o     p     [     ]     \     pgdn
   lctl  a     s     d     f     g     h     j     k     l     ;     '     ret         home
@@ -57,8 +17,12 @@
   @fnl  lctl  lalt  lmet        spc               rmet  @fnl  ralt  rctl  left  down  rght
 )
 
+(defalias
+  fnl (tap-hold 150 150 fn (layer-toggle fn))
+)
+
 (deflayer fn
-  _     f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   _
+  _     brdn  brup  _     _     _     _     prev  pp    next  mute  vold  volu  _
   _     _     _     _     _     _     _     _     _     _     _     _     _     lrnx  _   
   _     _     _     _     _     _     _     _     _     _     _     _     _     _     _   
   _     _     _     _     _     _     _     _     _     _     _     _     _           _   

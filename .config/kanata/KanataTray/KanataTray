@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+sudo "/Applications/KanataTray.app/Contents/MacOS/kanata-tray-macos"
