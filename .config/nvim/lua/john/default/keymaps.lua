@@ -25,7 +25,7 @@ keymap("n", "<Leader>a", ":<C-P><CR>", opts) -- repeat last executed command
 keymap("n", "<Leader>v", "ggVG", opts) -- select all
 -- keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts) -- cd to current file then pwd
 -- keymap("n", "<Space>", "/", opts) -- space will / (search)
-keymap("n", "<CR>", ":<c-u>put =repeat([''],v:count)<bar>'[+0<CR>", opts) -- enter will create new line
+-- keymap("n", "<CR>", ":<c-u>put =repeat([''],v:count)<bar>'[+0<CR>", opts) -- enter will create new line
 -- }}}
 -- Resize splits with arrows {{{
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -65,7 +65,7 @@ keymap("i", "kk", "<ESC>", opts)
 keymap("s", "kk", "<ESC>", opts)
 -- }}}
 -- Append semicolon at end of line {{{
-keymap("i", ";;", "<ESC>A;", opts)
+-- keymap("i", ";;", "<ESC>A;", opts)
 keymap("n", ";;", "<ESC>A;<ESC>", opts)
 -- }}}
 -- Stay in indent mode {{{
@@ -111,23 +111,23 @@ keymap("x", "s", "", opts)
 -- keymap("c", "<Esc><C-F>", "<S-Right>", opts)
 vim.cmd([[
 	" start of line
-:cnoremap <C-A>		<Home>
+:noremap! <C-A>		<Home>
 " back one character
-:cnoremap <C-B>		<Left>
+:noremap! <C-B>		<Left>
 " delete character under cursor
-:cnoremap <C-D>		<Del>
+:noremap! <C-D>		<Del>
 " end of line
-:cnoremap <C-E>		<End>
+:noremap! <C-E>		<End>
 " forward one character
-:cnoremap <C-F>		<Right>
+:noremap! <C-F>		<Right>
 " recall newer command-line
-:cnoremap <C-N>		<Down>
+:noremap! <C-N>		<Down>
 " recall previous (older) command-line
-:cnoremap <C-P>		<Up>
+:noremap! <C-P>		<Up>
 " back one word
-:cnoremap <Esc><C-B>	<S-Left>
+:noremap! <Esc><C-B>	<S-Left>
 " forward one word
-:cnoremap <Esc><C-F>	<S-Right>
+:noremap! <Esc><C-F>	<S-Right>
 ]])
 --
 -- }}}

@@ -9,7 +9,7 @@ npairs.setup({
   ts_config = {},
   disable_filetype = { "TelescopePrompt", "spectre_panel" },
   fast_wrap = {
-    map = "<C-e>",
+    map = "<C-u>",
     chars = { "{", "[", "(", '"', "'" },
     pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
     offset = -1, -- Offset from pattern match
