@@ -25,8 +25,8 @@
   ext  (tap-hold $tt $ht esc (layer-toggle ext))
 
   ntab C-tab
-  ss3   M-A-S-3
-  ss4   M-A-S-4
+  ss3   M-C-S-3
+  ss4   M-C-S-4
   ss5   M-S-5
 
 
