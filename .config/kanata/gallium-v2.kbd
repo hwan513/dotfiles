@@ -1,0 +1,17 @@
+(deflayer gallium-v2
+  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  del
+  grv   1     2     3     4     5     6     7     8     9     0     [     ]     bspc  @undo
+  tab   b     l     d     w     v     j     f     o     u     ;     -     =     \     @copy
+  @ext  (t! home-row n   r   t   s   g   y   h   a   e   i)         /     ret         @pste
+  lsft  x     q     m     c     z     k     p     '     ,     .     rsft        up
+  @fn1  lctl  lalt  lmet        spc               rmet  @fn2  ralt  rctl  left  down  rght
+)
+
+(deflayer gallium-v2-angle
+  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  del
+  grv   1     2     3     4     5     6     7     8     9     0     [     ]     bspc  @undo
+  tab   b     l     d     w     v     j     f     o     u     ;     -     =     \     @copy
+  @ext  (t! home-row n   r   t   s   g   y   h   a   e   i)         /     ret         @pste
+  lsft  q     m     c     z     x     k     p     '     ,     .     rsft        up
+  @fn1  lctl  lalt  lmet        spc               rmet  @fn2  ralt  rctl  left  down  rght
+)

@@ -1,0 +1,22 @@
+(deftemplate layout-switcher()
+;;`     1     2     3     4     5     6     7     8     9     0     -     =
+  @dvrk @game @qwty @stdy @gllm @engm _     _     _     _     _     _     _
+)
+
+(deflayer fn1
+  lrld  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   _
+  (template-expand layout-switcher)                                             del   _   
+  _     _     _     _     _     _     _     _     _     _     _     _     _     lrnx  _   
+  _     _     _     _     _     _     _     _     _     _     _     _     _           _   
+  _     _     _     _     _     _     _     _     _     _     _     _           _ 
+  _     _     _     _             _               _     _     _     _     _     _     _   
+)
+
+(deflayer fn2
+  lrld  brdn  brup  _     _     _     _     prev  pp    next  mute  vold  volu  _
+  (template-expand layout-switcher)                                             del   _   
+  _     _     _     _     _     _     _     _     _     _     _     _     _     lrnx  _   
+  _     _     _     _     _     _     _     _     _     _     _     _     _           _   
+  _     _     _     _     _     _     _     _     _     _     _     _           _ 
+  _     _     _     _             _               _     _     _     _     _     _     _   
+)

@@ -1,9 +1,12 @@
-;; ;; Hold f activates arrows for keys: i j k l
-;; (defsrc f i j k l)
-;; (defalias f (tap-hold 50 50 f
-;;   (layer-while-held arrows)))
-;; (deflayer base   @f   i    j    k    l)
-;; (deflayer arrows _    up   left down right)
+(include dvorak.kbd)
+(include gaming.kbd)
+(include qwerty.kbd)
+(include sturdy.kbd)
+(include gallium-v2.kbd)
+(include engrammer.kbd)
+(include extension.kbd)
+(include fn.kbd)
+(include alias.kbd)
 
 (defsrc
   esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   del
@@ -12,68 +15,4 @@
   caps  a     s     d     f     g     h     j     k     l     ;     '     ret         home
   lsft  z     x     c     v     b     n     m     ,     .     /     rsft        up
   fn    lctl  lalt  lmet          spc             rmet  f20   ralt  rctl  left  down  rght
-)
-
-(defvar 
-  tap-time 150
-  hold-time 150
-  tt $tap-time
-  ht $hold-time
-)
-(defalias
-  fnl  (tap-hold $tt $ht fn  (layer-toggle fn))
-  ext  (tap-hold $tt $ht esc (layer-toggle ext))
-
-  ntab C-tab
-  ss3   M-C-S-3
-  ss4   M-C-S-4
-  ss5   M-S-5
-
-
-  ;; has to match the mapping in alternative layouts
-  undo M-/
-  cut  M-b
-  copy M-i
-  pste M-.
-  all  M-a
-
-  ;; macos home and end doesn't affect text insertion
-  home C-a
-  end  C-d
-
-  a    (tap-hold $tt $ht a   lalt)
-  s    (tap-hold $tt $ht s   lctl)
-  d    (tap-hold $tt $ht d   lsft)
-  f    (tap-hold $tt $ht f   lmet)
-  j    (tap-hold $tt $ht j   rmet)
-  k    (tap-hold $tt $ht k   rsft)
-  l    (tap-hold $tt $ht l   rctl)
-  ;    (tap-hold $tt $ht ;   ralt)
-)
-
-(deflayer main
-  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  del
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc  pgup
-  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \     pgdn
-  @ext  @a    @s    @d    @f    g     h     @j    @k    @l    @;    '     ret         home
-  lsft  z     x     c     v     b     n     m     ,     .     /     rsft        up
-  @fnl  lctl  lalt  lmet        spc               rmet  @fnl  ralt  rctl  left  down  rght
-)
-
-(deflayer fn
-  lrld  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   _
-  _     _     _     _     _     _     _     _     _     _     _     _     _     del   _   
-  _     _     _     _     _     _     _     _     _     _     _     _     _     lrnx  _   
-  _     _     _     _     _     _     _     _     _     _     _     _     _           _   
-  _     _     _     _     _     _     _     _     _     _     _     _           _ 
-  _     _     _     _             _               _     _     _     _     _     _     _   
-)
-
-(deflayer ext
-  _     _     _     _     _     _     _     _     _     _     _     _     _     _
-  _     _     _     @ss3  @ss4  @ss5  _     _     _     _     _     _     _     _     _   
-  @ntab _     _     _     _     _     pgup  @home  up    @end  _     _     _     _     _   
-  _     @all  _     _     _     _     pgdn  left  down  rght  _     _     _           _    
-  _     @undo @cut  @copy @pste _     _     _     _     _     _     _           _ 
-  _     _     _     _             _               _     _     _     _     _     _     _
 )

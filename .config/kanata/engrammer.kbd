@@ -1,0 +1,8 @@
+(deflayer engrammer
+  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  del
+  grv   1     2     3     4     5     6     7     8     9     0     [     ]     bspc  @undo
+  tab   b     y     o     u     '     ;     l     d     w     v     z     =     \     @copy
+  @ext  (t! home-row c   i   e   a   ,   .   h   t   s   n)         q     ret         @pste
+  lsft  g     x     j     k     -     /     r     m     f     p     rsft        up
+  @fn1  lctl  lalt  lmet        spc               rmet  @fn2  ralt  rctl  left  down  rght
+)

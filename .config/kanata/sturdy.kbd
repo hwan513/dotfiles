@@ -1,0 +1,17 @@
+(deflayer sturdy
+  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  del
+  grv   1     2     3     4     5     6     7     8     9     0     [     ]     bspc  @undo
+  tab   v     m     l     c     p     x     f     o     u     j     -     =     \     @copy
+  @ext  (t! home-row s   t   r   d   y   .   n   a   e   i)         /     ret         @pste
+  lsft  z     k     q     g     w     b     h     '     ;     ,     rsft        up
+  @fn1  lctl  lalt  lmet        spc               rmet  @fn2  ralt  rctl  left  down  rght
+)
+
+(deflayer sturdy-angle
+  esc   brdn  brup  f3    f4    f5    f6    prev  pp    next  mute  vold  volu  del
+  grv   1     2     3     4     5     6     7     8     9     0     [     ]     bspc  @undo
+  tab   v     m     l     c     p     x     f     o     u     j     -     =     \     @copy
+  @ext  (t! home-row s   t   r   d   y   .   n   a   e   i)         /     ret         @pste
+  lsft  k     q     g     w     z     b     h     '     ;     ,     rsft        up
+  @fn1  lctl  lalt  lmet        spc               rmet  @fn2  ralt  rctl  left  down  rght
+)

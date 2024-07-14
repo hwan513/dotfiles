@@ -1,0 +1,52 @@
+(deftemplate tap-hold(tap-key tap-time hold-key hold-time)
+  $hold-key (tap-hold $tap-time $hold-time $tap-key (layer-while-held $hold-key))
+)
+
+(deftemplate home-row(a s d f g h j k l ;)
+  (tap-hold 150   150   $a   lalt)
+  (tap-hold 150   150   $s   lctl)
+  (tap-hold 150   150   $d   lsft)
+  (tap-hold 150   150   $f   lmet)
+  $g
+  $h
+  (tap-hold 150   150   $j   rmet)
+  (tap-hold 150   150   $k   rsft)
+  (tap-hold 150   150   $l   rctl)
+  (tap-hold 150   150   $;   ralt)
+)
+
+
+(defalias
+
+  ;; shortcuts
+  url   M-l
+  xtab  M-w
+  ctab  M-t
+  xwin  M-S-w
+  ptab  C-S-tab
+  ntab  C-tab
+
+  ss3   M-C-S-3
+  ss4   M-C-S-4
+  ss5   M-S-5
+
+  undo M-z
+  cut  M-x
+  copy M-c
+  pste M-v
+  all  M-a
+
+  home C-a
+  end  C-e
+
+  ;; layer switching
+  (t! tap-hold fn  150 fn1 150)
+  (t! tap-hold fn  150 fn2 150)
+  (t! tap-hold esc 150 ext 150)
+  dvrk (layer-switch dvorak)
+  game (layer-switch gaming)
+  qwty (layer-switch qwerty)
+  stdy (layer-switch sturdy-angle)
+  gllm (layer-switch gallium-v2-angle)
+  engm (layer-switch engrammer)
+)

@@ -1,31 +1,8 @@
-(defsrc
-  esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   del
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc  pgup
-  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \     pgdn
-  caps  a     s     d     f     g     h     j     k     l     ;     '     ret         home
-  lsft  z     x     c     v     b     n     m     ,     .     /     rsft        up
-  fn    lctl  lalt  lmet          spc             rmet  f20   ralt  rctl  left  down  rght
-)
-
-
 (deflayer gaming
   esc   f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   del
-  grv   1     2     3     4     5     6     7     8     9     0     -     =     bspc  pgup
-  tab   q     w     e     r     t     y     u     i     o     p     [     ]     \     pgdn
-  lctl  a     s     d     f     g     h     j     k     l     ;     '     ret         home
-  lsft  z     x     c     v     b     n     m     ,     .     /     rsft        up
-  @fnl  lctl  lalt  lmet        spc               rmet  @fnl  ralt  rctl  left  down  rght
-)
-
-(defalias
-  fnl (tap-hold 150 150 fn (layer-toggle fn))
-)
-
-(deflayer fn
-  lrld  brdn  brup  _     _     _     _     prev  pp    next  mute  vold  volu  _
-  _     _     _     _     _     _     _     _     _     _     _     _     _     del   _   
-  _     _     _     _     _     _     _     _     _     _     _     _     _     lrnx  _   
-  _     _     _     _     _     _     _     _     _     _     _     _     _           _   
-  _     _     _     _     _     _     _     _     _     _     _     _           _ 
-  _     _     _     _             _               _     _     _     _     _     _     _   
+  grv   1     2     3     4     5     6     7     8     9     0     [     ]     bspc  pgup
+  tab   '     ,     .     p     y     f     g     c     r     l     /     =     \     pgdn
+  lctl  a     o     e     u     i     d     h     t     n     s     -     ret         home
+  lsft  ;     q     j     k     x     b     m     w     v     z     rsft        up
+  @fn2  lctl  lalt  lmet        spc               rmet  @fn2  ralt  rctl  left  down  rght
 )
