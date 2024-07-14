@@ -14,8 +14,6 @@ vim.g.maplocalleader = ","
 --   command_mode = "c",
 --   }}}
 -- General stuff {{{
-keymap("n", "<C-c>", "<cmd>qa!<cr>", opts)
-keymap("i", "<C-c>", "<cmd>qa!<cr>", opts)
 keymap("n", "<C-r>", ":silent redo<CR>", opts) -- quick save
 keymap("n", "u", ":silent undo<CR>", opts) -- quick save
 keymap("n", "<Leader>w", ":silent w!<CR>", opts) -- quick save
