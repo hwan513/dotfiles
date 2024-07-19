@@ -1,12 +1,11 @@
-local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-local words = {}
-
-for word in io.open(path, "r"):lines() do
-  table.insert(words, word)
-end
-
+-- local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+-- local words = {}
+--
+-- for word in io.open(path, "r"):lines() do
+--   table.insert(words, word)
+-- end
 return {
-  -- filetypes = { "typst", "typ" }, --  <-- add this
+  filetypes = { "typst", "typ" }, --  <-- add this
   settings = {
     ltex = {
       -- install ngrams from https://dev.languagetool.org/finding-errors-using-n-gram-data.html
@@ -32,11 +31,10 @@ return {
         "typ",
         "typst",
       },
-
-      dictionary = {
-        ["en-US"] = words,
-        ["en-GB"] = words,
-      },
+      -- dictionary = {
+      --   ["en-US"] = words,
+      --   ["en-GB"] = words,
+      -- },
     },
   },
 }
