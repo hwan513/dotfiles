@@ -57,10 +57,6 @@ keymap("v", "k", "gk", opts)
 -- Fast escape {{{
 keymap("i", "jk", "<ESC>", opts)
 keymap("s", "jk", "<ESC>", opts)
-keymap("i", "jj", "<ESC>", opts)
-keymap("s", "jj", "<ESC>", opts)
-keymap("i", "kk", "<ESC>", opts)
-keymap("s", "kk", "<ESC>", opts)
 -- }}}
 -- Append semicolon at end of line {{{
 -- keymap("i", ";;", "<ESC>A;", opts)
