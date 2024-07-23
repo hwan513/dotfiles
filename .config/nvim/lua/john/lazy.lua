@@ -172,7 +172,15 @@ local plugins = {
   { "lukas-reineke/headlines.nvim", ft = "markdown" },
 
   -- Typst Editing
-  { "kaarmu/typst.vim", ft = { "typst", "typ" }, lazy = false },
+  { "kaarmu/typst.vim", ft = { "typst", "typ" } },
+  {
+    "chomosuke/typst-preview.nvim",
+    ft = "typst",
+    version = "0.3.*",
+    build = function()
+      require("typst-preview").update()
+    end,
+  },
 
   {
     "lervag/vimtex",
