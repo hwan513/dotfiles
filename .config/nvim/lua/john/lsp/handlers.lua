@@ -73,13 +73,14 @@ local function lsp_keymaps(bufnr, client)
     inlay_hint.enable(not inlay_hint.is_enabled())
   end, { nargs = 0 })
 
-  local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-      vim.lsp.buf.format({ async = false })
-    end,
-    group = format_on_save,
-  })
+  -- Superseded by conform.nvim plugin
+  -- local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
+  -- vim.api.nvim_create_autocmd("BufWritePre", {
+  --   callback = function()
+  --     vim.lsp.buf.format({ async = false })
+  --   end,
+  --   group = format_on_save,
+  -- })
 end
 
 M.on_attach = function(client, bufnr)

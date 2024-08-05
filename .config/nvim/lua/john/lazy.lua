@@ -128,6 +128,7 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "williamboman/mason.nvim", config = req("john.lsp.mason") },
+      { "stevearc/conform.nvim", config = req("john.lsp.conform") },
       { "williamboman/mason-lspconfig.nvim" },
       { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       { "jayp0521/mason-null-ls.nvim" },

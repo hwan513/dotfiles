@@ -38,7 +38,7 @@ local servers = {
   "omnisharp",
   -- "quick_lint_js",
   "rust_analyzer",
-  "ruff_lsp",
+  "ruff",
   "taplo",
   "texlab",
   "tsserver",
