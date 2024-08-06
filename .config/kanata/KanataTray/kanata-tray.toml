@@ -16,6 +16,3 @@ post-start-async = ["zsh -c ~/.config/kanata/run.sh"]
 [presets.'main cfg']
 autorun = true
 kanata_config = '~/.config/kanata/main.kbd'
-
-[presets.'gaming cfg']
-kanata_config = '~/.config/kanata/gaming.kbd'
