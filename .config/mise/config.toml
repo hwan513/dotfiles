@@ -1,0 +1,21 @@
+[tools]
+node = "22"
+java = "21"
+pnpm = "latest"
+
+# installed cargo programs
+"cargo:cargo-binstall" = "latest"
+"cargo:cargo-generate" = "latest"
+"cargo:cargo-clean-recursive" = "latest"
+"cargo:create-tauri-app" = "latest"
+"cargo:hayagriva" = "latest"
+"cargo:kanata" = "latest"
+"cargo:leptosfmt" = "latest"
+"cargo:perseus-cli" = "latest"
+"cargo:stylance-cli" = "latest"
+"cargo:tauri-cli" = "latest"
+"cargo:trunk" = "latest"
+"cargo:typstfmt" = "latest"
+
+[settings]
+experimental = true
