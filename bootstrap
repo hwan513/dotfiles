@@ -1,7 +1,8 @@
 #!/bin/bash
 # Run this script to setup the config on a local machine
 
-# Install Homebrew
+# Install Homebrew packages with sudo permissions
+sudo -v
 brew bundle
 
 # Set the global gitignore
