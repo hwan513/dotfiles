@@ -7,7 +7,7 @@ local function prequire(call)
 end
 
 prequire("reloadConfig")
-prequire("menuUtils")
+-- prequire("menuUtils")
 prequire("keyUtils")
 prequire("finderOpen")
 prequire("clicker")
