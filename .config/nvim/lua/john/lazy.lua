@@ -76,11 +76,6 @@ local plugins = {
     build = ":TSUpdate",
     config = setup("tree-sitter-rstml"),
   },
-  -- Experimental automatic tag closing and renaming (optional)
-  {
-    "rayliwell/nvim-ts-autotag",
-    config = setup("nvim-ts-autotag"),
-  },
 
   -- user interface {{{
   { "nvim-tree/nvim-web-devicons", lazy = true },
