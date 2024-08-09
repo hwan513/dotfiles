@@ -8,16 +8,17 @@ brew bundle --file Brewlite
 # Set the global gitignore
 git config --global core.excludesfile ~/.gitignore_apple
 
-# Link dotfiles to the home directory
-stow .
-
-# Install mise dependencies
-# mise install # disabled for lite installation
-
 # Setup hammmerspoon
 curl -L https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip -o SpoonInstall.spoon.zip
 unzip SpoonInstall.spoon.zip -d .hammerspoon/Spoons
 rm SpoonInstall.spoon.zip
+
+# Link dotfiles to the home directory
+stow .
+
+# TODO: Rustup setup
+# Install mise dependencies
+# mise install # disabled for lite installation
 
 # Restart shell instance
 exec zsh

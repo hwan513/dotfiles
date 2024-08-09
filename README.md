@@ -12,3 +12,5 @@ cd ~/dotfiles
 
 ./bootstrap
 ```
+
+TODO: add more configurations for lightweight bootstrapping
