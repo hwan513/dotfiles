@@ -6,8 +6,8 @@ sudo installer -pkg Karabiner*.pkg -target /
 rm Karabiner*.pkg
 /Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager activate
 
-# Install the kanata binary (requires cargo to be setup with binstall)
-cargo binstall kanata
+# Installation is being handled by mise
+# cargo binstall kanata
 
 # Install kanata tray
 gh release download -R "https://github.com/rszyma/kanata-tray.git" --pattern "*macos"
