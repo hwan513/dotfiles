@@ -224,7 +224,6 @@ local plugins = {
     config = req("john.interface.terminal"),
   }, -- toggle nvim terminal
   { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
-  -- { "github/copilot.vim",     cmd = "Copilot",   config = req("john.qol.copilot") },
   { "Exafunction/codeium.vim", commit = "289eb72" },
   { "ggandor/leap.nvim", dependencies = { { "ggandor/flit.nvim", config = setup("flit") } } },
   -- { "hsanson/vim-android" },
