@@ -10,6 +10,7 @@ prequire("reloadConfig")
 prequire("menuUtils")
 prequire("keyUtils")
 prequire("finderOpen")
+prequire("clicker")
 
 -- First install spoon install manually from the web
 hs.loadSpoon("SpoonInstall")
