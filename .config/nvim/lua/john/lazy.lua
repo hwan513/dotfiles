@@ -136,34 +136,12 @@ local plugins = {
         },
       },
       { "folke/trouble.nvim", config = req("john.interface.trouble") }, -- display the qf window for stuff
-      -- { "ray-x/lsp_signature.nvim",                 config = req("john.qol.signature") }, -- show function lsp signature
     },
   }, -- enable LSP
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^4",
-    ft = { "rust" },
-  },
-  -- {
-  --   url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
-  --   ft = { "python", "cpp", "java" },
-  --   dependencies = {
-  --     "mfussenegger/nvim-jdtls",
-  --     "williamboman/mason.nvim"
-  --   },
-  --   config = function()
-  --     local opts = {
-  --       on_attach = require("john.lsp.handlers").on_attach,
-  --       capabilities = require("john.lsp.handlers").capabilities,
-  --     }
-  --     local config = vim.tbl_deep_extend("force", opts, require("john.lsp.settings.sonar_lint"))
-  --     require("sonarlint").setup(config)
-  --   end
-  -- },
+  { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
 
   -- Markdown Editing
   { "vim-pandoc/vim-pandoc-syntax", ft = "markdown" },
-  { dir = "~/projects/pandoccer", cmd = { "PandoccerSetup", "PandoccerOpen" } },
   { "preservim/vim-markdown", ft = "markdown" },
   { "lukas-reineke/headlines.nvim", ft = "markdown" },
 
@@ -177,7 +155,6 @@ local plugins = {
       require("typst-preview").update()
     end,
   },
-
   {
     "lervag/vimtex",
     init = function()
@@ -249,12 +226,8 @@ local plugins = {
   { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
   -- { "github/copilot.vim",     cmd = "Copilot",   config = req("john.qol.copilot") },
   { "Exafunction/codeium.vim", commit = "289eb72" },
-  {
-    "ggandor/leap.nvim",
-    dependencies = { { "ggandor/flit.nvim", config = setup("flit") } },
-  },
-
-  { "hsanson/vim-android" },
+  { "ggandor/leap.nvim", dependencies = { { "ggandor/flit.nvim", config = setup("flit") } } },
+  -- { "hsanson/vim-android" },
 
   -- I have the funny
   { "alec-gibson/nvim-tetris", cmd = "Tetris" },
