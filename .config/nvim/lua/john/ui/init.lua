@@ -6,9 +6,9 @@ return {
   -- yazi is on the radar
   prequire("john.ui.nvim-tree"),
   prequire("john.ui.mini-icons"),
+  prequire("john.ui.mini-bufremove"),
+  prequire("john.ui.mini-hipatterns"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
   { "akinsho/bufferline.nvim", event = "VeryLazy", config = req("john.interface.bufferline") },
-  { "famiu/bufdelete.nvim", cmd = "Bdelete" }, -- delete buffers nicely
   { "nvim-lualine/lualine.nvim", event = "VeryLazy", config = req("john.interface.lualine") }, -- status line plugin
-  { "norcalli/nvim-colorizer.lua", event = { "BufNewFile", "BufReadPre" }, config = setup("colorizer") }, -- coloring viewer for html css stuff
 }
