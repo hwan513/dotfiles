@@ -206,8 +206,6 @@ local plugins = {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
-    branch = "nightly",
-    commit = "20ab5a688c2de6fa371865528c737ae901989aa5",
     config = setup("neogit", { integrations = { diffview = true, telescope = true } }),
     keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" } },
   },
