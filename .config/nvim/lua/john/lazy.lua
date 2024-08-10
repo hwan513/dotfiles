@@ -1,16 +1,8 @@
 local prequire = require("john.utils").prequire
-local M = {}
+local req = require("john.utils").req
+local setup = require("john.utils").setup
 
-local req = function(modname)
-  return function()
-    require(modname)
-  end
-end
-local setup = function(modname, args)
-  return function()
-    require(modname).setup(args)
-  end
-end
+local M = {}
 
 local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used ny lots of plugins
