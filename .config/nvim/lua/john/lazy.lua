@@ -1,3 +1,4 @@
+local prequire = require("john.utils").prequire
 local M = {}
 
 local req = function(modname)
@@ -14,33 +15,8 @@ end
 local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used ny lots of plugins
   { "dstein64/vim-startuptime", cmd = { "StartupTime" } }, -- startup timer,
-  { "folke/which-key.nvim", event = "VeryLazy", config = setup("which-key") }, -- need to finish which-key config
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    -- config = function() vim.cmd([[colorscheme tokyonight-night]]) end,
-  }, -- colourscheme
-  { "catppuccin/nvim", name = "catppuccin", event = "VeryLazy" },
-  { "rose-pine/neovim", name = "rose-pine", event = "VeryLazy" },
-  { "maxmx03/fluoromachine.nvim" },
-  { "dundargoc/fakedonalds.nvim" },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("cyberdream").setup({
-        -- Recommended - see "Configuring" below for more config options
-        transparent = true,
-        italic_comments = true,
-        hide_fillchars = true,
-        borderless_telescope = true,
-        terminal_colors = true,
-      })
-      vim.cmd("colorscheme cyberdream") -- set the colorscheme
-    end,
-  },
+  { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
+  prequire("john.colors"),
 
   -- pairing plugins
   { "machakann/vim-sandwich", event = "VeryLazy" }, -- surrounding stuff with stuff
@@ -225,16 +201,8 @@ local plugins = {
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
   { "supermaven-inc/supermaven-nvim", config = setup("supermaven-nvim", {}) },
   { "ggandor/leap.nvim", dependencies = { { "ggandor/flit.nvim", config = setup("flit") } } },
-  -- { "hsanson/vim-android" },
 
-  -- I have the funny
-  { "alec-gibson/nvim-tetris", cmd = "Tetris" },
-  { "seandewar/nvimesweeper", cmd = "Nvimesweeper" },
-  { "seandewar/killersheep.nvim", cmd = "KillKillKill" },
-  { "rktjmp/shenzhen-solitaire.nvim", cmd = "ShenzhenSolitaireNewGame" },
-  { "alanfortlink/blackjack.nvim", cmd = "BlackJackNewGame" },
-  { "ryoppippi/bad-apple.vim", cmd = "BadApple", dependencies = "vim-denops/denops.vim" },
-  { dir = "~/projects/typing-test" },
+  prequire("john.extras"),
 }
 
 M.setup = function()
