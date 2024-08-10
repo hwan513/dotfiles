@@ -8,6 +8,7 @@ local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used ny lots of plugins
   { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
   prequire("john.colors"),
+  prequire("john.ui"),
 
   -- pairing plugins
   { "machakann/vim-sandwich", event = "VeryLazy" }, -- surrounding stuff with stuff
@@ -45,13 +46,6 @@ local plugins = {
   },
 
   -- user interface {{{
-  { "nvim-tree/nvim-web-devicons", lazy = true },
-  { "nvim-tree/nvim-tree.lua", keys = "<C-e>", config = req("john.interface.nvim-tree") },
-  { "stevearc/oil.nvim", config = setup("oil") },
-  { "akinsho/bufferline.nvim", event = "VeryLazy", config = req("john.interface.bufferline") },
-  { "famiu/bufdelete.nvim", cmd = "Bdelete" }, -- delete buffers nicely
-  { "nvim-lualine/lualine.nvim", event = "VeryLazy", config = req("john.interface.lualine") }, -- status line plugin
-  { "norcalli/nvim-colorizer.lua", event = { "BufNewFile", "BufReadPre" }, config = setup("colorizer") }, -- coloring viewer for html css stuff
 
   -- }}}
   -- completion and snippets
