@@ -6,45 +6,6 @@ luasnip.filetype_extend("markdown", { "tex" })
 require("luasnip/loaders/from_vscode").lazy_load()
 -- require("luasnip/loaders/from_snipmate").lazy_load()
 
---   פּ ﯟ   some other good icons
--- local kind_icons = {
--- Array = " ",
--- Boolean = " ",
--- Class = " ",
--- Color = " ",
--- Constant = " ",
--- Constructor = " ",
--- Copilot = " ",
--- Enum = " ",
--- EnumMember = " ",
--- Event = " ",
--- Field = " ",
--- File = " ",
--- Folder = " ",
--- Function = " ",
--- Interface = " ",
--- Key = " ",
--- Keyword = " ",
--- Method = "m ",
--- Module = " ",
--- Namespace = " ",
--- Null = "ﳠ ",
--- Number = " ",
--- Object = " ",
--- Operator = " ",
--- Package = " ",
--- Property = " ",
--- Reference = " ",
--- Snippet = " ",
--- String = " ",
--- Struct = " ",
--- Text = " ",
--- TypeParameter = " ",
--- Unit = " ",
--- Value = " ",
--- Variable = " ",
--- }
-
 local kind_icons = {
   Text = "󰉿",
   Method = "󰆧",
@@ -71,6 +32,7 @@ local kind_icons = {
   Event = "",
   Operator = "󰆕",
   TypeParameter = "",
+  Supermaven = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -96,8 +58,8 @@ cmp.setup({
     }),
     ["<C-e>"] = cmp.config.disable,
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<C-N>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-    ["<C-P>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+    -- ["<C-N>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+    -- ["<C-P>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
     -- ["<Tab>"] = cmp.mapping(function(fallback)
@@ -123,12 +85,12 @@ cmp.setup({
     --     fallback()
     --   end
     -- end, { "i", "s" }),
-    ["<C-j>"] = cmp.mapping(function()
+    ["<C-n>"] = cmp.mapping(function()
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       end
     end, { "i", "s" }),
-    ["<C-k>"] = cmp.mapping(function()
+    ["<C-p>"] = cmp.mapping(function()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       end
