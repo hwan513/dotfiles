@@ -14,7 +14,6 @@ end
 
 local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used ny lots of plugins
-  { "dstein64/vim-startuptime", cmd = { "StartupTime" } }, -- startup timer,
   { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
   prequire("john.colors"),
 
