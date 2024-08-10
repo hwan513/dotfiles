@@ -167,7 +167,12 @@ local plugins = {
   {
     "TimUntersberger/neogit",
     cmd = "Neogit",
-    config = setup("neogit", { integrations = { diffview = true, telescope = true } }),
+    opts = {
+      integrations = { diffview = true, telescope = true },
+      commit_editor = {
+        staged_diff_split_kind = "auto",
+      },
+    },
     keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" } },
   },
 
