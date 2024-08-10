@@ -8,15 +8,22 @@ M = {
     end
     return result
   end,
+
   setup = function(modname, args)
     return function()
       require(modname).setup(args)
     end
   end,
+
   req = function(modname)
     return function()
       require(modname)
     end
+  end,
+
+  map = vim.api.nvim_set_keymap, -- keymaps function shortened
+  map_opts = function(desc)
+    return { noremap = true, silent = true, desc = desc }
   end,
 }
 
