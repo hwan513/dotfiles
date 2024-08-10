@@ -1,4 +1,3 @@
-local icons = require("john.misc.icons")
 local map = require("john.utils").map
 local map_opts = require("john.utils").map_opts
 
@@ -18,7 +17,6 @@ local function on_attach(bufnr)
 
   -- Mappings migrated from view.mappings.list
   vim.keymap.set("n", "d", api.fs.trash, opts("Trash"))
-  vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
   vim.keymap.set("n", "_", api.tree.change_root_to_node, opts("CD"))
 end
 
@@ -29,14 +27,26 @@ local opts = {
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
   update_cwd = true,
+  view = {
+    width = 40,
+  },
   renderer = {
-    root_folder_label = false,
+    full_name = true,
+    hidden_display = "simple",
+    highlight_opened_files = "all",
+    indent_markers = {
+      enable = true,
+      inline_arrows = false,
+    },
+    indent_width = 2,
     icons = {
-      glyphs = {
-        git = {
-          unstaged = "",
-          staged = "󰗡",
-        },
+      git_placement = "right_align",
+      hidden_placement = "right_align",
+      bookmarks_placement = "signcolumn",
+      show = {
+        folder_arrow = false,
+        modified = false,
+        diagnostics = false,
       },
     },
     group_empty = true,
@@ -51,19 +61,10 @@ local opts = {
     -- update_cwd = true,
     ignore_list = {},
   },
-  diagnostics = {
-    enable = true,
-    icons = {
-      error = icons.diagnostics.Error,
-      warning = icons.diagnostics.Warn,
-      hint = icons.diagnostics.Hint,
-      info = icons.diagnostics.Info,
-    },
-  },
 }
 
 return {
   "nvim-tree/nvim-tree.lua",
   opts = opts,
-  cmd = "NvimTreeToggle",
+  keys = { { "<C-e>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" } },
 }

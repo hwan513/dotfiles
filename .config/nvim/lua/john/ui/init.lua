@@ -3,7 +3,9 @@ local setup = require("john.utils").setup
 local req = require("john.utils").req
 
 return {
+  -- yazi is on the radar
   prequire("john.ui.nvim-tree"),
+  prequire("john.ui.mini-icons"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
   { "akinsho/bufferline.nvim", event = "VeryLazy", config = req("john.interface.bufferline") },
   { "famiu/bufdelete.nvim", cmd = "Bdelete" }, -- delete buffers nicely
