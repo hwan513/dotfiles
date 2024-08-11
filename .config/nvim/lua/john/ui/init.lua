@@ -8,5 +8,6 @@ return {
   require("john.ui.lualine"),
   require("john.ui.dropbar"),
   require("john.ui.nvim-ufo"),
+  require("john.ui.statuscol"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
 }
