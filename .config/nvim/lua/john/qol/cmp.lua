@@ -1,40 +1,11 @@
 local prequire = require("john.utils").prequire
 local cmp = prequire("cmp")
 local luasnip = prequire("luasnip")
+local kind_icons = require("john.misc.icons").kinds
 
 luasnip.filetype_extend("markdown", { "tex" })
 require("luasnip/loaders/from_vscode").lazy_load()
 -- require("luasnip/loaders/from_snipmate").lazy_load()
-
-local kind_icons = {
-  Text = "󰉿",
-  Method = "󰆧",
-  Function = "󰊕",
-  Constructor = "",
-  Field = "󰜢",
-  Variable = "󰀫",
-  Class = "󰠱",
-  Interface = "",
-  Module = "",
-  Property = "󰜢",
-  Unit = "󰑭",
-  Value = "󰎠",
-  Enum = "",
-  Keyword = "󰌋",
-  Snippet = "",
-  Color = "󰏘",
-  File = "󰈙",
-  Reference = "󰈇",
-  Folder = "󰉋",
-  EnumMember = "",
-  Constant = "󰏿",
-  Struct = "󰙅",
-  Event = "",
-  Operator = "󰆕",
-  TypeParameter = "",
-  Supermaven = "",
-}
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local check_backspace = function()
   local col = vim.fn.col(".") - 1
