@@ -7,5 +7,6 @@ return {
   require("john.ui.bufferline"),
   require("john.ui.lualine"),
   require("john.ui.dropbar"),
+  require("john.ui.nvim-ufo"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
 }

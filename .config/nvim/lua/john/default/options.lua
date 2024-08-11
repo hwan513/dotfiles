@@ -25,7 +25,7 @@ O.smarttab = true -- inserting tab works smart
 O.tabstop = 2 -- how many spaces per tab
 -- }}}
 -- foldng {{{
-O.foldcolumn = "2" -- extra margin to the left
+O.foldcolumn = "1" -- extra margin to the left
 O.foldenable = true -- enable folding
 O.foldlevelstart = 10 -- default number of open folds
 O.foldnestmax = 10 --maximum number of nested folds
