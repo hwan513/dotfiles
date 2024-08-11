@@ -1,9 +1,9 @@
 return {
   "luukvbaal/statuscol.nvim",
-  config = function()
+  opts = function()
     vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
     local builtin = require("statuscol.builtin")
-    require("statuscol").setup({
+    return {
       -- configuration goes here, for example:
       relculright = true,
       ft_ignore = { "NvimTree", "toggleterm", "NeogitStatus", "lazy", "help", "Trouble" },
@@ -16,6 +16,6 @@ return {
       clickhandlers = { -- builtin click handlers
         FoldOther = false,
       },
-    })
+    }
   end,
 }
