@@ -1,4 +1,3 @@
--- local hipatterns = require("mini.hipatterns")
 return {
   "echasnovski/mini.hipatterns",
   event = { "VeryLazy" },
