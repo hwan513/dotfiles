@@ -43,6 +43,13 @@ local opts = {
       git_placement = "right_align",
       hidden_placement = "right_align",
       bookmarks_placement = "signcolumn",
+      glyphs = {
+        git = {
+          staged = "▴",
+          unstaged = "✦",
+          deleted = "𐄂",
+        },
+      },
       show = {
         folder_arrow = false,
         modified = false,
