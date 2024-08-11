@@ -37,8 +37,6 @@ local setup = function()
           ["<C-n>"] = actions.move_selection_next,
           ["<C-p>"] = actions.move_selection_previous,
 
-          ["<Esc>"] = actions.close,
-
           ["<Down>"] = actions.move_selection_next,
           ["<Up>"] = actions.move_selection_previous,
 
