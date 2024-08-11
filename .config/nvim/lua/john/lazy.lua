@@ -9,9 +9,8 @@ local plugins = {
   { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
   prequire("john.colors"),
   prequire("john.ui"),
-
-  -- pairing plugins
-  { "machakann/vim-sandwich", event = "VeryLazy" }, -- surrounding stuff with stuff
+  prequire("john.editing"),
+  prequire("john.extras"),
 
   -- treesitter
   {
@@ -20,19 +19,6 @@ local plugins = {
     build = ":TSUpdate",
     event = { "VeryLazy" },
     dependencies = {
-      { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-      -- { "lukas-reineke/indent-blankline.nvim", config = req("john.interface.indentline") }, -- shows indent level with line
-      { "windwp/nvim-autopairs", config = req("john.qol.autopairs") }, -- autopair brackets and quotations
-      { "windwp/nvim-ts-autotag", config = setup("nvim-ts-autotag") }, -- automatically add tags to end of documents
-      {
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        config = function()
-          require("ts_context_commentstring").setup({
-            enable_autocmd = false,
-          })
-          vim.g.skip_ts_context_commentstring_module = true
-        end,
-      },
       -- { "nvim-treesitter/nvim-treesitter-textobjects", config = setup("john.treesitter.textobjects") },
       { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
       { "RRethy/vim-illuminate", config = req("john.qol.illuminate") }, -- highlights current thing under cursor
@@ -44,30 +30,6 @@ local plugins = {
     build = ":TSUpdate",
     config = setup("tree-sitter-rstml"),
   },
-
-  -- user interface {{{
-
-  -- }}}
-  -- completion and snippets
-  {
-    "hrsh7th/nvim-cmp",
-    config = function()
-      require("john.qol.cmp")
-      require("john.lsp.handlers").setup()
-    end,
-    event = { "InsertEnter", "CmdlineEnter" },
-    dependencies = {
-      "hrsh7th/cmp-buffer", -- buffer completions
-      "hrsh7th/cmp-path", -- path completions
-      "hrsh7th/cmp-cmdline", -- cmdline completions
-      "saadparwaiz1/cmp_luasnip", -- snippet completions
-      "hrsh7th/cmp-nvim-lsp", -- lsp completions
-      "hrsh7th/cmp-nvim-lua", -- lua completions for nvim config
-      "andersevenrud/cmp-tmux", -- tmux completions
-      "L3MON4D3/LuaSnip", --snippet engine
-      "rafamadriz/friendly-snippets", -- a bunch of snippets to use
-    },
-  }, -- The completion plugin
 
   -- language server protocol {{{
   {
@@ -100,29 +62,6 @@ local plugins = {
     },
   }, -- enable LSP
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
-
-  -- Markdown Editing
-  { "vim-pandoc/vim-pandoc-syntax", ft = "markdown" },
-  { "preservim/vim-markdown", ft = "markdown" },
-  { "lukas-reineke/headlines.nvim", ft = "markdown" },
-
-  -- Typst Editing
-  { "kaarmu/typst.vim", ft = { "typst", "typ" } },
-  {
-    "chomosuke/typst-preview.nvim",
-    ft = "typst",
-    version = "0.3.*",
-    build = function()
-      require("typst-preview").update()
-    end,
-  },
-  {
-    "lervag/vimtex",
-    init = function()
-      vim.g.vimtex_view_method = "sioyek"
-      vim.g.vimtex_compiler_method = "tectonic"
-    end,
-  },
 
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
@@ -178,7 +117,6 @@ local plugins = {
 
   -- utility
   { "numToStr/Navigator.nvim", event = "VeryLazy", config = req("john.qol.navigator") },
-  { "numToStr/Comment.nvim", keys = { "gcc", { "gc", mode = "v" } }, config = req("john.qol.comment") },
   { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m" }) },
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
   {
@@ -191,8 +129,6 @@ local plugins = {
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
   { "supermaven-inc/supermaven-nvim", opts = {} },
   { "ggandor/leap.nvim", dependencies = { { "ggandor/flit.nvim", config = setup("flit") } } },
-
-  prequire("john.extras"),
 }
 
 M.setup = function()
