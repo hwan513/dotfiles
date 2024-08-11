@@ -6,6 +6,6 @@ return {
   require("john.ui.mini-hipatterns"),
   require("john.ui.bufferline"),
   require("john.ui.lualine"),
-  { "Bekaboo/dropbar.nvim", dependencies = { "nvim-telescope/telescope-fzf-native.nvim" }, event = "LspAttach" },
+  require("john.ui.dropbar"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
 }
