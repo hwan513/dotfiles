@@ -8,6 +8,6 @@ return {
   prequire("john.ui.mini-bufremove"),
   prequire("john.ui.mini-hipatterns"),
   prequire("john.ui.bufferline"),
+  prequire("john.ui.lualine"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
-  { "nvim-lualine/lualine.nvim", event = "VeryLazy", config = req("john.interface.lualine") }, -- status line plugin
 }

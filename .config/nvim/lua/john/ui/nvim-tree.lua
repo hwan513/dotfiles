@@ -31,6 +31,7 @@ local opts = {
     width = 40,
   },
   renderer = {
+    root_folder_label = false,
     full_name = true,
     hidden_display = "simple",
     highlight_opened_files = "all",
