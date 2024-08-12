@@ -51,28 +51,27 @@ toggleterm.setup({
 })
 
 -- Compile and run code
-local function CompileRun()
-  local fp = fn.expand("%") -- full filename
-  local fe = fn.expand("%<") -- file without extention
-  local ft = bo.filetype -- filetypes
-  local rf = {
-    c = string.format("gcc %s -Wall -lm -o %s && time ./%s", fp, fe, fe),
-    cpp = string.format("g++ %s -Wall -lm -o %s && time ./%s", fp, fe, fe),
-    java = string.format("javac %s && time java %s", fp, fe),
-    -- java = "mjr",
-    rust = "cargo run",
-    lua = string.format("time luajit %s", fp),
-    sh = string.format("time bash %s", fp),
-    python = string.format("time python3 %s", fp),
-    html = string.format("safari %s &", fp),
-    -- matlab = string.format("octave %s", fp),
-  }
-  -- vim.api.nvim_command("!" .. rf[ft])
-  api.nvim_command("silent w")
-  api.nvim_command("silent TermExec open=0 cmd='" .. rf[ft] .. "'")
-  print("TermExec cmd=" .. rf[ft])
-end
-
-api.nvim_create_user_command("CompileRun", CompileRun, {})
-keymap("n", "<leader>\\", ":CompileRun<cr>", { noremap = true, silent = true })
-keymap("n", "<leader><cr>", ":CompileRun<cr>:ToggleTerm<cr>", { noremap = true, silent = true })
+-- local function CompileRun()
+--   local fp = fn.expand("%") -- full filename
+--   local fe = fn.expand("%<") -- file without extention
+--   local ft = bo.filetype -- filetypes
+--   local rf = {
+--     c = string.format("gcc %s -Wall -lm -o %s && time ./%s", fp, fe, fe),
+--     cpp = string.format("g++ %s -Wall -lm -o %s && time ./%s", fp, fe, fe),
+--     java = string.format("javac %s && time java %s", fp, fe),
+--     -- java = "mjr",
+--     rust = "cargo run",
+--     lua = string.format("time luajit %s", fp),
+--     sh = string.format("time bash %s", fp),
+--     python = string.format("time python3 %s", fp),
+--     html = string.format("safari %s &", fp),
+--     -- matlab = string.format("octave %s", fp),
+--   }
+--   -- vim.api.nvim_command("!" .. rf[ft])
+--   api.nvim_command("silent w")
+--   api.nvim_command("silent TermExec open=0 cmd='" .. rf[ft] .. "'")
+--   print("TermExec cmd=" .. rf[ft])
+-- end
+-- api.nvim_create_user_command("CompileRun", CompileRun, {})
+-- keymap("n", "<leader>\\", ":CompileRun<cr>", { noremap = true, silent = true })
+-- keymap("n", "<leader><cr>", ":CompileRun<cr>:ToggleTerm<cr>", { noremap = true, silent = true })
