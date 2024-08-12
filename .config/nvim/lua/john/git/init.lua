@@ -1,5 +1,6 @@
+local prequire = require("john.utils").prequire
 return {
-  require("john.git.neogit"),
-  require("john.git.gitsigns"),
+  prequire("john.git.neogit"),
+  prequire("john.git.gitsigns"),
   { "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
 }

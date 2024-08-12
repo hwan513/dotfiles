@@ -1,13 +1,9 @@
+local prequire = require("john.utils").prequire
 return {
   -- yazi is on the radar
-  require("john.ui.nvim-tree"),
-  require("john.ui.mini-icons"),
-  require("john.ui.mini-bufremove"),
-  require("john.ui.mini-hipatterns"),
-  require("john.ui.bufferline"),
-  require("john.ui.lualine"),
-  require("john.ui.dropbar"),
-  require("john.ui.nvim-ufo"),
-  require("john.ui.statuscol"),
+  prequire("john.ui.mini-bufremove"),
+  prequire("john.ui.mini-hipatterns"),
+  prequire("john.ui.mini-icons"),
+  prequire("john.ui.nvim-ufo"),
   { "stevearc/oil.nvim", opts = { view_options = { show_hidden = true } } },
 }

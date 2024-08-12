@@ -9,6 +9,7 @@ local plugins = {
   { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
   prequire("john.colors"),
   prequire("john.ui"),
+  prequire("john.editor"),
   prequire("john.coding"),
   prequire("john.extras"),
   prequire("john.git"),
