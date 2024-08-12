@@ -12,25 +12,7 @@ local plugins = {
   prequire("john.editing"),
   prequire("john.extras"),
   prequire("john.git"),
-
-  -- treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    config = req("john.treesitter.treesitter"),
-    build = ":TSUpdate",
-    event = { "VeryLazy" },
-    dependencies = {
-      -- { "nvim-treesitter/nvim-treesitter-textobjects", config = setup("john.treesitter.textobjects") },
-      { "RRethy/nvim-treesitter-textsubjects", config = req("john.treesitter.textsubjects") },
-      { "RRethy/vim-illuminate", config = req("john.qol.illuminate") }, -- highlights current thing under cursor
-    },
-  }, -- better syntax highlighting and other stuff
-  {
-    "rayliwell/tree-sitter-rstml",
-    dependencies = { "nvim-treesitter" },
-    build = ":TSUpdate",
-    config = setup("tree-sitter-rstml"),
-  },
+  prequire("john.treesitter"),
 
   -- language server protocol {{{
   {
@@ -59,9 +41,9 @@ local plugins = {
           "nvimtools/none-ls-extras.nvim",
         },
       },
-      { "folke/trouble.nvim", config = req("john.interface.trouble") }, -- display the qf window for stuff
     },
   }, -- enable LSP
+  require("john.lsp.trouble"),
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
 
   -- -- debug adaptor protocol
