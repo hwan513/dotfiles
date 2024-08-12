@@ -8,4 +8,5 @@ return {
   { "echasnovski/mini.surround", opts = {}, event = "VeryLazy" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { indent = { char = "│" } }, event = "VeryLazy" },
   { "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
+  { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, opts = { cut_key = "m" } },
 }
