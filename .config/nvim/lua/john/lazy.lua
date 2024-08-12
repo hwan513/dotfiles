@@ -11,6 +11,7 @@ local plugins = {
   prequire("john.ui"),
   prequire("john.editing"),
   prequire("john.extras"),
+  prequire("john.git"),
 
   -- treesitter
   {
@@ -99,22 +100,6 @@ local plugins = {
       "debugloop/telescope-undo.nvim",
     },
   },
-
-  -- git stuff
-  { "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, config = req("john.interface.gitsigns") },
-  { "sindrets/diffview.nvim", cmd = "DiffviewOpen" },
-  {
-    "TimUntersberger/neogit",
-    cmd = "Neogit",
-    opts = {
-      integrations = { diffview = true, telescope = true },
-      commit_editor = {
-        staged_diff_split_kind = "auto",
-      },
-    },
-    keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" } },
-  },
-
   -- utility
   { "numToStr/Navigator.nvim", event = "VeryLazy", config = req("john.qol.navigator") },
   { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m" }) },
