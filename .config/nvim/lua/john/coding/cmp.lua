@@ -8,7 +8,7 @@ return {
     "hrsh7th/cmp-nvim-lsp", -- lsp completions
     "hrsh7th/cmp-nvim-lua", -- lua completions for nvim config
     "andersevenrud/cmp-tmux", -- tmux completions
-    require("john.editing.snippets"),
+    require("john.coding.snippets"),
   },
   opts = function()
     require("john.lsp.handlers").setup() -- TODO: this should be moved into separate file
