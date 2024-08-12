@@ -84,8 +84,6 @@ local plugins = {
     },
   },
   -- utility
-  { "numToStr/Navigator.nvim", event = "VeryLazy", config = req("john.qol.navigator") },
-  { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, config = setup("cutlass", { cut_key = "m" }) },
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
   {
     "akinsho/toggleterm.nvim",
