@@ -1,3 +1,4 @@
+local ft_ignore = require("john.utils").ft_ignore
 return {
   "luukvbaal/statuscol.nvim",
   opts = function()
@@ -6,7 +7,7 @@ return {
     return {
       -- configuration goes here, for example:
       relculright = true,
-      ft_ignore = { "NvimTree", "toggleterm", "NeogitStatus", "lazy", "help", "Trouble" },
+      ft_ignore = ft_ignore,
       segments = {
         { sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true }, click = "v:lua.ScSa" },
         { sign = { namespace = { "diagnostic" }, colwidth = 2, maxwidth = 1 }, click = "v:lua.ScSa" },

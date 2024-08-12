@@ -25,6 +25,8 @@ M = {
   map_opts = function(desc)
     return { noremap = true, silent = true, desc = desc }
   end,
+
+  ft_ignore = { "NvimTree", "toggleterm", "NeogitStatus", "lazy", "help", "Trouble" },
 }
 
 return M
