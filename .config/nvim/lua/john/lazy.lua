@@ -22,8 +22,19 @@ local plugins = {
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     event = "VeryLazy",
   },
-  { "folke/neodev.nvim" },
-  { "folke/neoconf.nvim", config = setup("neoconf") },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  { "folke/neoconf.nvim", opts = {} },
   {
     "neovim/nvim-lspconfig",
     config = req("lspconfig"),
@@ -46,6 +57,7 @@ local plugins = {
   }, -- enable LSP
   require("john.lsp.trouble"),
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
+  { "linux-cultist/venv-selector.nvim", branch = "regexp", opts = {}, cmd = { "VenvSelect" } },
 
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
