@@ -26,7 +26,7 @@ M = {
     return { noremap = true, silent = true, desc = desc }
   end,
 
-  ft_ignore = { "NvimTree", "toggleterm", "NeogitStatus", "lazy", "help", "Trouble" },
+  ft_ignore = { "NvimTree", "toggleterm", "NeogitStatus", "lazy", "help", "Trouble", "dashboard" },
 }
 
 return M
