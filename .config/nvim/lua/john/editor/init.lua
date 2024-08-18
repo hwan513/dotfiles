@@ -5,4 +5,5 @@ return {
   prequire("john.editor.lualine"),
   prequire("john.editor.nvim-tree"),
   prequire("john.editor.statuscol"),
+  prequire("john.editor.toggleterm"),
 }

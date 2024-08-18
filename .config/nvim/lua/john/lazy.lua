@@ -39,12 +39,6 @@ local plugins = {
 
   -- utility
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    keys = "<C-\\>",
-    config = req("john.interface.terminal"),
-  }, -- toggle nvim terminal
   { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
   { "supermaven-inc/supermaven-nvim", opts = {} },
