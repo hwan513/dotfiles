@@ -12,8 +12,6 @@ local plugins = {
   prequire("john.telescope"),
   prequire("john.lsp"),
   prequire("john.interface.noice"),
-
-  { "folke/persistence.nvim", event = "BufReadPre", opts = {} }, -- session manager
 }
 
 M.setup = function()
