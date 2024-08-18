@@ -14,6 +14,8 @@ local plugins = {
   prequire("john.extras"),
   prequire("john.git"),
   prequire("john.treesitter"),
+  prequire("john.telescope"),
+  prequire("john.lsp"),
 
   -- language server protocol {{{
   {
@@ -22,42 +24,6 @@ local plugins = {
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     event = "VeryLazy",
   },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-  { "folke/neoconf.nvim", opts = {} },
-  {
-    "neovim/nvim-lspconfig",
-    config = req("lspconfig"),
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      { "williamboman/mason.nvim", config = req("john.lsp.mason") },
-      { "stevearc/conform.nvim", config = req("john.lsp.conform") },
-      { "williamboman/mason-lspconfig.nvim" },
-      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
-      { "jayp0521/mason-null-ls.nvim" },
-      { "mfussenegger/nvim-jdtls" },
-      {
-        "nvimtools/none-ls.nvim",
-        config = req("john.lsp.null-ls"),
-        dependencies = {
-          "nvimtools/none-ls-extras.nvim",
-        },
-      },
-    },
-  }, -- enable LSP
-  require("john.lsp.trouble"),
-  { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
-  { "linux-cultist/venv-selector.nvim", branch = "regexp", opts = {}, cmd = { "VenvSelect" } },
 
   -- -- debug adaptor protocol
   -- -- one day I'll work more on lazy loading eveything
@@ -71,30 +37,6 @@ local plugins = {
   --   },
   -- },
 
-  -- telescope
-  {
-    "ahmedkhalf/project.nvim",
-    event = "VeryLazy",
-    config = setup("project_nvim", { manual_mode = true }),
-  }, -- project managing
-  {
-    "AckslD/nvim-neoclip.lua",
-    event = "VeryLazy",
-    config = setup("neoclip", { enable_persistent_history = true }),
-    dependencies = { "kkharji/sqlite.lua" },
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    config = setup("john.interface.telescope"),
-    keys = require("john.interface.telescope").keys,
-    cmd = "Telescope",
-    dependencies = {
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-telescope/telescope-frecency.nvim",
-      "nvim-telescope/telescope-ui-select.nvim",
-      "debugloop/telescope-undo.nvim",
-    },
-  },
   -- utility
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
   {
