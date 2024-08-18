@@ -6,4 +6,5 @@ return {
   prequire("john.editor.nvim-tree"),
   prequire("john.editor.statuscol"),
   prequire("john.editor.toggleterm"),
+  { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
 }
