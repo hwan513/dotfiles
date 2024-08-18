@@ -20,8 +20,6 @@ local plugins = {
   -- utility
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
   { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
-  -- { "Exafunction/codeium.vim", commit = "289eb72" },
-  { "supermaven-inc/supermaven-nvim", opts = {} },
 }
 
 M.setup = function()

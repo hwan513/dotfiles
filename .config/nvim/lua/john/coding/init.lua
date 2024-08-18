@@ -11,4 +11,6 @@ return {
   { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, opts = { cut_key = "m" } },
   { "echasnovski/mini.jump2d", opts = {}, event = "VeryLazy" },
   { "echasnovski/mini.jump", opts = {}, event = "VeryLazy" },
+  -- { "Exafunction/codeium.vim", commit = "289eb72" },
+  { "supermaven-inc/supermaven-nvim", opts = {}, event = "InsertEnter" },
 }
