@@ -1,4 +1,5 @@
 local req = require("john.utils").req
+local setup = require("john.utils").setup
 return {
   -- {
   --   "folke/lazydev.nvim",
@@ -15,7 +16,7 @@ return {
   { "folke/neoconf.nvim", opts = {} },
   {
     "neovim/nvim-lspconfig",
-    config = req("lspconfig"),
+    config = setup("john.lsp.handlers"),
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "williamboman/mason.nvim", config = req("john.lsp.mason") },

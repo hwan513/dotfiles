@@ -11,7 +11,6 @@ return {
     require("john.coding.snippets"),
   },
   opts = function()
-    require("john.lsp.handlers").setup() -- TODO: this should be moved into separate file
     local cmp = require("cmp")
     local kind_icons = require("john.misc.icons").kinds
     return {
