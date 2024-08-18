@@ -33,8 +33,8 @@ return {
       disabled_filetypes = { "toggleterm", "NeogitStatus", "lazy" },
     },
     sections = {
-      lualine_a = { "branch" },
-      lualine_b = { diff, diagnostics },
+      lualine_a = {},
+      lualine_b = { "branch", diff, diagnostics },
       lualine_c = { filename },
       lualine_x = { "encoding", "filetype" },
       lualine_y = { "location" },
