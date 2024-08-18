@@ -7,4 +7,6 @@ return {
   prequire("john.editor.statuscol"),
   prequire("john.editor.toggleterm"),
   { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
+  -- { "nvimdev/dashboard-nvim", event = "VimEnter", opts = {} },
+  { "rmagatti/auto-session", lazy = false, opts = { auto_restore_enabled = false } },
 }
