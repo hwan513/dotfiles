@@ -22,7 +22,6 @@ local plugins = {
   { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
   { "supermaven-inc/supermaven-nvim", opts = {} },
-  { "ggandor/leap.nvim", dependencies = { { "ggandor/flit.nvim", config = setup("flit") } } },
 }
 
 M.setup = function()
