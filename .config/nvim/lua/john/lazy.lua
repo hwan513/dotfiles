@@ -16,26 +16,7 @@ local plugins = {
   prequire("john.treesitter"),
   prequire("john.telescope"),
   prequire("john.lsp"),
-
-  -- language server protocol {{{
-  {
-    "folke/noice.nvim",
-    config = req("john.interface.noice"),
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-    event = "VeryLazy",
-  },
-
-  -- -- debug adaptor protocol
-  -- -- one day I'll work more on lazy loading eveything
-  -- { "mfussenegger/nvim-dap", lazy = true,
-  --   config = req("john.dap"),
-  --   dependencies = {
-  --     -- issue with lazy loading this plugin causes bufferline.nvim and gitsigns.nvim to create insert mode bugs while using telescope to launch a file from an emtpy buffer
-  --     { "rcarriga/nvim-dap-ui",              config = setup("dapui"), },
-  --     { "theHamsta/nvim-dap-virtual-text",   config = setup("nvim-dap-virtual-text"), },
-  --     { "jbyuki/one-small-step-for-vimkind", ft = "lua" },
-  --   },
-  -- },
+  prequire("john.interface.noice"),
 
   -- utility
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager

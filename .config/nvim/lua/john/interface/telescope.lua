@@ -10,6 +10,7 @@ local setup = function()
   telescope.load_extension("undo")
   telescope.load_extension("neoclip")
   telescope.load_extension("frecency")
+  telescope.load_extension("noice")
 
   local actions = require("telescope.actions")
   -- trouble integration with telescope
