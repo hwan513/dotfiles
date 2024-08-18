@@ -19,7 +19,6 @@ local plugins = {
 
   -- utility
   { "folke/persistence.nvim", event = "BufReadPre", config = setup("persistence") }, -- session manager
-  { "tpope/vim-abolish", event = "VeryLazy" }, -- case coersion, substition, abbreviation
 }
 
 M.setup = function()

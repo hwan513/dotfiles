@@ -13,4 +13,6 @@ return {
   { "echasnovski/mini.jump", opts = {}, event = "VeryLazy" },
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
   { "supermaven-inc/supermaven-nvim", opts = {}, event = "InsertEnter" },
+  -- { "johmsalas/text-case.nvim" },
+  { "gregorias/coerce.nvim", tag = "v3.0.0", config = true },
 }
