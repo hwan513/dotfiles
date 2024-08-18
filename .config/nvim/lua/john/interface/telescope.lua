@@ -6,7 +6,6 @@ local setup = function()
 
   telescope.load_extension("fzf")
   telescope.load_extension("ui-select")
-  telescope.load_extension("projects")
   telescope.load_extension("undo")
   telescope.load_extension("neoclip")
   telescope.load_extension("frecency")
