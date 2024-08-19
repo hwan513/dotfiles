@@ -5,7 +5,7 @@ return {
   opts = {
     indent = { char = "│" },
     exclude = {
-      filetype = ft_ignore,
+      filetypes = ft_ignore,
     },
   },
   event = "VeryLazy",

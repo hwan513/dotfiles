@@ -4,6 +4,7 @@ return {
   prequire("john.coding.cmp"),
   prequire("john.coding.markup"),
   prequire("john.coding.smart-splits"),
+  prequire("john.coding.indent-blankline"),
   { "windwp/nvim-ts-autotag", opts = { opts = { enable_close_on_slash = true } }, event = "VeryLazy" },
   { "echasnovski/mini.surround", opts = {}, event = "VeryLazy" },
   { "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
