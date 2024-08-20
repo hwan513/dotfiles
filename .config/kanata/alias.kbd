@@ -49,4 +49,5 @@
   stdy (layer-switch sturdy-angle)
   gllm (layer-switch gallium-v2-angle)
   engm (layer-switch engrammer)
+  noop (layer-switch noop)
 )
