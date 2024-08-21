@@ -2,5 +2,6 @@
 *.zcompdump
 *.zsh_history
 */nvim/undo
-**/plugins
+**/tmux/plugins
+**/zsh/plugins
 */Spoons/
