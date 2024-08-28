@@ -1,43 +1,20 @@
 local req = require("john.utils").req
 local setup = require("john.utils").setup
+local prequire = require("john.utils").prequire
 return {
-  { "LuaCATS/luassert", name = "luassert-types", lazy = true },
-  { "LuaCATS/busted", name = "busted-types", lazy = true },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-        { path = "luassert-types/library", words = { "assert" } },
-        { path = "busted-types/library", words = { "describe" } },
-      },
-    },
-  },
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  prequire("john.lsp.lazydev"),
+  prequire("john.lsp.conform"),
   { "folke/neoconf.nvim", opts = {} },
   {
     "neovim/nvim-lspconfig",
     config = setup("john.lsp.handlers"),
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = {
       { "williamboman/mason.nvim", config = req("john.lsp.mason") },
-      { "stevearc/conform.nvim", config = req("john.lsp.conform") },
       { "williamboman/mason-lspconfig.nvim" },
-      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
-      { "jayp0521/mason-null-ls.nvim" },
-      { "mfussenegger/nvim-jdtls" },
-      {
-        "nvimtools/none-ls.nvim",
-        config = req("john.lsp.null-ls"),
-        dependencies = {
-          "nvimtools/none-ls-extras.nvim",
-        },
-      },
     },
   }, -- enable LSP
+  { "mfussenegger/nvim-jdtls" },
   require("john.lsp.trouble"),
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
   { "linux-cultist/venv-selector.nvim", branch = "regexp", opts = {}, cmd = { "VenvSelect" } },
