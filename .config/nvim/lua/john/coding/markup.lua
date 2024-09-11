@@ -1,7 +1,12 @@
 return {
   -- Markdown Editing
   { "preservim/vim-markdown", ft = "markdown" },
-  { "lukas-reineke/headlines.nvim", ft = "markdown" },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {},
+    ft = "markdown",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+  },
 
   -- Typst Editing
   { "kaarmu/typst.vim", ft = { "typst" } },
