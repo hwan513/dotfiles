@@ -3,7 +3,7 @@ local M = {}
 local icons = require("john.misc.icons")
 
 M.setup = function()
-  local config = {
+  vim.diagnostic.config({
     signs = {
       text = {
         [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
@@ -12,92 +12,51 @@ M.setup = function()
         [vim.diagnostic.severity.HINT] = icons.diagnostics.Info,
       },
     },
-    virtual_text = false, -- virtual text
-    update_in_insert = false,
-    underline = true,
+    virtual_text = false,
     severity_sort = true,
     float = {
       focusable = false,
       style = "minimal",
       border = "rounded",
-      source = "always",
+      source = true,
       header = "",
-      prefix = "",
     },
-  }
-
-  vim.diagnostic.config(config)
+  })
 
   vim.lsp.inlay_hints = {
     enabled = true,
   }
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
-
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
-end
-
-local function lsp_keymaps(bufnr, client)
-  local keymap = vim.api.nvim_buf_set_keymap -- keymaps function shortened
-  local opts = { noremap = true, silent = true }
-  keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  -- keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  keymap(bufnr, "n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  keymap(bufnr, "n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  keymap(bufnr, "v", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-  -- keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  -- keymap(bufnr, "n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts)
-  keymap(bufnr, "n", "<C-p>", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  keymap(bufnr, "n", "<C-n>", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  -- keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  keymap(bufnr, "n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-  vim.api.nvim_create_user_command("Format", function()
-    vim.lsp.buf.format({ async = true })
-  end, { nargs = 0 })
-
   vim.api.nvim_create_user_command("ToggleInlay", function()
     local inlay_hint = vim.lsp.inlay_hint
     inlay_hint.enable(not inlay_hint.is_enabled())
   end, { nargs = 0 })
 
-  -- Superseded by conform.nvim plugin
-  -- local format_on_save = vim.api.nvim_create_augroup("format_on_save", { clear = true })
-  -- vim.api.nvim_create_autocmd("BufWritePre", {
-  --   callback = function()
-  --     vim.lsp.buf.format({ async = false })
-  --   end,
-  --   group = format_on_save,
-  -- })
+  -- Remove default lsp keymaps
+  vim.keymap.del("n", "grn") -- Rename
+  vim.keymap.del({ "n", "x" }, "gra") -- Code Action
+  vim.keymap.del("n", "grr") -- References
+
+  -- Register keymaps
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local buffer = args.buf ---@type number
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      require("john.lsp.keymaps")(buffer, client)
+    end,
+  })
 end
 
-M.on_attach = function(client, bufnr)
-  -- if client.server_capabilities.inlayHintProvider then
-  --   vim.g.inlay_hints_visible = true
-  --   vim.lsp.inlay_hint.enable(bufnr, true)
-  -- end
-  lsp_keymaps(bufnr)
+M.on_attach = function(client, buffer)
+  -- require("john.lsp.keymaps")(buffer)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
+M.capabilities = function()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  if status_ok then
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+  end
+  return capabilities
 end
-
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

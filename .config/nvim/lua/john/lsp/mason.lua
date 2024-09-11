@@ -41,7 +41,7 @@ local servers = {
   "ruff",
   "taplo",
   "texlab",
-  "tsserver",
+  "ts_ls",
   "typst_lsp",
   "vimls",
 }
@@ -54,7 +54,7 @@ mason_lspconfig.setup({
 for _, server in pairs(servers) do
   local opts = {
     on_attach = require("john.lsp.handlers").on_attach,
-    capabilities = require("john.lsp.handlers").capabilities,
+    capabilities = require("john.lsp.handlers").capabilities(),
   }
   local has_custom_opts, server_custom_opts = pcall(require, "john.lsp.settings." .. server)
   -- use personal custom options if they exist
