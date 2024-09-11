@@ -14,5 +14,5 @@ return {
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
   { "supermaven-inc/supermaven-nvim", opts = {}, event = "InsertEnter" },
   -- { "johmsalas/text-case.nvim" },
-  { "gregorias/coerce.nvim", tag = "v3.0.0", config = true },
+  prequire("john.coding.coerce"),
 }
