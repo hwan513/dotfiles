@@ -18,4 +18,12 @@ return {
   require("john.lsp.trouble"),
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
   { "linux-cultist/venv-selector.nvim", branch = "regexp", opts = {}, cmd = { "VenvSelect" } },
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
+    opts = {},
+  },
 }
