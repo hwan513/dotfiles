@@ -11,6 +11,7 @@ prequire("reloadConfig")
 prequire("keyUtils")
 prequire("finderOpen")
 prequire("clicker")
+prequire("mouselogger")
 
 -- First install spoon install manually from the web
 hs.loadSpoon("SpoonInstall")
