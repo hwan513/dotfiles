@@ -14,6 +14,6 @@ prequire("clicker")
 
 -- First install spoon install manually from the web
 hs.loadSpoon("SpoonInstall")
-spoon.SpoonInstall:andUse("MiroWindowsManager")
 spoon.SpoonInstall:andUse("EmmyLua")
-prequire("windows")
+-- spoon.SpoonInstall:andUse("MiroWindowsManager")
+-- prequire("windows")
