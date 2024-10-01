@@ -43,6 +43,7 @@
   (t! tap-hold fn  150 fn1 150)
   (t! tap-hold fn  150 fn2 150)
   (t! tap-hold esc 150 ext 150)
+  (t! tap-hold M-A-C-; 150 wm 150)
   dvrk (layer-switch dvorak)
   game (layer-switch gaming)
   qwty (layer-switch qwerty)

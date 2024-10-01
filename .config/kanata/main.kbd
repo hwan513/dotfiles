@@ -5,6 +5,7 @@
 (include gallium-v2.kbd)
 (include engrammer.kbd)
 (include noop.kbd)
+(include wm.kbd)
 (include extension.kbd)
 (include fn.kbd)
 (include alias.kbd)
