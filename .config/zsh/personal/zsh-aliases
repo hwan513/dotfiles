@@ -37,3 +37,5 @@ alias cte="cargo test"
 alias ibrew="arch -x86_64 /usr/local/bin/brew"
 alias idotnet="arch -x86_64 /usr/local/bin/dotnet"
 alias ipipx="arch -x86_64 /usr/local/bin/pipx"
+
+alias rr="rye run"
