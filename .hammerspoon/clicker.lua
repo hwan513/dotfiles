@@ -11,11 +11,6 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "l", function()
   end
 end)
 
-function mouseLeftClick()
-  -- Run right mouseclick
-  hs.eventtap.leftClick(hs.mouse.getAbsolutePosition())
-end
-
 function startAutoClicker()
   local pos = hs.mouse.getRelativePosition()
   autoClickerTimer = hs.timer.doEvery(3.20, function()
