@@ -41,8 +41,8 @@ local servers = {
   "ruff",
   "taplo",
   "texlab",
+  "tinymist",
   "ts_ls",
-  "typst_lsp",
   "vimls",
 }
 
