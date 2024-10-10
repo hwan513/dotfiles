@@ -65,7 +65,7 @@ inner.horizontal = 0
 inner.vertical = 0
 outer.left = 0
 outer.bottom = 0
-outer.top = [{ monitor."Built-in Retina Display" = 0 }, 30]
+outer.top = [{ monitor."Built-in Retina Display" = 0 }, 32]
 outer.right = 0
 
 # 'main' binding mode declaration
@@ -142,6 +142,8 @@ cmd-alt-ctrl-shift-7 = 'move-node-to-workspace 7'
 cmd-alt-ctrl-shift-8 = 'move-node-to-workspace 8'
 cmd-alt-ctrl-shift-9 = 'move-node-to-workspace 9'
 
+cmd-alt-ctrl-f = "fullscreen"
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 cmd-alt-ctrl-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -168,3 +170,7 @@ cmd-alt-ctrl-left = ['join-with left', 'mode main']
 cmd-alt-ctrl-down = ['join-with down', 'mode main']
 cmd-alt-ctrl-up = ['join-with up', 'mode main']
 cmd-alt-ctrl-right = ['join-with right', 'mode main']
+
+[[on-window-detected]]
+if.app-id = "com.objective-see.lulu.app"
+run = "layout floating"

@@ -14,6 +14,8 @@
   fcs8 M-C-A-8
   fcs9 M-C-A-9
 
+  flsc M-C-A-f
+
   rsz- M-C-A--
   rsz= M-C-A-=
 
@@ -22,13 +24,14 @@
 
   swch M-C-A-tab
   clsa M-C-A-bspc
+
 )
 
 (deflayer wm
   _     _     _     _     _     _     _     _     _     _     _     _     _     _
   _     @fcs1 @fcs2 @fcs3 @fcs4 @fcs5 @fcs6 @fcs7 @fcs8 @fcs9 _     _     _     @clsa _
   @swch @rsz- @fcsu @rsz= _     _     _     @rsz- @fcsu @rsz= _     _     _     _     _   
-  _     @fcsl @fcsd @fcsr _     _     _     @fcsl @fcsd @fcsr _     _     _           _    
+  @flsc @fcsl @fcsd @fcsr _     _     _     @fcsl @fcsd @fcsr _     _     _           _    
   _     @tile @acco _     _     _     _     _     _     @acco @tile _           @fcsu 
   _     _     _     _             lsft            _     _     _     _     @fcsl @fcsd @fcsr
 )
