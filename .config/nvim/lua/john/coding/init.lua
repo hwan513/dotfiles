@@ -15,4 +15,5 @@ return {
   { "supermaven-inc/supermaven-nvim", opts = {}, event = "InsertEnter" },
   -- { "johmsalas/text-case.nvim" },
   prequire("john.coding.coerce"),
+  prequire("john.coding.refactoring"),
 }
