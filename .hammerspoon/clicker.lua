@@ -13,7 +13,7 @@ end)
 
 function startAutoClicker()
   local pos = hs.mouse.getRelativePosition()
-  autoClickerTimer = hs.timer.doEvery(3.20, function()
+  autoClickerTimer = hs.timer.doEvery(0.01, function()
     hs.eventtap.leftClick(pos, 0)
   end)
 end
