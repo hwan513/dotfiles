@@ -1,22 +1,18 @@
--- local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
--- local words = {}
---
--- for word in io.open(path, "r"):lines() do
---   table.insert(words, word)
--- end
 return {
-  filetypes = { "typst", "typ" }, --  <-- add this
+  filetypes = { "typst", "typ", "latex", "tex", "markdown" }, --  <-- add this
+  use_spellfile = false, -- Uses the value of 'spellfile' as an external file when checking the document
+  window_border = "single", -- How the border should be rendered
   settings = {
     ltex = {
-      -- install ngrams from https://dev.languagetool.org/finding-errors-using-n-gram-data.html
-      -- save the folder at ~/ngrams/en/
-      --   additionalRules = {
-      --     languageModel = "~/ngrams/",
-      --   },
       language = "en-NZ",
+      additionalRules = {
+        enablePickyRules = true,
+        -- -- install ngrams from https://dev.languagetool.org/finding-errors-using-n-gram-data.html
+        -- languageModel = "~/ngrams/",
+      },
+      checkFrequency = "save",
       disabledRules = {
-        ["en-US"] = { "PROFANITY" },
-        ["en-GB"] = { "PROFANITY" },
+        ["en-NZ"] = { "PROFANITY" },
       },
       enabled = {
         "bibtex",
@@ -24,6 +20,7 @@ return {
         "context.tex",
         "html",
         "latex",
+        "tex",
         "markdown",
         "org",
         "restructuredtext",
@@ -31,10 +28,6 @@ return {
         "typ",
         "typst",
       },
-      -- dictionary = {
-      --   ["en-US"] = words,
-      --   ["en-GB"] = words,
-      -- },
     },
   },
 }
