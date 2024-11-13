@@ -6,13 +6,14 @@ local function prequire(call)
   end
 end
 
-prequire("reloadConfig")
+-- First install spoon install manually from the web
+-- hs.loadSpoon("SpoonInstall")
+-- spoon.SpoonInstall:andUse("EmmyLua")
+
 -- prequire("menuUtils")
+prequire("kanata")
 prequire("keyUtils")
 prequire("finderOpen")
 prequire("clicker")
 prequire("mouselogger")
-
--- First install spoon install manually from the web
-hs.loadSpoon("SpoonInstall")
-spoon.SpoonInstall:andUse("EmmyLua")
+prequire("reloadConfig") -- seems to have weird behaviour if not at the bottom
