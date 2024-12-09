@@ -6,7 +6,7 @@ local keys = {
   { "n", "K", vim.lsp.buf.hover, desc = "Hover", has = "textDocument/hover" },
   { "n", "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "textDocument/signatureHelp" },
   { "i", "<C-s>", vim.lsp.buf.signature_help, desc = "Signature Help", has = "textDocument/signatureHelp" },
-  { "n", "ga", vim.lsp.buf.code_action, desc = "Code Action", has = "textDocument/codeAction" },
+  { { "n", "v" }, "ga", vim.lsp.buf.code_action, desc = "Code Action", has = "textDocument/codeAction" },
   { "n", "gn", vim.lsp.buf.rename, desc = "Rename", has = "textDocument/rename" },
   { "n", "gr", vim.lsp.buf.references, desc = "References", has = "textDocument/references" },
   { "n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", desc = "Next Diagnostic" },
