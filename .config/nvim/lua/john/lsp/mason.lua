@@ -43,6 +43,7 @@ local servers = {
   "texlab",
   "tinymist",
   "ts_ls",
+  -- "vale_ls",
   "vimls",
 }
 
