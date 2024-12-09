@@ -1,3 +1,25 @@
+local multiopen = function(prompt_bufnr)
+  local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+  local multi = picker:get_multi_selection()
+
+  if vim.tbl_isempty(multi) then
+    require("telescope.actions").select_default(prompt_bufnr)
+    return
+  end
+
+  require("telescope.actions").close(prompt_bufnr)
+  for _, entry in pairs(multi) do
+    local filename = entry.filename or entry.value
+    local lnum = entry.lnum or 1
+    local lcol = entry.col or 1
+    if filename then
+      vim.cmd(string.format("tabnew +%d %s", lnum, filename))
+      vim.cmd(string.format("normal! %dG%d|", lnum, lcol))
+    end
+  end
+end
+
+-- TODO: properly configure telescope overall
 local setup = function()
   local status_ok, telescope = pcall(require, "telescope")
   if not status_ok then
@@ -9,11 +31,9 @@ local setup = function()
   telescope.load_extension("undo")
   telescope.load_extension("neoclip")
   telescope.load_extension("frecency")
-  telescope.load_extension("noice")
 
   local actions = require("telescope.actions")
-  -- trouble integration with telescope
-  local trouble = require("trouble.sources.telescope")
+  -- TODO: properly configure trouble integration with telescope
 
   telescope.setup({
     defaults = {
@@ -34,6 +54,7 @@ local setup = function()
       },
       mappings = {
         i = {
+          ["<CR>"] = multiopen,
           ["<C-n>"] = actions.move_selection_next,
           ["<C-p>"] = actions.move_selection_previous,
 
@@ -43,7 +64,6 @@ local setup = function()
           ["<C-j>"] = actions.cycle_history_next,
           ["<C-k>"] = actions.cycle_history_prev,
 
-          ["<CR>"] = actions.select_default,
           ["<C-x>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
           ["<C-t>"] = actions.select_tab,
@@ -60,12 +80,11 @@ local setup = function()
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           ["<C-l>"] = actions.complete_tag,
           ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
-          ["<c-t>"] = trouble.open, -- trouble integration
         },
 
         n = {
+          ["<CR>"] = multiopen,
           ["<esc>"] = actions.close,
-          ["<CR>"] = actions.select_default,
           ["<C-x>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
           ["<C-t>"] = actions.select_tab,
@@ -93,7 +112,6 @@ local setup = function()
           ["<PageDown>"] = actions.results_scrolling_down,
 
           ["?"] = actions.which_key,
-          ["<c-t>"] = trouble.open_with_trouble, -- trouble integration
         },
       },
     },
@@ -110,14 +128,9 @@ local setup = function()
         require("telescope.themes").get_dropdown({
           -- even more opts
         }),
-        undo = {
-          -- telescope-undo.nvim config, see below
-        },
-        -- Your extension configuration goes here:
-        -- extension_name = {
-        --   extension_config_key = value,
-        -- }
-        -- please take a look at the readme of the extension you want to configure
+      },
+      undo = {
+        -- telescope-undo.nvim config, see below
       },
     },
   })
