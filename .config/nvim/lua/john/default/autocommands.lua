@@ -41,7 +41,7 @@ autocmd({ "FocusGained", "BufEnter" }, {
 autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.txt", "*.md", "*.tex", "*.typ" },
   callback = function()
-    vim.api.nvim_exec(
+    vim.api.nvim_exec2(
       [[
     " setlocal spell
     set wrap
@@ -74,7 +74,7 @@ local window_sizing = augroup("window_sizing", { clear = true })
 autocmd("FileType", {
   pattern = { "help" },
   callback = function()
-    vim.api.nvim_exec(
+    vim.api.nvim_exec2(
       [[
       wincmd L
       vertical resize 100
@@ -105,6 +105,17 @@ autocmd({ "WinLeave", "VimLeave", "FocusLost" }, {
   pattern = { "*" },
   command = "setlocal nocursorline | setlocal winhighlight=Normal:InactiveWindow",
   group = window_dimming,
+})
+
+autocmd("BufReadPost", {
+  pattern = "*.srt",
+  callback = function()
+    vim.o.conceallevel = 2
+    vim.o.foldlevel = 0
+    vim.o.foldmethod = "expr"
+    vim.o.foldexpr = "(getline(v:lnum)=~'font')?'>1':1"
+    vim.cmd([[ syntax match srtFormat "<font[^>]*>\|<\/font>" conceal ]])
+  end,
 })
 
 -- local formatting = augroup("formatting", { clear = true })
