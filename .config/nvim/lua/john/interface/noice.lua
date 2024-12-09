@@ -2,6 +2,12 @@ return {
   "folke/noice.nvim",
   dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   event = "VeryLazy",
+  init = function()
+    local status_ok, telescope = pcall(require, "telescope")
+    if status_ok then
+      telescope.load_extension("noice")
+    end
+  end,
   opts = {
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
