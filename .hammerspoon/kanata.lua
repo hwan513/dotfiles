@@ -10,6 +10,8 @@ local transientLayers = {
 }
 
 local function SaveLayers()
+  print("Saving layers")
+  print(hs.inspect.inspect(LayerTable))
   io.open(".kanata_layers.json", "w+"):write(hs.json.encode(LayerTable)):close()
 end
 
@@ -35,7 +37,7 @@ OnRead = function(data)
   data = hs.json.decode(data)
   if TcpSocket ~= nil and data ~= nil and data.LayerChange ~= nil then
     local layer = data.LayerChange.new
-    if not transientLayers[layer] then
+    if layer ~= nil and not transientLayers[layer] then
       RecentLayer = layer
     end
     TcpSocket:read("\n")
@@ -62,7 +64,7 @@ AppWatcher = hs.application.watcher.new(function(_, eventType, app)
       newLayer = DefaultLayer
     end
     if newLayer ~= RecentLayer then
-      TcpSocket:write(hs.json.encode({ ChangeLayer = { new = LayerTable[app:bundleID()] } }))
+      TcpSocket:write(hs.json.encode({ ChangeLayer = { new = newLayer } }))
     end
   end
 end)
