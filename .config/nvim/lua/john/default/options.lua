@@ -100,5 +100,5 @@ H.Visual = "gui=bold"
 -- H.InactiveWindow = "guibg=#1F202E"
 -- O.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow"
 -- }}}
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,globals,help,tabpages,winsize,winpos,terminal,localoptions"
 -- vim:foldmethod=marker:foldlevel=2

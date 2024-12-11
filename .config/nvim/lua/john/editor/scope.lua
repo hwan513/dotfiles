@@ -1,5 +1,6 @@
 return {
   "tiagovla/scope.nvim",
+  enabled = false, -- TODO: figure out things; having issues with session management
   opts = {
     hooks = {
       pre_tab_leave = function()

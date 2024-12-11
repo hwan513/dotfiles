@@ -10,7 +10,7 @@ return {
   prequire("john.editor.toggleterm"),
   { "folke/which-key.nvim", event = "VeryLazy", opts = {} }, -- need to finish which-key config
   { "nvimdev/dashboard-nvim", enabled = false, event = "VimEnter", opts = {} },
-  { "rmagatti/auto-session", lazy = false, opts = { silent_restore = false } },
   prequire("john.editor.sniprun"),
+  prequire("john.editor.auto-session"),
   { "MagicDuck/grug-far.nvim", opts = {} },
 }
