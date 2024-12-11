@@ -16,10 +16,12 @@ return {
     { "<leader>l", "<Cmd>BufferMoveNext<CR>", desc = "Move Next Buffer" },
     { "<leader>bb", "<Cmd>BufferPick<CR>", desc = "Pick Buffer" },
     { "<leader>bd", "<Cmd>BufferPickDelete<CR>", desc = "Pick Buffer Delete" },
+    { "<leader>bp", "<Cmd>BufferPin<CR>", desc = "Pick Buffer Delete" },
   },
   opts = {
     icons = {
       button = "",
+      pinned = { button = "", filename = true },
       diagnostics = {
         [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
         [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
