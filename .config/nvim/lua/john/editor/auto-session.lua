@@ -1,7 +1,6 @@
 return {
   "rmagatti/auto-session",
   lazy = false,
-  enabled = false,
   opts = {
     silent_restore = false,
     pre_save_cmds = {
