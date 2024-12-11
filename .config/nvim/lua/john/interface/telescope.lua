@@ -13,7 +13,7 @@ local multiopen = function(prompt_bufnr)
     local lnum = entry.lnum or 1
     local lcol = entry.col or 1
     if filename then
-      vim.cmd(string.format("tabnew +%d %s", lnum, filename))
+      vim.cmd(string.format("edit +%d %s", lnum, filename))
       vim.cmd(string.format("normal! %dG%d|", lnum, lcol))
     end
   end
