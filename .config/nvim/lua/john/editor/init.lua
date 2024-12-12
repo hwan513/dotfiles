@@ -13,4 +13,9 @@ return {
   prequire("john.editor.sniprun"),
   prequire("john.editor.auto-session"),
   { "MagicDuck/grug-far.nvim", opts = {} },
+  {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
+  },
 }
