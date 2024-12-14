@@ -23,12 +23,16 @@ local keys = {
 local function setup(buffer, client)
   local map = require("john.utils").map
   for _, key in ipairs(keys) do
-    local mode, mapping, fn = unpack(key)
     if not key.has or client:supports_method("textDocument/" .. key.has) then
-      map(mode, mapping, fn, { noremap = true, silent = true, buffer = buffer, desc = key.desc })
+      map(key[1], key[2], key[3], { noremap = true, silent = true, buffer = buffer, desc = key.desc })
     end
   end
 end
+
+-- Remove default lsp keymaps
+vim.keymap.del("n", "grn") -- Rename
+vim.keymap.del({ "n", "x" }, "gra") -- Code Action
+vim.keymap.del("n", "grr") -- References
 
 -- Register keymap autocommand
 vim.api.nvim_create_autocmd("LspAttach", {

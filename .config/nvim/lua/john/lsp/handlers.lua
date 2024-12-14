@@ -1,32 +1,7 @@
 local M = {}
-local icons = require("john.misc.icons")
 
 M.setup = function()
-  vim.diagnostic.config({
-    signs = {
-      text = {
-        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
-        [vim.diagnostic.severity.INFO] = icons.diagnostics.Hint,
-        [vim.diagnostic.severity.HINT] = icons.diagnostics.Info,
-      },
-    },
-    virtual_text = false,
-    severity_sort = true,
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = true,
-      header = "",
-    },
-  })
-
-  -- Remove default lsp keymaps
-  vim.keymap.del("n", "grn") -- Rename
-  vim.keymap.del({ "n", "x" }, "gra") -- Code Action
-  vim.keymap.del("n", "grr") -- References
-  -- Setup lsp keymaps
+  require("john.lsp.options")
   require("john.lsp.keymaps")
 end
 
