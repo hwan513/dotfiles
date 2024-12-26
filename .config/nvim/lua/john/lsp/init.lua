@@ -4,7 +4,6 @@ return {
   prequire("john.lsp.lspconfig"),
   prequire("john.lsp.conform"),
   prequire("john.lsp.lazydev"),
-  prequire("john.lsp.lspconfig"),
   prequire("john.lsp.trouble"),
 
   { "mfussenegger/nvim-jdtls" },
