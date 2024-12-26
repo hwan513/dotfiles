@@ -16,6 +16,8 @@ pnpm = "latest"
 "cargo:tauri-cli" = "latest"
 "cargo:trunk" = "latest"
 "cargo:typstfmt" = "latest"
+"cargo:cargo-nextest" = "latest"
+"npm:epub-wordcount" = "latest"
 
 [settings]
 experimental = true
