@@ -33,7 +33,7 @@ M.setup = function()
   vim.opt.rtp:prepend(lazypath)
 
   -- Use a protected call so we don't error out on first use {{{
-  -- disable luacehck
+  -- disable luacheck
   ---@diagnostic disable-next-line: redundant-parameter
   require("lazy").setup({
     spec = plugins,
