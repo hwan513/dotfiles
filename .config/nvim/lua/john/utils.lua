@@ -3,7 +3,7 @@ M = {
   prequire = function(filename)
     local status_ok, result = pcall(require, filename)
     if not status_ok then
-      print(string.format("%s failed to load", filename))
+      vim.notify(string.format("%s failed to load ", filename), vim.log.levels.ERROR)
       return {}
     end
     return result
