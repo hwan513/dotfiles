@@ -28,6 +28,11 @@ zsh_add_file "exports/zsh-rye"
 znap source "zsh-users/zsh-autosuggestions"
 znap source "zsh-users/zsh-syntax-highlighting"
 znap source "zsh-users/zsh-completions"
+
+znap source "zsh-users/zsh-history-substring-search"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 znap source "hlissner/zsh-autopair" && autopair-init
 znap source "kutsan/zsh-system-clipboard" && bindkey -M vicmd Y zsh-system-clipboard-vicmd-vi-yank-eol
 znap source "MichaelAquilina/zsh-you-should-use"
