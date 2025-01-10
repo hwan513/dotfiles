@@ -13,6 +13,7 @@ return {
   prequire("john.editor.sniprun"),
   prequire("john.editor.auto-session"),
   { "MagicDuck/grug-far.nvim", opts = {} },
+  prequire("john.editor.satellite"),
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
