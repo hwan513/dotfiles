@@ -19,4 +19,5 @@ return {
     cmd = "UndotreeToggle",
     keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Toggle Undotree" } },
   },
+  prequire("john.editor.multicursor"),
 }
