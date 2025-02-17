@@ -1,7 +1,7 @@
 [tools]
-node = "22"
+node = "latest"
 java = "21"
-pnpm = "latest"
+pipx = "latest"
 
 # installed cargo programs
 "cargo:cargo-binstall" = "latest"
@@ -17,7 +17,18 @@ pnpm = "latest"
 "cargo:trunk" = "latest"
 "cargo:typstfmt" = "latest"
 "cargo:cargo-nextest" = "latest"
+"cargo:av1an" = "latest"
+"cargo:cargo-wizard" = "latest"
+"cargo:cargo-bloat" = "latest"
+"cargo:twiggy" = "latest"
+"cargo:cargo-info" = "latest"
+"cargo:lazyjj" = "latest"
+
 "npm:epub-wordcount" = "latest"
+"asdf:neovim" = "nightly"
 
 [settings]
 experimental = true
+
+[hooks]
+postinstall = 'npx corepack enable'
