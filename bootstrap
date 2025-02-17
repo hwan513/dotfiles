@@ -10,6 +10,7 @@ git config --global core.excludesfile ~/.gitignore_apple
 
 # Setup hammmerspoon
 curl -L https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip -o SpoonInstall.spoon.zip
+# No idea if I need spoon install anymore
 unzip SpoonInstall.spoon.zip -d .hammerspoon/Spoons
 rm SpoonInstall.spoon.zip
 
@@ -19,6 +20,8 @@ stow .
 # TODO: Rustup setup
 # Install mise dependencies
 # mise install # disabled for lite installation
+
+# Could setup kanata in this step
 
 # Restart shell instance
 exec zsh
