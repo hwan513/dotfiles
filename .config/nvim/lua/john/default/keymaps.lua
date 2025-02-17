@@ -1,10 +1,10 @@
 -- defaults {{{
-local keymap = vim.api.nvim_set_keymap -- keymaps function shortened
-local opts = { noremap = true, silent = true }
+local map = require("john.utils").map
+local opts = require("john.utils").map_opts
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
--- }}}
--- Modes {{{
+
+-- Modes `:h nvim_set_keymap`
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   select_mode = "s",
@@ -12,117 +12,45 @@ vim.g.maplocalleader = ","
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
---   }}}
--- General stuff {{{
-keymap("n", "<C-r>", ":silent redo<CR>", opts) -- quick save
-keymap("n", "u", ":silent undo<CR>", opts) -- quick save
-keymap("n", "<Leader>w", ":silent w!<CR>", opts) -- quick save
-keymap("n", "<Leader>W", ":wqa!<CR>", opts) -- quick save all and quit
-keymap("n", "<Leader>a", ":<C-P><CR>", opts) -- repeat last executed command
--- keymap("n", "<Leader><CR>", ":nohlsearch<CR>", opts) -- remove search highlighting
-keymap("n", "<Leader>v", "ggVG", opts) -- select all
--- keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts) -- cd to current file then pwd
--- keymap("n", "<Space>", "/", opts) -- space will / (search)
--- keymap("n", "<CR>", ":<c-u>put =repeat([''],v:count)<bar>'[+0<CR>", opts) -- enter will create new line
--- }}}
--- Resize splits with arrows {{{
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
--- }}}
--- Buffer commands {{{
-keymap("n", "H", ":bprevious<CR>", opts) -- move to previous buffer
-keymap("n", "L", ":bnext<CR>", opts) -- move to next buffer
-keymap("n", "<leader>c", ":Bdelete!<CR>", opts) -- delete current buffer
--- }}}
--- Tab commands {{{
--- keymap("n", "<leader>tn", ":tabnew<CR>", opts) -- create new tab
--- keymap("n", "<leader>to", ":tabonly<CR>", opts) -- delete other tabs
--- keymap("n", "<leader>tc", ":tabclose<CR>", opts) -- delete current tab
--- keymap("n", "<leader>tm", ":tabmove<CR>", opts) -- move current tab index
--- keymap("n", "<leader>h", "gT", opts) -- move to previous tab
--- keymap("n", "<leader>t", "gt", opts) -- move to next tab
--- }}}
--- Copy and Paste from System clipboard {{{
-keymap("", "<Leader>y", [["+y]], opts)
-keymap("", "<Leader>p", [["+p]], opts)
--- }}}
--- Motion commands work better {{{
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
-keymap("v", "j", "gj", opts)
-keymap("v", "k", "gk", opts)
--- }}}
--- Fast escape {{{
-keymap("i", "jk", "<ESC>", opts)
-keymap("s", "jk", "<ESC>", opts)
--- }}}
--- Append semicolon at end of line {{{
--- keymap("i", ";;", "<ESC>A;", opts)
-keymap("n", ";;", "<ESC>A;<ESC>", opts)
--- }}}
--- Stay in indent mode {{{
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
--- }}}
--- Move text up and down {{{
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<M-k>", ":m .-2<CR>==", opts)
-keymap("n", "<M-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<M-k>", ":m .-2<CR>==", opts)
-keymap("v", "<M-j>", ":m .+1<CR>==", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<M-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<M-k>", ":move '<-2<CR>gv-gv", opts)
--- }}}
--- nvim sandwich modifications {{{
-keymap("n", "s", "", opts)
-keymap("x", "s", "", opts)
--- }}}
--- command mode emac commands {{{
--- " start of line
--- keymap("c", "<C-A>", "<Home>", opts)
--- " back one character
--- keymap("c", "C-B>", "<Left>", opts)
--- " delete character under cursor
--- keymap("c", "C-D>", "<Del>", opts)
--- " end of line
--- keymap("c", "C-E>", "<End>", opts)
--- " forward one character
--- keymap("c", "C-F>", "<Right>", opts)
--- " recall newer command-line
--- keymap("c", "C-N>", "<Down>", opts)
--- " recall previous (older) command-line
--- keymap("c", "C-P>", "<Up>", opts)
--- " back one word
--- keymap("c", "<Esc><C-B>", "<S-Left>", opts)
--- -- " forward one word
--- keymap("c", "<Esc><C-F>", "<S-Right>", opts)
-vim.cmd([[
-	" start of line
-:noremap! <C-A>		<Home>
-" back one character
-:noremap! <C-B>		<Left>
-" delete character under cursor
-:noremap! <C-D>		<Del>
-" end of line
-:noremap! <C-E>		<End>
-" forward one character
-:noremap! <C-F>		<Right>
-" recall newer command-line
-:noremap! <C-N>		<Down>
-" recall previous (older) command-line
-:noremap! <C-P>		<Up>
-" back one word
-:noremap! <Esc><C-B>	<S-Left>
-" forward one word
-:noremap! <Esc><C-F>	<S-Right>
-]])
+
+-- General keymaps
+map("n", "<C-r>", ":silent redo<CR>", opts("Silent redo"))
+map("n", "u", ":silent undo<CR>", opts("Silent undo"))
+map("n", "<Leader>w", ":silent w!<CR>", opts("Save file"))
+map("n", "<Leader>W", ":wqa!<CR>", opts("Save all and quit"))
+map({ "n", "v", "o", "t" }, "<Leader>q", ":qa!<CR>", opts("Force quit"))
+map("n", "<Leader>a", ":<C-P><CR>", opts("Repeat last command"))
+map("n", "<Leader><CR>", ":nohlsearch<CR>", opts("Remove search highlight"))
+map("n", "<Leader>v", "ggVG", opts("Select All"))
+-- map("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts("CD to current file then pwd"))
+-- map("n", "<CR>", ":<c-u>put =repeat([''],v:count)<bar>'[+0<CR>", opts("Create New Line")) -- needs new command
+map("", "<Leader>y", [["+y]], opts("Copy to system clipboard"))
+map("", "<Leader>p", [["+p]], opts("Paste from system clipboard"))
+map({ "i", "s" }, "jk", "<ESC>", opts()) -- Fast escape
+map({ "n", "v" }, "s", "", opts("Unset s key for surround"))
+
+-- Better keymap behaviour
+map("n", "j", "gj", opts("Move down"))
+map("n", "k", "gk", opts("Move up"))
+map("v", "<", "<gv", opts("Repetable dedent"))
+map("v", ">", ">gv", opts("Repetable indent"))
+
+-- Buffer commands
+map("n", "H", ":bprevious<CR>", opts("Buffer previous"))
+map("n", "L", ":bnext<CR>", opts("Buffer next"))
+
+-- Tab commands
+map("n", "<leader>tn", ":tabnew<CR>", opts("New tab"))
+map("n", "<leader>to", ":tabonly<CR>", opts("Close other tabs"))
+map("n", "<leader>tc", ":tabclose<CR>", opts("Close current tab"))
+-- map("n", "<leader>tm", ":tabmove<CR>", opts("Move current tab index"))
+
 --
--- }}}
--- vim:foldmethod=marker:foldlevel=1
+-- Move text up and down
+map({ "n", "v" }, "<A-k>", ":m .-2<CR>==", opts("Move text down"))
+map({ "n", "v" }, "<A-j>", ":m .+1<CR>==", opts("Move text up"))
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts("Move text up"))
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts("Move text down"))
+
+map({ "i", "c" }, "<C-a>", "<Home>", opts("Move to start of line"))
+map({ "i", "c" }, "<C-e>", "<End>", opts("Move to end of line"))
