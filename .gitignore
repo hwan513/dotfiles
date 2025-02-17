@@ -8,4 +8,6 @@
 **/*sessions/
 **/rye/*
 
+**/logs
+
 .kanata_layers.json
