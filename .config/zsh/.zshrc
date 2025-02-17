@@ -15,7 +15,7 @@ zsh_add_file "personal/zsh-aliases"
 zsh_add_file "personal/zsh-vim-mode"
 
 # Exports
-# zsh_add_file "exports/zsh-android"
+zsh_add_file "exports/zsh-android"
 zsh_add_file "exports/zsh-cargo"
 # zsh_add_file "exports/zsh-conda"
 zsh_add_file "exports/zsh-fzf"
