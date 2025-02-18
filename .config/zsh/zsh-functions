@@ -21,7 +21,7 @@ function cacheval() {
 # Caches the output of the command and returns it, currently only accounts for single strings
 function cachecommand() {
   local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
-  cachewrite "$cache_file" "$2"
+  cachewrite "$cache_file" "${@:2}"
   echo "$(<"$cache_file")"
 }
 
