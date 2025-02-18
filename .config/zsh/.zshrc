@@ -34,5 +34,4 @@ bindkey '^[[B' history-substring-search-down
 znap source "hlissner/zsh-autopair" && autopair-init
 znap source "kutsan/zsh-system-clipboard" && bindkey -M vicmd Y zsh-system-clipboard-vicmd-vi-yank-eol
 znap source "MichaelAquilina/zsh-you-should-use"
-# znap source "Aloxaf/fzf-tab"
-znap eval z 'zoxide init zsh'
+cacheval z 'zoxide init zsh'

@@ -1,4 +1,5 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+cacheval brew "/opt/homebrew/bin/brew shellenv"
+
 # load in the brew completions, on config also set `brew completions link` to get package completion working
 if type brew &>/dev/null
 then

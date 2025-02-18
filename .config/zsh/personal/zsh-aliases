@@ -40,6 +40,6 @@ alias ipipx="arch -x86_64 /usr/local/bin/pipx"
 alias rr="rye run"
 alias rrr="rye run main"
 alias n="nvim"
-eval $(thefuck --alias)
+cacheval fuck "thefuck --alias"
 alias f=fuck
 alias j=just
