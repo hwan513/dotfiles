@@ -26,6 +26,7 @@ zsh_add_file "exports/zsh-rye"
 znap source "zsh-users/zsh-autosuggestions"
 znap source "zsh-users/zsh-syntax-highlighting"
 znap source "zsh-users/zsh-completions"
+cacheval z zoxide init zsh
 
 znap source "zsh-users/zsh-history-substring-search"
 bindkey '^[[A' history-substring-search-up
