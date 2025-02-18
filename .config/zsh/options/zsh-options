@@ -1,6 +1,5 @@
 # options (run man zshoptions)
 setopt auto_cd extended_glob nomatch menu_complete
-setopt interactive_comments		# Allow shell comments.
-# setopt correct_all dvorak		# Spell	check.
-stty stop undef	< /dev/tty # Disable ctrl-s to freeze terminal, pipe to tty to prevent error message with instant prompt
-zle_highlight=('paste:none') 		# No highlight on paste.
+setopt interactive_comments  # Allow shell comments.
+stty stop undef </dev/tty    # Disable ctrl-s to freeze terminal, pipe to tty to prevent error message with instant prompt
+zle_highlight=('paste:none') # No highlight on paste.

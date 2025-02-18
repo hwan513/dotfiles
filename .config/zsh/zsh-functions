@@ -1,3 +1,4 @@
+# shellcheck source=/dev/null
 # Adapted from https://github.com/Mach-OS/Machfiles/blob/master/zsh/.config/zsh/zsh-functions
 
 # Function to source files if they exist
@@ -28,10 +29,9 @@ function cachewrite() {
   (($# < 2)) && printf "Incorrect cache[val|command] usage for '%s'\nUsage: cache[val|command] <cache-key> <command>" "$1" && return 1
   local cache_file="$1"
   if [ ! -f "$cache_file" ]; then
-    echo "Caching output for ${@:2}"
-    local output
+    echo "Caching output for ${*:2}"
     # Can't seem to get piping from file to file to work for better handling
-    "${@:2}" > "$cache_file" &&
+    "${@:2}" >"$cache_file" &&
       zcompile "$cache_file"
   fi
 }
@@ -39,4 +39,3 @@ function cachewrite() {
 function cacheclear() {
   rm -rf "$ZSH_CACHEVAL_DIR"
 }
-
