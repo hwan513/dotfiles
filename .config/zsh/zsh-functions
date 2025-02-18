@@ -37,5 +37,5 @@ function cachewrite() {
 }
 
 function cacheclear() {
-  rm -rf "$ZSH_CACHEVAL_DIR"
+  find "${ZSH_CACHEVAL_DIR:?}" -type f -delete
 }
