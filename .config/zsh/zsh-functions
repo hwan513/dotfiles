@@ -6,21 +6,37 @@ function zsh_add_file() {
 }
 
 # Adapted from code from https://github.com/QuarticCat/zsh-smartcache and https://github.com/mroth/evalcache
-# Supply commmand to eval as a string
+# Directory to store cache files
 ZSH_CACHEVAL_DIR=${ZSH_CACHEVAL_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh-cacheval}
+
+# Supply commmand to eval as a string
 mkdir -p "$ZSH_CACHEVAL_DIR"
 function cacheval() {
-  (( $# < 2 )) && echo "Incorrect cacheval usage for $1 \nUsage: cacheval <cache-key> <command>" && return 1
-  local cache_file
-  cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
-  if [ ! -f "$cache_file" ]; then
-    echo "Caching output for $2"
-    ${=2} > "$cache_file"
-    zcompile "$cache_file"
-  fi
+  local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
+  cachewrite "$cache_file" "${@:2}"
   source "$cache_file"
+}
+
+# Caches the output of the command and returns it, currently only accounts for single strings
+function cachecommand() {
+  local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
+  cachewrite "$cache_file" "$2"
+  echo "$(<"$cache_file")"
+}
+
+function cachewrite() {
+  (($# < 2)) && printf "Incorrect cache[val|command] usage for '%s'\nUsage: cache[val|command] <cache-key> <command>" "$1" && return 1
+  local cache_file="$1"
+  if [ ! -f "$cache_file" ]; then
+    echo "Caching output for ${@:2}"
+    local output
+    # Can't seem to get piping from file to file to work for better handling
+    "${@:2}" > "$cache_file" &&
+      zcompile "$cache_file"
+  fi
 }
 
 function cacheclear() {
   rm -rf "$ZSH_CACHEVAL_DIR"
 }
+
