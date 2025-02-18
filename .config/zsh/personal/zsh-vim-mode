@@ -30,17 +30,6 @@ bindkey -M visual S add-surround
 
 bindkey -M viins 'jk' vi-cmd-mode # type jk quickly to get into command mode
 
-# Use vim keys in tab complete menu:
-bindkey -M menuselect '^h' vi-backward-char
-bindkey -M menuselect '^k' vi-up-line-or-history
-bindkey -M menuselect '^p' vi-up-line-or-history
-bindkey -M menuselect '^l' vi-forward-char
-bindkey -M menuselect '^j' vi-down-line-or-history
-bindkey -M menuselect '^n' vi-down-line-or-history
-bindkey -M menuselect '^[[Z' vi-up-line-or-history
-bindkey -M menuselect '^e' send-break
-bindkey -v '^?' backward-delete-char
-
 # Change cursor shape for different vi modes.
 # shellcheck disable=all # following line uses zsh syntax
 function zle-keymap-select () {
