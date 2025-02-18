@@ -1,2 +1,0 @@
-export RYE_HOME="$HOME/.config/rye"
-source "$RYE_HOME/env"

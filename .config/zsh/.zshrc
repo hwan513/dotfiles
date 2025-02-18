@@ -20,7 +20,6 @@ zsh_add_file "exports/zsh-cargo"
 zsh_add_file "exports/zsh-fzf"
 zsh_add_file "exports/zsh-mise"
 zsh_add_file "exports/zsh-scripts"
-zsh_add_file "exports/zsh-rye"
 
 # Plugins whic might affect launch time
 znap source "zsh-users/zsh-autosuggestions"
