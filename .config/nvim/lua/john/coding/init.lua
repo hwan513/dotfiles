@@ -8,7 +8,7 @@ return {
   { "windwp/nvim-ts-autotag", opts = { opts = { enable_close_on_slash = true } }, event = "VeryLazy" },
   { "echasnovski/mini.surround", opts = {}, event = "VeryLazy" },
   { "folke/ts-comments.nvim", opts = {}, event = "VeryLazy" },
-  { "gbprod/cutlass.nvim", keys = { { "m", mode = { "v", "n" } } }, opts = { cut_key = "m" } },
+  { "gbprod/cutlass.nvim", keys = { { "m", mode = { "x", "n" } } }, opts = { cut_key = "m" } },
   { "echasnovski/mini.jump2d", opts = {}, event = "VeryLazy" },
   { "echasnovski/mini.jump", opts = {}, event = "VeryLazy" },
   -- { "Exafunction/codeium.vim", commit = "289eb72" },
