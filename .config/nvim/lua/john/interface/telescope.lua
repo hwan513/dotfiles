@@ -129,9 +129,10 @@ local setup = function()
           -- even more opts
         }),
       },
-      undo = {
-        -- telescope-undo.nvim config, see below
-      },
+      ---@module 'frecency'
+      ---@type FrecencyOpts
+      frecency = {},
+      undo = {},
     },
   })
 end
