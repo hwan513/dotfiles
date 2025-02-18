@@ -4,3 +4,23 @@
 function zsh_add_file() {
   [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
 }
+
+# Adapted from code from https://github.com/QuarticCat/zsh-smartcache and https://github.com/mroth/evalcache
+# Supply commmand to eval as a string
+ZSH_CACHEVAL_DIR=${ZSH_CACHEVAL_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh-cacheval}
+mkdir -p "$ZSH_CACHEVAL_DIR"
+function cacheval() {
+  (( $# < 2 )) && echo "Incorrect cacheval usage for $1 \nUsage: cacheval <cache-key> <command>" && return 1
+  local cache_file
+  cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
+  if [ ! -f "$cache_file" ]; then
+    echo "Caching output for $2"
+    ${=2} > "$cache_file"
+    zcompile "$cache_file"
+  fi
+  source "$cache_file"
+}
+
+function cacheclear() {
+  rm -rf "$ZSH_CACHEVAL_DIR"
+}
