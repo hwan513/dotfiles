@@ -1,5 +1,0 @@
-# Download Znap, if it's not there yet.
-ZNAPDIR=$ZDOTDIR/plugins/znap
-[[ -r $ZNAPDIR/znap.zsh ]] ||
-    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git $ZNAPDIR
-source $ZNAPDIR/znap.zsh
