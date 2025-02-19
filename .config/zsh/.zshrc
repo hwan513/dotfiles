@@ -1,27 +1,27 @@
 #!/bin/zsh
 source "$ZDOTDIR/zsh-functions"
-zsh_add_file "options/zsh-brew"
+_zsh_add_file "options/zsh-brew"
 
 # General
-# zsh_add_file "options/zsh-prompt"
-zsh_add_file "options/zsh-history"
-zsh_add_file "options/zsh-options"
-zsh_add_file "personal/zsh-aliases"
-zsh_add_file "options/zsh-completions"
-zsh_add_file "personal/zsh-vim-mode"
+# _zsh_add_file "options/zsh-prompt"
+_zsh_add_file "options/zsh-history"
+_zsh_add_file "options/zsh-options"
+_zsh_add_file "personal/zsh-aliases"
+_zsh_add_file "options/zsh-completions"
+_zsh_add_file "personal/zsh-vim-mode"
 
 # Exports
-zsh_add_file "exports/zsh-android"
-zsh_add_file "exports/zsh-cargo"
-zsh_add_file "exports/zsh-fzf"
-zsh_add_file "exports/zsh-mise"
-zsh_add_file "exports/zsh-orbstack"
-zsh_add_file "exports/zsh-scripts"
+_zsh_add_file "exports/zsh-android"
+_zsh_add_file "exports/zsh-cargo"
+_zsh_add_file "exports/zsh-fzf"
+_zsh_add_file "exports/zsh-mise"
+_zsh_add_file "exports/zsh-orbstack"
+_zsh_add_file "exports/zsh-scripts"
 
 # Plugin manager
-zsh_add_file "zsh-zim"
+_zsh_add_file "zsh-zim"
 
-cacheval z zoxide init zsh
+_cacheval z zoxide init zsh
 
 # TODO: one day move fzf, powerlevel10k, mise and zoxide installation into here
 # TODO: cargo and mise boostrap in a separate file

@@ -38,6 +38,6 @@ alias idotnet="arch -x86_64 /usr/local/bin/dotnet"
 alias ipipx="arch -x86_64 /usr/local/bin/pipx"
 
 alias n="nvim"
-cacheval fuck thefuck --alias
+_cacheval fuck thefuck --alias
 alias f=fuck
 alias j=just

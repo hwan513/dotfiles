@@ -2,7 +2,7 @@
 # Adapted from https://github.com/Mach-OS/Machfiles/blob/master/zsh/.config/zsh/zsh-functions
 
 # Function to source files if they exist
-function zsh_add_file() {
+function _zsh_add_file() {
   [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
 }
 
@@ -12,27 +12,27 @@ ZSH_CACHEVAL_DIR=${ZSH_CACHEVAL_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh-cacheva
 
 # Supply commmand to eval as a string
 mkdir -p "$ZSH_CACHEVAL_DIR"
-function cacheval() {
+function _cacheval() {
   local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
-  cachewrite "$cache_file" "${@:2}"
+  _cachewrite "$cache_file" "${@:2}"
   source "$cache_file"
 }
 
 # Caches the output of the command and returns it, currently only accounts for single strings
-function cachecommand() {
+function _cachecommand() {
   local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
-  cachewrite "$cache_file" "${@:2}"
+  _cachewrite "$cache_file" "${@:2}"
   echo "$(<"$cache_file")"
 }
 
-function cachewrite() {
+function _cachewrite() {
   (($# < 2)) && printf "Incorrect cache[val|command] usage for '%s'\nUsage: cache[val|command] <cache-key> <command>" "$1" && return 1
   local cache_file="$1"
   if [ ! -f "$cache_file" ]; then
     echo "Caching output for ${*:2}"
     # Can't seem to get piping from file to file to work for better handling
     "${@:2}" >"$cache_file" &&
-      cachepropagate "$cache_file" &&
+      _cachepropagate "$cache_file" &&
       zcompile "$cache_file"
   fi
 }
@@ -42,7 +42,7 @@ function cacheclear() {
 }
 
 # shellcheck disable=SC2016,SC2001
-function cachepropagate() {
+function _cachepropagate() {
   input_file=$1
   calculate_md5() {
     echo -n "$1" | md5
@@ -54,8 +54,8 @@ function cachepropagate() {
     if echo "$line" | grep -q "^\s*eval \"\$\(.*\)\""; then
       operation=$(echo "$line" | sed -n 's/eval "\$(\(.*\))"/\1/p')
       md5=$(calculate_md5 "$operation")
-      # Replace 'eval "$(operation)"' with 'cacheval $md5 $operation'
-      line=$(echo "$line" | sed -r 's/eval "\$\((.*)\)";?/cacheval '"$md5"' \1/')
+      # Replace 'eval "$(operation)"' with '_cacheval $md5 $operation'
+      line=$(echo "$line" | sed -r 's/eval "\$\((.*)\)";?/_cacheval '"$md5"' \1/')
     fi
     # Write the modified line to the output file
     echo -E "$line" >>"$input_file.temp"
