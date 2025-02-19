@@ -3,3 +3,6 @@ zstyle ':zim:input' double-dot-expand yes
 
 # yank to clipboard
 bindkey -M vicmd Y zsh-system-clipboard-vicmd-vi-yank-eol
+
+# use degit with zim
+zstyle ':zim:zmodule' use 'degit'

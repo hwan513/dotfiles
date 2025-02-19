@@ -1,6 +1,10 @@
 #!/bin/zsh
+# Functions and brew
 source "$ZDOTDIR/zsh-functions"
 _zsh_add_file "options/zsh-brew"
+
+# Plugin vars
+_zsh_add_file "zsh-zim"
 
 # General
 _zsh_add_file "options/zsh-prompt"
@@ -18,10 +22,10 @@ _zsh_add_file "exports/zsh-mise"
 _zsh_add_file "exports/zsh-orbstack"
 _zsh_add_file "exports/zsh-scripts"
 
-# Plugin manager
-_zsh_add_file "zsh-zim"
-
 _cacheval z zoxide init zsh
+
+# Load plugins
+source ${ZIM_HOME}/init.zsh
 
 # TODO: one day move fzf, powerlevel10k, mise and zoxide installation into here
 # TODO: cargo and mise boostrap in a separate file
