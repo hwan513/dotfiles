@@ -32,10 +32,33 @@ function cachewrite() {
     echo "Caching output for ${*:2}"
     # Can't seem to get piping from file to file to work for better handling
     "${@:2}" >"$cache_file" &&
+      cachepropagate "$cache_file" &&
       zcompile "$cache_file"
   fi
 }
 
 function cacheclear() {
   find "${ZSH_CACHEVAL_DIR:?}" -type f -delete
+}
+
+# shellcheck disable=SC2016,SC2001
+function cachepropagate() {
+  input_file=$1
+  calculate_md5() {
+    echo -n "$1" | md5
+  }
+  touch "$input_file.temp"
+  # Read the input file line by line
+  while IFS= read -r line; do
+    # Check if the line contains 'eval "$(operation)"'
+    if echo "$line" | grep -q "^\s*eval \"\$\(.*\)\""; then
+      operation=$(echo "$line" | sed -n 's/eval "\$(\(.*\))"/\1/p')
+      md5=$(calculate_md5 "$operation")
+      # Replace 'eval "$(operation)"' with 'cacheval $md5 $operation'
+      line=$(echo "$line" | sed -r 's/eval "\$\((.*)\)";?/cacheval '"$md5"' \1/')
+    fi
+    # Write the modified line to the output file
+    echo -E "$line" >>"$input_file.temp"
+  done <"$input_file"
+  mv "$1.temp" "$1"
 }
