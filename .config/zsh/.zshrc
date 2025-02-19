@@ -3,7 +3,7 @@ source "$ZDOTDIR/zsh-functions"
 _zsh_add_file "options/zsh-brew"
 
 # General
-# _zsh_add_file "options/zsh-prompt"
+_zsh_add_file "options/zsh-prompt"
 _zsh_add_file "options/zsh-history"
 _zsh_add_file "options/zsh-options"
 _zsh_add_file "personal/zsh-aliases"
