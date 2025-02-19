@@ -8,20 +8,22 @@ function _zsh_add_file() {
 
 # Adapted from code from https://github.com/QuarticCat/zsh-smartcache and https://github.com/mroth/evalcache
 # Directory to store cache files
-ZSH_CACHEVAL_DIR=${ZSH_CACHEVAL_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh-cacheval}
+ZSH_CACHE=${ZSH_CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh-cache}
+ZSH_EVAL_CACHE=${ZSH_CACHE}/eval
 
 # Supply commmand to eval as a string
-mkdir -p "$ZSH_CACHEVAL_DIR"
+mkdir -p "$ZSH_EVAL_CACHE"
+
 function _cacheval() {
-  local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
-  _cachewrite "$cache_file" "${@:2}"
+  local cache_file="$ZSH_EVAL_CACHE"/"$1".zsh
+  ZCOMPILE=true _cachewrite "$cache_file" "${@:2}"
   source "$cache_file"
 }
 
 # Caches the output of the command and returns it, currently only accounts for single strings
 function _cachecommand() {
-  local cache_file="$ZSH_CACHEVAL_DIR"/"$1".zsh
-  _cachewrite "$cache_file" "${@:2}"
+  local cache_file="$ZSH_EVAL_CACHE"/"$1".zsh
+  ZCOMPILE=true _cachewrite "$cache_file" "${@:2}"
   echo "$(<"$cache_file")"
 }
 
@@ -33,12 +35,13 @@ function _cachewrite() {
     # Can't seem to get piping from file to file to work for better handling
     "${@:2}" >"$cache_file" &&
       _cachepropagate "$cache_file" &&
+      $ZCOMPILE &&
       zcompile "$cache_file"
   fi
 }
 
 function cacheclear() {
-  find "${ZSH_CACHEVAL_DIR:?}" -type f -delete
+  find "${ZSH_CACHE:?}" -type f -delete
 }
 
 # shellcheck disable=SC2016,SC2001
@@ -61,4 +64,12 @@ function _cachepropagate() {
     echo -E "$line" >>"$input_file.temp"
   done <"$input_file"
   mv "$1.temp" "$1"
+}
+
+ZSH_SITE_FUNCTIONS=${ZSH_CACHE}/site-functions
+mkdir -p "$ZSH_SITE_FUNCTIONS"
+export FPATH="$ZSH_SITE_FUNCTIONS:$FPATH"
+function _cachefpath() {
+  local cache_file="$ZSH_SITE_FUNCTIONS"/"$1"
+  ZCOMPILE=false _cachewrite "$cache_file" "${@:2}"
 }
