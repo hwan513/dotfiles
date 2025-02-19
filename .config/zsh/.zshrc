@@ -27,5 +27,5 @@ _cacheval z zoxide init zsh
 # Load plugins
 source ${ZIM_HOME}/init.zsh
 
-# TODO: one day move fzf, powerlevel10k, mise and zoxide installation into here
+# TODO: one day move fzf, mise and zoxide installation into here
 # TODO: cargo and mise boostrap in a separate file
