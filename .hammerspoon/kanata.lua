@@ -1,5 +1,5 @@
 -- Define the TCP host and port
-local host = "localhost" -- replace with your host if necessary
+local host = "localhost"
 local port = 5829
 
 local transientLayers = {
@@ -44,6 +44,13 @@ OnRead = function(data)
   end
 end
 
+local alertConnection = function()
+  if not TcpSocket:connected() then
+    hs.alert.show("Hammerspoon is not connected to kanata socket")
+    TcpSocket:connect(host, port)
+  end
+end
+
 -- Create a TCP socket and start the callback recursion
 TcpSocket = hs.socket.new(OnRead)
 TcpSocket:connect(host, port)
@@ -52,13 +59,18 @@ TcpSocket:read("\n")
 -- Watch for changes in active application
 AppWatcher = hs.application.watcher.new(function(_, eventType, app)
   if eventType == hs.application.watcher.deactivated then
-    -- Save layer setting on switch away
-    if app:bundleID() ~= nil and LayerTable[app:bundleID()] ~= RecentLayer then
-      LayerTable[app:bundleID()] = RecentLayer
+    -- Save layer setting on switch away unless it is the default layer
+    if app:bundleID() ~= nil then
+      if RecentLayer == DefaultLayer then
+        LayerTable[app:bundleID()] = nil
+      elseif LayerTable[app:bundleID()] ~= RecentLayer then
+        LayerTable[app:bundleID()] = RecentLayer
+      end
       SaveLayers()
     end
   -- Load layer setting on switch to an application
   elseif eventType == hs.application.watcher.activated then
+    alertConnection()
     local newLayer = LayerTable[app:bundleID()]
     if newLayer == nil or newLayer == "" or newLayer == "noop" then
       newLayer = DefaultLayer
