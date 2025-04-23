@@ -9,13 +9,8 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = icons.diagnostics.Info,
     },
   },
-  virtual_text = false,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = true,
-    header = "",
+  virtual_lines = {
+    current_line = true,
   },
+  severity_sort = true,
 })

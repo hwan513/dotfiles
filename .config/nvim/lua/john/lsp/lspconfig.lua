@@ -5,7 +5,7 @@ return {
   "neovim/nvim-lspconfig",
   lazy = false,
   config = function()
-    prequire("john.lsp.options")
+    prequire("john.lsp.diagnostics")
     prequire("john.lsp.keymaps")
     prequire("john.lsp.setup")
   end,
