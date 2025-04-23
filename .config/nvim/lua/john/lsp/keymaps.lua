@@ -13,8 +13,8 @@ local keys = {
   { "n", "gh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", desc = "Toggle Inlay Hints", has = "inlayHint" },
   { "n", "gn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
   { "n", "gr", vim.lsp.buf.references, desc = "References", has = "references" },
-  { "n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", desc = "Next Diagnostic" },
-  { "n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", desc = "Previous Diagnostic" },
+  { "n", "<C-p>", "<cmd>lua vim.diagnostic.jump({count= -1})<CR>", desc = "Next Diagnostic" },
+  { "n", "<C-n>", "<cmd>lua vim.diagnostic.jump({count= 1})<CR>", desc = "Previous Diagnostic" },
 }
 -- stylua: ignore end
 
