@@ -39,5 +39,19 @@ alias ipipx="arch -x86_64 /usr/local/bin/pipx"
 
 alias n="nvim"
 _cacheval fuck thefuck --alias
-alias f=fuck
-alias j=just
+alias f='fuck'
+alias j='just'
+alias .j='just --justfile ~/.config/just/justfile --working-directory .'
+
+alias jjj='lazyjj'
+alias jl='jj log'
+alias jd='jj describe'
+alias jn='jj new'
+alias je='jj edit'
+alias ja='jj abandon'
+alias js='jj squash'
+alias jb="jj log -r 'heads(all())'"
+alias jp='jj git push'
+alias jf='jj git fetch'
+alias jll="jj log -r '@ | ancestors(remote_bookmarks().., 2) | trunk()'"
+alias jlll='jl -r .. --reversed'
