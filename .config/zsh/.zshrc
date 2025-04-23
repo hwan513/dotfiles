@@ -21,6 +21,8 @@ _zsh_add_file "exports/zsh-fzf"
 _zsh_add_file "exports/zsh-mise"
 _zsh_add_file "exports/zsh-orbstack"
 _zsh_add_file "exports/zsh-scripts"
+_zsh_add_file "exports/zsh-jj"
+_zsh_add_file "exports/zsh-bob"
 
 _cacheval z zoxide init zsh
 
