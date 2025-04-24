@@ -7,6 +7,7 @@ return {
   -- "css_variables",
   "emmet_ls",
   "eslint",
+  "gopls",
   "html",
   "jdtls",
   "lemminx",

@@ -2,6 +2,7 @@
 node = "latest"
 java = "21"
 pipx = "latest"
+go = "latest"
 
 # installed cargo programs
 "cargo:cargo-binstall" = "latest"
@@ -25,10 +26,7 @@ pipx = "latest"
 "cargo:lazyjj" = "latest"
 
 "npm:epub-wordcount" = "latest"
-"asdf:neovim" = "nightly"
+"cargo:wasm-bindgen-cli" = "latest"
 
 [settings]
 experimental = true
-
-[hooks]
-postinstall = 'npx corepack enable'
