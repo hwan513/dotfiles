@@ -17,6 +17,7 @@ return {
     textsubjects = require("john.treesitter.textsubjects"),
   },
   config = function(_, opts)
+    vim.treesitter.language.register("bash", "zsh")
     require("nvim-treesitter.configs").setup(opts)
   end,
 }

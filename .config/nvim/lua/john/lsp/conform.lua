@@ -12,6 +12,8 @@ return {
       json = { "prettierd", "prettier", stop_after_first = true },
       html = { "prettierd", "prettier", stop_after_first = true },
       rust = { "leptosfmt", "rustfmt" },
+      zsh = { "shfmt" },
+      bash = { "shfmt" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
