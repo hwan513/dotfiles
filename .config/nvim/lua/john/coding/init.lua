@@ -11,8 +11,17 @@ return {
   { "gbprod/cutlass.nvim", keys = { { "m", mode = { "x", "n" } } }, opts = { cut_key = "m" } },
   { "echasnovski/mini.jump2d", opts = {}, event = "VeryLazy" },
   { "echasnovski/mini.jump", opts = {}, event = "VeryLazy" },
-  -- { "Exafunction/codeium.vim", commit = "289eb72" },
-  { "supermaven-inc/supermaven-nvim", opts = {}, event = "InsertEnter" },
+  {
+    "supermaven-inc/supermaven-nvim",
+    opts = {
+      keymaps = {
+        accept_suggestion = "<M-j>",
+        clear_suggestion = "<C-]>",
+        accept_word = "<C-j>",
+      },
+    },
+    event = "InsertEnter",
+  },
   -- { "johmsalas/text-case.nvim" },
   prequire("john.coding.coerce"),
   prequire("john.coding.refactoring"),
