@@ -1,0 +1,24 @@
+# interactive chooser when running `just`
+default:
+  @just --choose -g
+
+up: update-and-upgrade clean
+
+update-and-upgrade:
+  #!/usr/bin/env zsh
+  mise upgrade
+  brew update && brew upgrade
+
+alias cl:= clean
+clean:
+  #!/usr/bin/env zsh
+  source ~/.config/zsh/.zshrc
+  cacheclear
+  zimfw clean > /dev/null
+  source ~/.config/zsh/.zshrc
+  
+on-launch: 
+  #!/usr/bin/env zsh
+  sketchybar &
+  sudo '/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon' &
+  sudo kanata -c ~/.config/kanata/main.kbd --port 5829
