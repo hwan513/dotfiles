@@ -1,4 +1,5 @@
-return {
+---@type string[]
+local servers = {
   "basedpyright",
   "bashls",
   "biome",
@@ -22,4 +23,18 @@ return {
   "tinymist",
   "ts_ls",
   "vimls",
+}
+local linters = {
+  "shellcheck",
+}
+local formatters = {
+  "prettierd",
+  "goimports",
+  "shfmt",
+  "stylua",
+}
+return {
+  servers = servers,
+  linters = linters,
+  formatters = formatters,
 }
