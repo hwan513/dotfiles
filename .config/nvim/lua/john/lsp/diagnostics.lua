@@ -14,3 +14,7 @@ vim.diagnostic.config({
   },
   severity_sort = true,
 })
+
+vim.api.nvim_create_user_command("ToggleDiagnostic", function()
+  vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+end, { desc = "Toggle virtual lines for diagnostics" })
