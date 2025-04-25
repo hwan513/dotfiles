@@ -11,6 +11,13 @@ autocmd("FileType", {
   group = general,
 })
 
+-- q to quit in certain file types
+autocmd("FileType", {
+  pattern = { "jjdescription" },
+  command = "nnoremap <silent> <buffer> q <cmd>wq<CR>",
+  group = general,
+})
+
 autocmd("FocusLost", {
   pattern = "*",
   command = "silent! wa",
