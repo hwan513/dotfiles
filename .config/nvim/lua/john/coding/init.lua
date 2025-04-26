@@ -22,7 +22,6 @@ return {
     },
     event = "InsertEnter",
   },
-  -- { "johmsalas/text-case.nvim" },
   prequire("john.coding.coerce"),
   prequire("john.coding.refactoring"),
 }
