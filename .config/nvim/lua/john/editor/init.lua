@@ -1,7 +1,6 @@
 local prequire = require("john.utils").prequire
 return {
   prequire("john.editor.lualine"),
-  prequire("john.editor.bufferline"),
   prequire("john.editor.barbar"),
   prequire("john.editor.scope"),
   prequire("john.editor.dropbar"),
