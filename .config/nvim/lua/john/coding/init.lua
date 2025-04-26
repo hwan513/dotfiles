@@ -1,7 +1,7 @@
 local prequire = require("john.utils").prequire
 return {
   prequire("john.coding.autopairs"),
-  prequire("john.coding.cmp"),
+  prequire("john.coding.blink"),
   prequire("john.coding.markup"),
   prequire("john.coding.smart-splits"),
   prequire("john.coding.indent-blankline"),
