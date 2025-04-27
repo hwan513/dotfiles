@@ -1,7 +1,6 @@
 local prequire = require("john.utils").prequire
 return {
   -- yazi is on the radar
-  prequire("john.ui.mini-bufremove"),
   prequire("john.ui.mini-hipatterns"),
   prequire("john.ui.mini-icons"),
   prequire("john.ui.nvim-ufo"),
