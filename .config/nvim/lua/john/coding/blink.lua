@@ -5,7 +5,7 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    keymap = { preset = "enter" },
+    keymap = { preset = "super-tab" },
     completion = {
       documentation = { auto_show = true, auto_show_delay_ms = 100 },
       menu = {
