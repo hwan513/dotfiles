@@ -36,9 +36,8 @@ return {
       map("n", "<leader>gp", gs.preview_hunk_inline, "Preview Hunk Inline")
       map("n", "<leader>gP", gs.preview_hunk, "Preview Hunk")
       map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
-      map("n", "<leader>gB", gs.toggle_current_line_blame)
-      map("n", "<leader>gd", gs.diffthis)
-      map("n", "<leader>gD", function() gs.diffthis("~") end)
+      map("n", "<leader>gB", gs.toggle_current_line_blame, "Toggle line blame")
+      map("n", "<leader>gd", gs.diffthis, "Diff current file")
       -- stylua: ignore end
     end,
   },
