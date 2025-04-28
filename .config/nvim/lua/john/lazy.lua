@@ -12,6 +12,7 @@ local plugins = {
   prequire("john.telescope"),
   prequire("john.lsp"),
   prequire("john.interface.noice"),
+  prequire("john.misc.snacks"),
 }
 
 M.setup = function()

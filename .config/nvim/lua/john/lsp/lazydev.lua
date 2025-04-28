@@ -9,6 +9,7 @@ return {
       library = {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
+        "snacks.nvim",
         { path = "luvit-meta/library", words = { "vim%.uv" } },
         { path = "luassert-types/library", words = { "assert" } },
         { path = "busted-types/library", words = { "describe" } },
