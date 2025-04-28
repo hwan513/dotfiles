@@ -1,4 +1,4 @@
-print("hello")
+local ft_ignore = require("john.utils").ft_ignore
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -9,7 +9,18 @@ return {
     bigfile = { enabled = true },
     -- explorer = { enabled = true },
     gitbrowse = { enabled = true, notify = false, what = "repo" },
-    -- indent = { enabled = true },
+    indent = {
+      enabled = true,
+      animate = {
+        enabled = false,
+      },
+      filter = function(buf)
+        return vim.g.snacks_indent ~= false
+          and vim.b[buf].snacks_indent ~= false
+          and vim.bo[buf].buftype == ""
+          and not vim.tbl_contains(ft_ignore, vim.b[buf].filetype)
+      end,
+    },
     -- input = { enabled = true },
     -- picker = { enabled = true },
     -- notifier = { enabled = true },
