@@ -11,6 +11,8 @@ end
 
 return {
   "nvim-tree/nvim-tree.lua",
+  -- Lazy loading nvim-tree breaks commands for some reason
+  lazy = false,
   keys = { { "<C-e>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" } },
   opts = {
     on_attach = on_attach,

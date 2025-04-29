@@ -13,5 +13,4 @@ return {
   { "mfussenegger/nvim-jdtls" },
   { "mrcjkb/rustaceanvim", version = "^6", lazy = false },
   { "linux-cultist/venv-selector.nvim", branch = "regexp", opts = {}, cmd = { "VenvSelect" } },
-  prequire("john.lsp.file-operations"),
 }
