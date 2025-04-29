@@ -21,14 +21,18 @@ return {
           and not vim.tbl_contains(ft_ignore, vim.b[buf].filetype)
       end,
     },
-    -- input = { enabled = true },
+    input = { enabled = true },
     -- picker = { enabled = true },
-    -- notifier = { enabled = true },
+    notifier = { enabled = true },
     -- quickfile = { enabled = true },
     -- scope = { enabled = true },
-    -- scroll = { enabled = true },
+    scratch = { enabled = true },
     -- statuscolumn = { enabled = true },
     -- words = { enabled = true },
   },
-  keys = { { "<leader>go", "<cmd>lua Snacks.gitbrowse()<cr>", desc = "Open Git repo in browser" } },
+  keys = {
+    { "<leader>go", "<cmd>lua Snacks.gitbrowse()<cr>", desc = "Open Git repo in browser" },
+    { "<leader>ss", "<cmd>lua Snacks.scratch()<cr>", desc = "Open Scratch buffer" },
+    { "<leader>sl", "<cmd>lua Snacks.scratch.select()<cr>", desc = "Select file in Scratch buffer" },
+  },
 }

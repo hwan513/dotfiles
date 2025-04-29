@@ -1,7 +1,7 @@
 return {
   "folke/noice.nvim",
-  dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
   event = "VeryLazy",
+  -- does require snacks.nvim to be installed, defined elsewhere
   init = function()
     local status_ok, telescope = pcall(require, "telescope")
     if status_ok then
