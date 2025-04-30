@@ -124,3 +124,12 @@ autocmd("BufReadPost", {
     vim.cmd([[ syntax match srtFormat "<font[^>]*>\|<\/font>" conceal ]])
   end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function(ctx)
+    local root = vim.fs.root(ctx.buf, { ".git", "Makefile", ".luarc.json" })
+    if root then
+      vim.uv.chdir(root)
+    end
+  end,
+})
