@@ -52,11 +52,15 @@ return {
     scope = { enabled = true },
     scratch = { enabled = true },
     -- statuscolumn = { enabled = true },
-    -- words = { enabled = true },
+    words = { enabled = true },
   },
+  -- stylua: ignore start
   keys = {
     { "<leader>go", "<cmd>lua Snacks.gitbrowse()<cr>", desc = "Open Git repo in browser" },
     { "<leader>ss", "<cmd>lua Snacks.scratch()<cr>", desc = "Open Scratch buffer" },
     { "<leader>sl", "<cmd>lua Snacks.scratch.select()<cr>", desc = "Select file in Scratch buffer" },
+    { "<A-p>", function() Snacks.words.jump(-1, true) end, desc = "Previous lsp reference" },
+    { "<A-n>", function() Snacks.words.jump(1, true) end, desc = "Next lsp reference" },
   },
+  -- stylua: ignore end
 }
