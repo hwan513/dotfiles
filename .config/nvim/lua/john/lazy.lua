@@ -9,7 +9,6 @@ local plugins = {
   prequire("john.extras"),
   prequire("john.git"),
   prequire("john.treesitter"),
-  prequire("john.telescope"),
   prequire("john.lsp"),
   prequire("john.interface.noice"),
   prequire("john.misc.snacks"),

@@ -1,9 +1,10 @@
 -- stylua: ignore start
 local keys = {
-  { "n", "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
-  { "n", "gD", vim.lsp.buf.declaration, desc = "Goto Declaration", has = "declaration" },
-  { "n", "gI", vim.lsp.buf.implementation, desc = "Goto Implementation", has = "implementation" },
-  { "n", "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition", has = "typeDefinition" },
+  -- { "n", "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
+  -- { "n", "gD", vim.lsp.buf.declaration, desc = "Goto Declaration", has = "declaration" },
+  -- { "n", "gI", vim.lsp.buf.implementation, desc = "Goto Implementation", has = "implementation" },
+  -- { "n", "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition", has = "typeDefinition" },
+  -- { "n", "gr", vim.lsp.buf.references, desc = "References", has = "references" },
   { "n", "K", vim.lsp.buf.hover, desc = "Hover", has = "hover" },
   { "n", "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
   { "i", "<C-s>", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
@@ -12,7 +13,6 @@ local keys = {
   { "n", "gL", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", has = "codeLens" },
   { "n", "gh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", desc = "Toggle Inlay Hints", has = "inlayHint" },
   { "n", "gn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
-  { "n", "gr", vim.lsp.buf.references, desc = "References", has = "references" },
   { "n", "<C-p>", "<cmd>lua vim.diagnostic.jump({count= -1})<CR>", desc = "Next Diagnostic" },
   { "n", "<C-n>", "<cmd>lua vim.diagnostic.jump({count= 1})<CR>", desc = "Previous Diagnostic" },
 }
