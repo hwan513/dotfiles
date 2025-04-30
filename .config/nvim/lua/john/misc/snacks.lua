@@ -49,7 +49,7 @@ return {
     notifier = { enabled = true },
     -- quickfile = { enabled = true },
     rename = { enabled = true },
-    -- scope = { enabled = true },
+    scope = { enabled = true },
     scratch = { enabled = true },
     -- statuscolumn = { enabled = true },
     -- words = { enabled = true },
