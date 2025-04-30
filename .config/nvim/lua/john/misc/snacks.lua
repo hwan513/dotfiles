@@ -56,9 +56,9 @@ return {
   },
   -- stylua: ignore start
   keys = {
-    { "<leader>go", "<cmd>lua Snacks.gitbrowse()<cr>", desc = "Open Git repo in browser" },
-    { "<leader>ss", "<cmd>lua Snacks.scratch()<cr>", desc = "Open Scratch buffer" },
-    { "<leader>sl", "<cmd>lua Snacks.scratch.select()<cr>", desc = "Select file in Scratch buffer" },
+    { "<leader>go", function() Snacks.gitbrowse() end, desc = "Open Git repo in browser" },
+    { "<leader>ss", function() Snacks.scratch() end, desc = "Open Scratch buffer" },
+    { "<leader>sl", function() Snacks.scratch.select() end, desc = "Select file in Scratch buffer" },
     { "<A-p>", function() Snacks.words.jump(-1, true) end, desc = "Previous lsp reference" },
     { "<A-n>", function() Snacks.words.jump(1, true) end, desc = "Next lsp reference" },
 
@@ -77,7 +77,7 @@ return {
     { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+    { "<leader>ff", function() Snacks.picker.files({hidden=true}) end, desc = "Find Files" },
     { "<leader>fl", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
