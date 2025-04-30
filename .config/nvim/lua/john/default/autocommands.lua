@@ -124,11 +124,3 @@ autocmd("BufReadPost", {
     vim.cmd([[ syntax match srtFormat "<font[^>]*>\|<\/font>" conceal ]])
   end,
 })
-
--- local formatting = augroup("formatting", { clear = true })
---
--- autocmd({ "BufWritePost" }, {
---   pattern = { "*.lua" },
---   command = "retab | noau w",
---   group = formatting,
--- })
