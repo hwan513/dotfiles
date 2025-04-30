@@ -32,6 +32,7 @@ return {
     bigfile = { enabled = true },
     -- explorer = { enabled = true },
     gitbrowse = { enabled = true, notify = false, what = "repo" },
+    image = { enabled = true },
     indent = {
       enabled = true,
       animate = {
@@ -47,7 +48,7 @@ return {
     input = { enabled = true },
     -- picker = { enabled = true },
     notifier = { enabled = true },
-    -- quickfile = { enabled = true },
+    quickfile = { enabled = true },
     rename = { enabled = true },
     scope = { enabled = true },
     scratch = { enabled = true },
