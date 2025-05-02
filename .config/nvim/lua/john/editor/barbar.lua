@@ -17,7 +17,7 @@ return {
     { "<leader>bb", "<Cmd>BufferPick<CR>", desc = "Pick Buffer" },
     { "<leader>bd", "<Cmd>BufferPickDelete<CR>", desc = "Pick Buffer Delete" },
     { "<leader>bp", "<Cmd>BufferPin<CR>", desc = "Pin Buffer" },
-    { "<leader>c", "<Cmd>BufferClose<CR>", desc = "Close Buffer" },
+    { "<leader>c", "<Cmd>BufferClose!<CR>", desc = "Close Buffer" },
     { "<leader>bc", "<Cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Close All Buffer but Current or Pinned" },
     { "<leader>br", "<Cmd>BufferRestore<CR>", desc = "Restore Buffer" },
   },
