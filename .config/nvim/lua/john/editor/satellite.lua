@@ -7,6 +7,7 @@ return {
       cursor = {
         enable = false,
       },
+      marks = { enabled = false },
     },
   },
 }
