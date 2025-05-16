@@ -5,7 +5,6 @@ prequire("john.lsp.setup")
 
 return {
   prequire("john.lsp.conform"),
-  prequire("john.lsp.lazydev"),
   prequire("john.lsp.trouble"),
   prequire("john.lsp.mason"),
   { "neovim/nvim-lspconfig" },
