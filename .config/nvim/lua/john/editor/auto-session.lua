@@ -1,6 +1,11 @@
 return {
   "rmagatti/auto-session",
   lazy = false,
+  dependencies = {
+    "romgrk/barbar.nvim",
+    "nvim-lualine/lualine.nvim",
+    "nvim-tree/nvim-tree.lua",
+  },
   opts = {
     silent_restore = false,
     pre_save_cmds = {

@@ -13,6 +13,7 @@ return {
   "nvim-tree/nvim-tree.lua",
   -- Lazy loading nvim-tree breaks commands for some reason
   lazy = false,
+  dependencies = { "echasnovski/mini.icons" },
   keys = { { "<C-e>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" } },
   opts = {
     on_attach = on_attach,
@@ -59,7 +60,6 @@ return {
     update_focused_file = {
       enable = true,
       update_root = true,
-      -- update_cwd = true,
       ignore_list = {},
     },
   },

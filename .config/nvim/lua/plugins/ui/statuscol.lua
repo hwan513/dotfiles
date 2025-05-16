@@ -14,7 +14,7 @@ return {
         { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
         { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
       },
-      clickhandlers = { -- builtin click handlers
+      clickhandlers = {
         FoldOther = false,
       },
     }

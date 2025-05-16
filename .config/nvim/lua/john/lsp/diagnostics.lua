@@ -1,4 +1,4 @@
-local icons = require("john.misc.icons")
+local icons = require("config.icons")
 
 vim.diagnostic.config({
   signs = {

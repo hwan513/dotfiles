@@ -1,4 +1,4 @@
-local icons = require("john.misc.icons")
+local icons = require("config.icons")
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -27,6 +27,7 @@ local diff = {
 
 return {
   "nvim-lualine/lualine.nvim",
+  dependencies = { "echasnovski/mini.icons" },
   event = "VeryLazy",
   opts = {
     options = {

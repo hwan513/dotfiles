@@ -1,10 +1,12 @@
+local icons = require("config.icons")
+
 return {
   "romgrk/barbar.nvim",
   dependencies = {
     "echasnovski/mini.icons",
     "lewis6991/gitsigns.nvim",
   },
-  lazy = false,
+  event = "VeryLazy",
   init = function()
     vim.g.barbar_auto_setup = false
     vim.api.nvim_set_hl(0, "BufferTabpageFill", { link = "BufferDefaultInactive" })
@@ -26,10 +28,10 @@ return {
       button = "",
       pinned = { button = "", filename = true },
       diagnostics = {
-        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = " " },
-        [vim.diagnostic.severity.WARN] = { enabled = true, icon = " " },
-        [vim.diagnostic.severity.INFO] = { enabled = false, icon = " " },
-        [vim.diagnostic.severity.HINT] = { enabled = false, icon = " " },
+        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = icons.diagnostics.Error },
+        [vim.diagnostic.severity.WARN] = { enabled = true, icon = icons.diagnostics.Warn },
+        [vim.diagnostic.severity.INFO] = { enabled = false, icon = icons.diagnostics.Info },
+        [vim.diagnostic.severity.HINT] = { enabled = false, icon = icons.diagnostics.Hint },
       },
     },
     maximum_padding = 2,
