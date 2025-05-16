@@ -1,11 +1,9 @@
 local prequire = require("config.utils").prequire
 local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used by lots of plugins
-  prequire("john.colors"),
   prequire("john.ui"),
   prequire("john.editor"),
   prequire("john.coding"),
-  prequire("john.extras"),
   prequire("john.git"),
   prequire("john.treesitter"),
   prequire("john.lsp"),
@@ -35,6 +33,7 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     { import = "plugins" },
+    { import = "extras" },
     plugins,
   },
   install = { colorscheme = { "cyberdream" } },
