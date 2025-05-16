@@ -21,7 +21,7 @@ local keys = {
 --- @param buffer number
 --- @param client vim.lsp.Client
 local function setup(buffer, client)
-  local map = require("john.utils").map
+  local map = require("config.utils").map
   for _, key in ipairs(keys) do
     if not key.has or client:supports_method("textDocument/" .. key.has) then
       map(key[1], key[2], key[3], { noremap = true, silent = true, buffer = buffer, desc = key.desc })

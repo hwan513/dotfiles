@@ -1,4 +1,4 @@
-local prequire = require("john.utils").prequire
+local prequire = require("config.utils").prequire
 prequire("john.lsp.diagnostics")
 prequire("john.lsp.keymaps")
 prequire("john.lsp.setup")

@@ -1,4 +1,4 @@
-local prequire = require("john.utils").prequire
+local prequire = require("config.utils").prequire
 local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used by lots of plugins
   prequire("john.colors"),

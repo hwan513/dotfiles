@@ -1,5 +1,5 @@
-local map = require("john.utils").map
-local map_opts = require("john.utils").map_opts
+local map = require("config.utils").map
+local map_opts = require("config.utils").map_opts
 return {
   "christoomey/vim-tmux-navigator",
   lazy = false,

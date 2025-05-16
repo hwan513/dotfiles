@@ -1,4 +1,4 @@
-local prequire = require("john.utils").prequire
+local prequire = require("config.utils").prequire
 return {
   prequire("john.editor.lualine"),
   prequire("john.editor.barbar"),

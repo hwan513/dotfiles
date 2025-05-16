@@ -1,6 +1,6 @@
 -- defaults {{{
-local map = require("john.utils").map
-local opts = require("john.utils").map_opts
+local map = require("config.utils").map
+local opts = require("config.utils").map_opts
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 

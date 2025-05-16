@@ -1,4 +1,4 @@
-local ft_ignore = require("john.utils").ft_ignore
+local ft_ignore = require("config.utils").ft_ignore
 return {
   "luukvbaal/statuscol.nvim",
   opts = function()

@@ -1,4 +1,4 @@
-local prequire = require("john.utils").prequire
+local prequire = require("config.utils").prequire
 return {
   prequire("john.git.neogit"),
   prequire("john.git.gitsigns"),
