@@ -1,4 +1,5 @@
-local prequire = require("config.utils").prequire
-
-prequire("john.default")
+require("config.options")
+require("config.keymaps")
+require("config.autocommands")
+require("config.hanker")
 require("config.lazy")

@@ -1,6 +1,5 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local fn = vim.fn
 
 local general = augroup("general", { clear = true })
 
@@ -29,51 +28,27 @@ autocmd("BufReadPost", {
   group = general,
   pattern = "*",
   callback = function()
-    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
-      fn.setpos(".", fn.getpos("'\""))
+    if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+      vim.fn.setpos(".", vim.fn.getpos("'\""))
       -- vim.cmd('normal zz')
       vim.cmd("silent! foldopen")
     end
   end,
 })
 
--- Check external writes to current buffer
+-- Check external writes to current buffer when switching back to neovim
 autocmd({ "FocusGained", "BufEnter" }, {
   group = general,
   pattern = "*",
   command = "checktime",
 })
 
--- Enable spell checking for certain file types and wrapping
+-- Enable wrapping on markup files
 autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.txt", "*.md", "*.tex", "*.typ" },
-  callback = function()
-    vim.api.nvim_exec2(
-      [[
-    " setlocal spell
-    set wrap
-    ]],
-      { output = false }
-    )
-  end,
+  command = "set wrap",
   group = general,
 })
-
--- remove trailing spaces
--- autocmd("BufWritePre", {
---  pattern = "*",
---  command = "%s/\\s\\+$//e",
---  group = general,
--- })
-
--- highlight yanks
--- autocmd("TextYankPost", {
---  pattern = "*",
---  callback = function()
---    vim.highlight.on_yank({ timeout = 500 })
---  end,
---  group = general,
--- })
 
 local window_sizing = augroup("window_sizing", { clear = true })
 
@@ -100,20 +75,7 @@ autocmd("VimResized", {
   group = window_sizing,
 })
 
-local window_dimming = augroup("window_dimming", { clear = true })
-
-autocmd({ "VimEnter", "WinEnter", "BufWinEnter", "FocusGained" }, {
-  pattern = { "*" },
-  command = "setlocal cursorline | setlocal winhighlight=Normal:ActiveWindow",
-  group = window_dimming,
-})
-
-autocmd({ "WinLeave", "VimLeave", "FocusLost" }, {
-  pattern = { "*" },
-  command = "setlocal nocursorline | setlocal winhighlight=Normal:InactiveWindow",
-  group = window_dimming,
-})
-
+-- Kinda makes srt (caption) files look readable
 autocmd("BufReadPost", {
   pattern = "*.srt",
   callback = function()

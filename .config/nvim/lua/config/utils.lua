@@ -22,6 +22,7 @@ M = {
   end,
 
   map = vim.keymap.set, -- keymaps function shortened
+  ---@param desc string?
   map_opts = function(desc)
     return { noremap = true, silent = true, desc = desc }
   end,
