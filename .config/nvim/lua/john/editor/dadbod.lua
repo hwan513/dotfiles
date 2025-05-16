@@ -5,7 +5,6 @@ return {
       { "tpope/vim-dadbod", lazy = true },
       {
         "saghen/blink.cmp",
-        optional = true,
         opts = {
           sources = {
             default = { "dadbod" },
