@@ -4,7 +4,6 @@ local plugins = {
   prequire("john.ui"),
   prequire("john.editor"),
   prequire("john.coding"),
-  prequire("john.git"),
   prequire("john.treesitter"),
   prequire("john.lsp"),
   prequire("john.interface.noice"),
