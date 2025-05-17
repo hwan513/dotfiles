@@ -1,7 +1,6 @@
 local prequire = require("config.utils").prequire
 return {
   -- yazi is on the radar
-  prequire("john.ui.nvim-ufo"),
   {
     "stevearc/oil.nvim",
     lazy = false,
