@@ -2,7 +2,6 @@ local prequire = require("config.utils").prequire
 return {
   -- yazi is on the radar
   prequire("john.ui.mini-hipatterns"),
-  prequire("john.ui.mini-icons"),
   prequire("john.ui.nvim-ufo"),
   {
     "stevearc/oil.nvim",
