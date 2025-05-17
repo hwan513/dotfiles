@@ -1,7 +1,7 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
-  -- does require snacks.nvim to be installed, defined elsewhere
+  dependencies = { "snacks.nvim" },
   opts = {
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**

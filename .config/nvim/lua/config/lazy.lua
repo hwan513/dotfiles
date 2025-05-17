@@ -6,7 +6,6 @@ local plugins = {
   prequire("john.coding"),
   prequire("john.treesitter"),
   prequire("john.lsp"),
-  prequire("john.interface.noice"),
 }
 
 -- Bootstrap lazy.nvim
