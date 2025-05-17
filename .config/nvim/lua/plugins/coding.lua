@@ -1,5 +1,24 @@
 return {
   {
+    "echasnovski/mini.surround",
+    opts = {},
+    -- Useful commands on this include `q` (quotes), `b` (brackets), `n` (next), `l` (last).
+    keys = {
+      { "sa", desc = "Add Surrounding", mode = { "n", "v" } },
+      { "sd", desc = "Delete Surrounding" },
+      { "sf", desc = "Find Right Surrounding" },
+      { "sF", desc = "Find Left Surrounding" },
+      { "sh", desc = "Highlight Surrounding" },
+      { "sr", desc = "Replace Surrounding" },
+      { "sn", desc = "Update `MiniSurround.config.n_lines`" },
+    },
+  },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+  },
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {
