@@ -1,6 +1,6 @@
 return {
   -- Spell Checking
-  { "barreiroleo/ltex_extra.nvim", branch = "dev", opts = {load_langs = {"en-NZ"}} },
+  { "barreiroleo/ltex_extra.nvim", branch = "dev", opts = { load_langs = { "en-NZ" } } },
   -- Markdown Editing
   { "preservim/vim-markdown", ft = "markdown" },
   {
