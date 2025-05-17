@@ -1,6 +1,4 @@
 return {
-  { "dstein64/vim-startuptime", cmd = { "StartupTime" } }, -- startup timer,
-
   -- I have the funny
   { "alec-gibson/nvim-tetris", cmd = "Tetris" },
   { "seandewar/nvimesweeper", cmd = "Nvimesweeper" },
