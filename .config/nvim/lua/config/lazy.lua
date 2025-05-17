@@ -31,9 +31,9 @@ require("lazy").setup({
   spec = {
     -- import your plugins
     { import = "plugins" },
-    { import = "plugins.languages" },
     { import = "plugins.ui" },
     { import = "extras" },
+    { import = "extras.languages" },
     plugins,
   },
   install = { colorscheme = { "cyberdream" } },
