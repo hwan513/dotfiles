@@ -3,7 +3,6 @@ local plugins = {
   { "nvim-lua/plenary.nvim", lazy = true }, -- Useful lua functions used by lots of plugins
   prequire("john.editor"),
   prequire("john.coding"),
-  prequire("john.treesitter"),
   prequire("john.lsp"),
 }
 
