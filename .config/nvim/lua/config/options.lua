@@ -1,104 +1,99 @@
--- local vars {{{
-local O = vim.opt
-local H = {}
-H.__newindex = function(_, k, v)
-  vim.cmd(string.format("highlight %s %s", k, v))
+local options = {
+  -- General behaviour
+  clipboard = "", -- don't link to system clipboard
+  hidden = true, -- buffer becomes hidden when abandoned
+  switchbuf = { "useopen", "usetab", "newtab" }, -- tab switching behaviour
+  history = 1000, -- remember lines of history
+  iskeyword = { append = "-" }, -- keyword completion includes hyphen
+  timeoutlen = 500, -- time to wait for a mapped sequence to complete
+  updatetime = 1234, -- for cursor hold aucmd
+
+  -- insertion behaviour
+  autoindent = true, -- automatically indent new lines
+  backspace = { "eol", "start", "indent" }, -- backspace acts properly
+  expandtab = true, -- convert tabs to spaces
+  shiftwidth = 2, -- how many spaces per indent
+  smartindent = true, -- make indenting smarter again
+  smarttab = true, -- inserting tab works smart
+  tabstop = 2, -- how many spaces per tab
+
+  -- folding behaviour (might overwritten by nvim-ufo)
+  foldcolumn = "1", -- extra margin to the left
+  foldenable = true, -- enable folding
+  foldlevelstart = 10, -- default number of open folds
+  foldnestmax = 10, -- maximum number of nested folds
+  foldmethod = "indent", -- fold based on indent level
+
+  -- searching behaviour
+  hlsearch = true, -- highlight search results
+  ignorecase = true, -- ignore case when searching
+  incsearch = true, -- search shows matched pattern
+  magic = true, --regex for searching
+  smartcase = true, -- smart case when searching
+
+  -- comletion-menu behaviour
+  completeopt = { "menuone", "noinsert", "noselect" }, -- complete menu options
+  pumblend = 25, -- pop up menu transparency
+  pumheight = 8, -- pop up menu height
+  pumwidth = 15, -- pop up menu width
+
+  -- navigation behaviour
+  mouse = "a", -- allow the mouse to be used in neovim
+  scrolloff = 8, -- cursor vertical scroll adding
+  sidescrolloff = 8, -- cursor horizontal scroll padding
+  whichwrap = { append = "h,l,<,>,[,]" }, -- movement works properly
+
+  -- statusline
+  cmdheight = 1, -- more space in command line
+  laststatus = 2, -- always show satus line
+  shortmess = { append = { a = true, W = true } }, -- shorten command prompt messages
+  showmode = false, -- current mode display
+  showtabline = 2, -- always show tabs
+  showcmd = true, -- show command in bottom bar
+
+  -- user interface
+  conceallevel = 0, -- see `` in markdown
+  cursorline = true, -- cursor line position tracking
+  fillchars = "vert:│", -- vertical split styling
+  number = true, -- show line numebr
+  numberwidth = 4, -- how many columns to reserve for line numbers
+  relativenumber = true, --  show relativenumber on the side
+  ruler = false, -- always show current position
+  signcolumn = "yes:2", -- show sign column so text isn't shifted
+  termguicolors = true, -- better terminal coloring
+
+  -- interface behaviour
+  linebreak = true, -- break lines at end of word
+  lazyredraw = false, -- don't redraw during macros
+  guicursor = "v:block,c-i-ci-ve-sm:ver25,n-r-cr-o:hor15", -- cursor style in different modes
+  matchtime = 2, -- tenths of a secnd to blink when matching pair
+  showmatch = true, -- matching brackets blink
+  splitbelow = true, -- force all horizontal splits to go below current window
+  splitright = true, -- force all vertical splits to go to the right of current window
+  wrap = false, -- long line wrapping behaviour
+
+  -- file behaviour
+  autoread = true, -- read file again if modified elsewhere
+  backup = false, -- create backup file when overwriting
+  writebackup = false, -- create temporary backup when overwriting
+  fileencoding = "utf-8", -- file encoding
+  fileformats = { "unix", "dos", "mac" }, --unix is standard file type
+  swapfile = false, -- don't create swap file
+  undofile = true, -- persistent undo
+  undodir = vim.fn.stdpath("state") .. "/undo",
+
+  -- cli completion
+  wildmenu = true, -- turn on wildmenu
+  wildignore = "*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store",
+}
+
+for option, setting in pairs(options) do
+  if type(setting) == "table" and setting.append ~= nil then
+    vim.opt[option]:append(setting.append)
+  else
+    vim.opt[option] = setting
+  end
 end
-setmetatable(H, H)
--- }}}
--- general things {{{
-O.clipboard = "" -- link to system clipboard
-O.hidden = true -- buffer becomes hidden when abandoned
-O.switchbuf = { "useopen", "usetab", "newtab" } -- tab switching behaviour
-O.history = 1000 -- remember lines of history
-O.iskeyword:append("-") -- keyword completion includes hyphen
-O.timeoutlen = 500 -- time to wait for a mapped sequence to complete
-O.updatetime = 1234 -- for cursor hold
--- }}}
--- insert qol {{{
-O.autoindent = true -- automatically indent new lines
-O.backspace = { "eol", "start", "indent" } -- backspace acts properly
-O.expandtab = true -- convert tabs to spaces
-O.shiftwidth = 2 -- how many spaces per indent
-O.smartindent = true -- make indenting smarter again
-O.smarttab = true -- inserting tab works smart
-O.tabstop = 2 -- how many spaces per tab
--- }}}
--- foldng {{{
-O.foldcolumn = "1" -- extra margin to the left
-O.foldenable = true -- enable folding
-O.foldlevelstart = 10 -- default number of open folds
-O.foldnestmax = 10 --maximum number of nested folds
-O.foldmethod = "indent" -- fold based on indent level
--- }}}
--- searching {{{
-O.hlsearch = true -- highlight search results
-O.ignorecase = true -- ignore case when searching
-O.incsearch = true -- search shows matched pattern
-O.magic = true --regex for searching
-O.smartcase = true -- smart case when searching
--- }}}
--- comletion options {{{
-O.completeopt = { "menuone", "noinsert", "noselect" } -- complete menu options
-H.PmenuSel = "blend=0"
-O.pumblend = 25 -- pop up menu transparency
-O.pumheight = 8 -- pop up menu height
-O.pumwidth = 15 -- pop up menu width
--- }}}
--- navigation {{{
-O.mouse = "a" -- allow the mouse to be used in neovim
-O.scrolloff = 8 -- cursor vertical scroll adding
-O.sidescrolloff = 8 -- cursor horizontal scroll padding
-O.whichwrap:append("h,l,<,>,[,]") -- movement works properly
--- }}}
--- status line {{{
-O.cmdheight = 1 -- more space in command line
-O.laststatus = 2 -- always show satus line
-O.shortmess:append({ a = true, W = true }) -- shorten command prompt messages
-O.showmode = false -- current mode display
-O.showtabline = 2 -- always show tabs
-O.showcmd = true -- show command in bottom bar
--- }}}
--- user interface {{{
-O.conceallevel = 0 -- see `` in markdown
-O.cursorline = true -- cursor line position tracking
-O.fillchars = "vert:│" -- vertical split styling
-O.number = true -- show line numebr
-O.numberwidth = 4 -- how many columns to reserve for line numbers
-O.relativenumber = true --  show relativenumber on the side
-O.ruler = false -- always show current position
-O.signcolumn = "yes:2" -- show sign column so text isn't shifted
-O.termguicolors = true -- better terminal coloring
--- }}}
--- interface behaviour {{{
-O.linebreak = true -- break lines at end of word
-O.lazyredraw = false -- redraw during macros
-O.guicursor = "v:block,c-i-ci-ve-sm:ver25,n-r-cr-o:hor15"
-O.matchtime = 2 -- tenths of a secnd to blink when matching pair
-O.showmatch = true -- matching brackets blink
-O.splitbelow = true -- force all horizontal splits to go below current window
-O.splitright = true -- force all vertical splits to go to the right of current window
-O.wrap = false -- long line wrapping behaviour
--- }}}
--- file things {{{
-O.autoread = true -- read file again if modified elsewhere
-O.backup = false -- create backup file when overwriting
-O.fileencoding = "utf-8" -- file encoding
-O.fileformats = { "unix", "dos", "mac" } --unix is standard file type
-O.swapfile = false -- don't create swap file
-O.undodir = vim.fn.stdpath("state") .. "/undo"
-O.undofile = true -- persistent undo
-O.writebackup = false -- create temporary backup when overwriting
--- }}}
--- wild menu {{{
-O.wildmenu = true -- turn on wildmenu
-O.wildignore = "*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store"
--- }}}
--- highlight {{{
-H.Visual = "gui=bold"
--- H.ActiveWindow = "guibg=#black"
--- H.InactiveWindow = "guibg=#1F202E"
--- O.winhighlight = "Normal:ActiveWindow,NormalNC:InactiveWindow"
--- }}}
+
+vim.cmd.highlight("Visual", "gui=bold")
 vim.o.sessionoptions = "blank,buffers,curdir,folds,globals,help,tabpages,winsize,winpos,terminal,localoptions"
--- vim:foldmethod=marker:foldlevel=2
