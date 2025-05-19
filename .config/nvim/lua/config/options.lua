@@ -86,7 +86,7 @@ O.backup = false -- create backup file when overwriting
 O.fileencoding = "utf-8" -- file encoding
 O.fileformats = { "unix", "dos", "mac" } --unix is standard file type
 O.swapfile = false -- don't create swap file
-O.undodir = vim.fn.stdpath("config") .. "/undo"
+O.undodir = vim.fn.stdpath("state") .. "/undo"
 O.undofile = true -- persistent undo
 O.writebackup = false -- create temporary backup when overwriting
 -- }}}
