@@ -1,3 +1,20 @@
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      codeLens = { enable = true },
+      completion = { callSnippet = "Replace" },
+      hint = {
+        enable = true,
+        setType = false,
+        paramType = true,
+        paramName = "Disable",
+        semicolon = "Disable",
+        arrayIndex = "Disable",
+      },
+    },
+  },
+})
+
 return {
   {
     "folke/lazydev.nvim",
@@ -15,4 +32,6 @@ return {
       },
     },
   },
+  { "WhoIsSethDaniel/mason-tool-installer.nvim", opts = { ensure_installed = { "lua_ls", "stylua" } } },
+  { "stevearc/conform.nvim", opts = { formatters_by_ft = { lua = { "stylua" } } } },
 }

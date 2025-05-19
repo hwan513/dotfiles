@@ -1,9 +1,3 @@
-local prequire = require("config.utils").prequire
-local plugins = {
-  prequire("john.editor"),
-  prequire("john.lsp"),
-}
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -29,7 +23,6 @@ require("lazy").setup({
     { import = "plugins.ui" },
     { import = "extras" },
     { import = "extras.integrations" },
-    plugins,
   },
   install = { colorscheme = { "cyberdream" } },
   -- automatically check for plugin updates
