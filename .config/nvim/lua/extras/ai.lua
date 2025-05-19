@@ -1,4 +1,3 @@
-local prequire = require("config.utils").prequire
 return {
   {
     "supermaven-inc/supermaven-nvim",
