@@ -22,6 +22,7 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.ui" },
     { import = "extras" },
+    -- { import = "extras.ai", enabled = false },
     { import = "extras.integrations" },
   },
   install = { colorscheme = { "cyberdream" } },
