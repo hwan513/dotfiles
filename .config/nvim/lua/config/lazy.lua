@@ -15,15 +15,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local extras = require("config.extras")
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
     -- import your plugins
     { import = "plugins" },
     { import = "plugins.ui" },
-    { import = "extras" },
-    -- { import = "extras.ai", enabled = false },
-    { import = "extras.integrations" },
+    extras,
   },
   install = { colorscheme = { "cyberdream" } },
   -- automatically check for plugin updates
