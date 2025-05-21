@@ -1,4 +1,5 @@
-local load_success, extra_plugins = pcall(require, "extra_plugins")
+local extra_plugins_path = vim.fn.stdpath("config") .. "/lua/config/extra_plugins.lua"
+local load_success, extra_plugins = pcall(require, "config.extra_plugins")
 
 --- Gets all Lua modules in a given directory and its subdirectories
 ---@param directory_name string
@@ -20,10 +21,9 @@ end
 
 local refresh_extras = function()
   local module_names = update_extras_enabled("extras")
-  local filepath = vim.fn.stdpath("config") .. "/extra_plugins.lua"
-  local file = io.open(filepath, "w")
+  local file = io.open(extra_plugins_path, "w")
   if not file then
-    vim.notify("Failed to open file: " .. filepath, vim.log.levels.ERROR)
+    vim.notify("Failed to open file: " .. extra_plugins_path, vim.log.levels.ERROR)
     return
   end
   file:write("return " .. vim.inspect(module_names))

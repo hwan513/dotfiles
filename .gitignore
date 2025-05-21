@@ -1,7 +1,7 @@
 *.zwc
 *.zcomp*
 *.zsh_history
-*/nvim/extra_plugins.lua
+*/**/extra_plugins.lua
 **/tmux/plugins
 **/zsh/plugins
 */Spoons/
