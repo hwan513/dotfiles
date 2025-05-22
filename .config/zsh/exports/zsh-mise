@@ -1,1 +1,2 @@
-_cacheval mise "$HOMEBREW_PREFIX"/bin/mise activate zsh
+# _cacheval mise "mise activate zsh" # does some weird stuff when installing new tools / trying to active venv
+eval "$(mise activate zsh)"
