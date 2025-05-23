@@ -8,4 +8,5 @@ vim.lsp.config("tinymist", {
 return {
   { "chomosuke/typst-preview.nvim", ft = "typst", opts = {} },
   { "WhoIsSethDaniel/mason-tool-installer.nvim", opts = { ensure_installed = { "tinymist" } } },
+  { "OXY2DEV/markview.nvim", opts = { preview = { filetypes = { "typst" } } } },
 }

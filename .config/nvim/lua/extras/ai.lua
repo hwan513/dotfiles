@@ -24,7 +24,16 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      { "OXY2DEV/markview.nvim", opts = { preview = { filetypes = { "codecompanion" } } } },
+      {
+        "OXY2DEV/markview.nvim",
+        opts = {
+          preview = { filetypes = { "codecompanion" }, ignore_buftypes = {} },
+          condition = function(buffer)
+            local ft, bt = vim.bo[buffer].ft, vim.bo[buffer].bt
+            return (ft == "codecompanion") and true or (bt == "nofile") and false or true
+          end,
+        },
+      },
       { "saghen/blink.cmp", opts = { sources = { per_filetype = { codecompanion = { "codecompanion" } } } } },
     },
   },

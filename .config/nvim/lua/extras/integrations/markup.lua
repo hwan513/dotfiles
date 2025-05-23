@@ -18,7 +18,7 @@ return {
     opts = { load_langs = { "en-NZ" } },
     ft = { "markdown", "tex", "text", "typst" },
   },
-  { "OXY2DEV/markview.nvim", lazy = false },
+  { "OXY2DEV/markview.nvim", lazy = false, opts_extend = { "preview.filetypes" } },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = { ensure_installed = { ltex_enabled and "ltex_plus" or nil, "harper_ls" } },
