@@ -23,4 +23,11 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = { ensure_installed = { ltex_enabled and "ltex_plus" or nil, "harper_ls" } },
   },
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    cmd = { "PasteImage", "ImgClipDebug", "ImgClipConfig" },
+    opts = { default = { drag_and_drop = { insert_mode = true } } },
+    keys = { { "<leader>P", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" } },
+  },
 }
