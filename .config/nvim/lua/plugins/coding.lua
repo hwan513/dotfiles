@@ -1,5 +1,19 @@
 return {
   {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    opts = {
+      max_count = 5,
+      disable_mouse = false,
+      disabled_keys = {
+        ["<Up>"] = false,
+        ["<Down>"] = false,
+        ["<Left>"] = false,
+        ["<Right>"] = false,
+      },
+    },
+  },
+  {
     "echasnovski/mini.surround",
     opts = {},
     -- Useful commands on this include `q` (quotes), `b` (brackets), `n` (next), `l` (last).
