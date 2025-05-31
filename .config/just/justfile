@@ -18,7 +18,4 @@ clean:
   source ~/.config/zsh/.zshrc
   
 on-launch: 
-  #!/usr/bin/env zsh
-  sketchybar &
-  sudo '/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon' &
-  sudo kanata -c ~/.config/kanata/main.kbd --port 5829
+  sudo '/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon' & sudo kanata -c ~/.config/kanata/main.kbd --port 5829
