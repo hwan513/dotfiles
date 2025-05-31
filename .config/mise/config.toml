@@ -1,32 +1,40 @@
 [tools]
-node = "latest"
+node = { version = "latest", postinstall = "corepack enable" }
 java = "21"
 pipx = "latest"
 go = "latest"
 
-# installed cargo programs
-"cargo:cargo-binstall" = "latest"
+# productivity
+"ubi:jtroo/kanata" = "latest"
+
+# apps
+"ubi:Cretezy/lazyjj" = "latest"
+
+# tools
+cargo-binstall = "latest"
+"npm:epub-wordcount" = "latest"
+"cargo:av1an" = "latest"
+"cargo:hayagriva" = "latest"
+
+# cargo helpers
 "cargo:cargo-generate" = "latest"
 "cargo:cargo-clean-recursive" = "latest"
+"cargo:cargo-nextest" = "latest"
+"cargo:cargo-wizard" = "latest"
+"cargo:cargo-info" = "latest"
+
+# tauri
+"cargo:tauri-cli" = "latest"
 "cargo:create-tauri-app" = "latest"
-"cargo:hayagriva" = "latest"
-"cargo:kanata" = "latest"
+
+# wasm
+"cargo:wasm-bindgen-cli" = "latest"
+"cargo:twiggy" = "latest"
 "cargo:leptosfmt" = "latest"
 "cargo:perseus-cli" = "latest"
 "cargo:stylance-cli" = "latest"
-"cargo:tauri-cli" = "latest"
 "cargo:trunk" = "latest"
-"cargo:typstfmt" = "latest"
-"cargo:cargo-nextest" = "latest"
-"cargo:av1an" = "latest"
-"cargo:cargo-wizard" = "latest"
-"cargo:cargo-bloat" = "latest"
-"cargo:twiggy" = "latest"
-"cargo:cargo-info" = "latest"
-"cargo:lazyjj" = "latest"
-
-"npm:epub-wordcount" = "latest"
-"cargo:wasm-bindgen-cli" = "latest"
+usage = "latest"
 
 [settings]
 experimental = true
