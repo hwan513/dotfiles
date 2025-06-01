@@ -6,6 +6,7 @@ sudo -v
 brew bundle --file Brewlite
 
 # Setup hammmerspoon
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 curl -L https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip -o SpoonInstall.spoon.zip
 # No idea if I need spoon install anymore
 unzip SpoonInstall.spoon.zip -d .hammerspoon/Spoons
