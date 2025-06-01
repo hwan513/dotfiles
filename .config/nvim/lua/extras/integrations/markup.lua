@@ -9,6 +9,12 @@ vim.lsp.config("ltex_plus", {
     },
   },
 })
+vim.lsp.config("harper_ls", {
+  settings = {
+    linters = { SentenceCapitalization = false },
+    dialect = "Australian",
+  },
+})
 
 return {
   {
