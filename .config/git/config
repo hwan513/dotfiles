@@ -1,0 +1,15 @@
+[user]
+	name = Henry Wang
+	email = wang.henryhan@gmail.com
+[core]
+  compression = 9
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://github.com"]
+	username = hwan513
