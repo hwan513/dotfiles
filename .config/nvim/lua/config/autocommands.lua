@@ -17,6 +17,12 @@ autocmd("FileType", {
   group = general,
 })
 
+-- Reload editorconfig when file is modified externally.
+-- `swiftlint --fix` reloads the ftplugin which overwrites editorconfig shiftwidth setting.
+autocmd("FileChangedShellPost", {
+  command = "doautocmd nvim.editorconfig BufReadPost",
+})
+
 autocmd("FocusLost", {
   pattern = "*",
   command = "silent! wa",
