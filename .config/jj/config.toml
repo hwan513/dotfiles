@@ -7,3 +7,6 @@ default-command = "st"
 
 [revset-aliases]
 "immutable_heads()" = "builtin_immutable_heads() | remote_bookmarks()"
+
+[git]
+private-commits = '''description(glob:'private:*')'''
