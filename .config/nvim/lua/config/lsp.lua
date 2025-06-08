@@ -17,7 +17,8 @@ vim.diagnostic.config({
 })
 
 vim.api.nvim_create_user_command("ToggleDiagnostic", function()
-  vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
+  local virtual_line_config = (not vim.diagnostic.config().virtual_lines) and { current_line = true } or false
+  vim.diagnostic.config({ virtual_lines = virtual_line_config })
 end, { desc = "Toggle virtual lines for diagnostics" })
 
 -- Keymaps
