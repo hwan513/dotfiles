@@ -15,6 +15,7 @@ cargo-binstall = "latest"
 "npm:epub-wordcount" = "latest"
 "cargo:av1an" = "latest"
 "cargo:hayagriva" = "latest"
+"cargo:bacon" = "latest"
 
 # cargo helpers
 "cargo:cargo-generate" = "latest"

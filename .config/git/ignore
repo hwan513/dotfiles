@@ -31,4 +31,5 @@ Temporary Items
 *.pdf
 
 # Rust related
+.bacon-locations
 rustc-ice-*

@@ -1,0 +1,1 @@
+export BACON_PREFS=$XDG_CONFIG_HOME/bacon/prefs.toml

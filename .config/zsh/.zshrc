@@ -23,6 +23,7 @@ _zsh_add_file "exports/zsh-orbstack"
 _zsh_add_file "exports/zsh-scripts"
 _zsh_add_file "exports/zsh-jj"
 _zsh_add_file "exports/zsh-bob"
+_zsh_add_file "exports/zsh-bacon"
 
 _cacheval z zoxide init zsh
 
