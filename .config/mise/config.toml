@@ -30,11 +30,12 @@ cargo-binstall = "latest"
 # wasm
 "cargo:wasm-bindgen-cli" = "latest"
 "cargo:twiggy" = "latest"
-"cargo:leptosfmt" = "latest"
+"ubi:bram209/leptosfmt" = "latest"
 "cargo:perseus-cli" = "latest"
 "cargo:stylance-cli" = "latest"
 "cargo:trunk" = "latest"
 usage = "latest"
+"ubi:leptos-rs/cargo-leptos" = "latest"
 
 [settings]
 experimental = true

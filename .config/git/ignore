@@ -30,3 +30,5 @@ Temporary Items
 # General file ignores
 *.pdf
 
+# Rust related
+rustc-ice-*

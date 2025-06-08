@@ -1,16 +1,15 @@
-vim.lsp.config("rust_analyzer", {
+vim.lsp.config("rust-analyzer", {
   settings = {
     ["rust-analyzer"] = {
-      checkOnSave = { command = "clippy" },
-      cargo = { targetDir = true },
+      check = { command = "clippy", extraArgs = { "--no-deps" } },
+      cargo = { targetDir = true, features = "all" },
     },
   },
 })
 
 return {
   { "rayliwell/tree-sitter-rstml", dependencies = { "nvim-treesitter" }, ft = "rust", opts = {} },
-  { "WhoIsSethDaniel/mason-tool-installer.nvim", opts = { ensure_installed = { "rust-analyzer" } } },
-  { "mason-org/mason-lspconfig.nvim", opts = { automatic_enable = { exclude = { "rust-analyzer" } } } },
+  -- Install rust-analyzer with the corresponding toolchain and `rustup component add rust-analyzer`.
   { "stevearc/conform.nvim", opts = { formatters_by_ft = { rust = { "leptosfmt", "rustfmt" } } } },
   { "mrcjkb/rustaceanvim", version = "^6", lazy = false },
   {
@@ -18,12 +17,7 @@ return {
     event = { "BufRead Cargo.toml" },
     opts = {
       completion = { crates = { enabled = true } },
-      lsp = {
-        enabled = true,
-        actions = true,
-        completion = true,
-        hover = true,
-      },
+      lsp = { enabled = true, actions = true, completion = true, hover = true },
     },
   },
 }
