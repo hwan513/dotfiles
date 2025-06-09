@@ -7,7 +7,7 @@ local bacon_spec = bacon_enabled
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       opts = { ensure_installed = { "bacon", "bacon-ls" } },
     }
-  or nil
+  or {}
 
 vim.lsp.config("rust-analyzer", {
   settings = {

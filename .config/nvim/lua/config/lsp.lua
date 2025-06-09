@@ -10,16 +10,45 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = icons.diagnostics.Info,
     },
   },
-  virtual_lines = {
-    current_line = true,
+  float = {
+    show_header = true,
+    source = "if_many",
+    border = "rounded",
+    focusable = false,
   },
   severity_sort = true,
 })
 
+-- code adapted from https://www.reddit.com/r/neovim/comments/1jm5atz/comment/mk9w6v0/
+local is_virtual_line = true
+--- Only show diagnostics after a jump has occurred
+---@param jump_count number
+local function better_diagnostic_jump(jump_count)
+  -- Prevents CursorMoved autocmd from re-triggering when jumping consecutively when virtual lines is set
+  if is_virtual_line then
+    pcall(vim.api.nvim_del_augroup_by_name, "better_diagnostic_jump")
+  end
+  vim.diagnostic.jump({
+    count = jump_count,
+    on_jump = function()
+      if is_virtual_line then
+        vim.diagnostic.config({ virtual_lines = { current_line = true } })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+          group = vim.api.nvim_create_augroup("better_diagnostic_jump", {}),
+          once = true,
+          callback = function()
+            vim.diagnostic.config({ virtual_lines = false })
+          end,
+        })
+      else
+        vim.diagnostic.open_float()
+      end
+    end,
+  })
+end
 vim.api.nvim_create_user_command("ToggleDiagnostic", function()
-  local virtual_line_config = (not vim.diagnostic.config().virtual_lines) and { current_line = true } or false
-  vim.diagnostic.config({ virtual_lines = virtual_line_config })
-end, { desc = "Toggle virtual lines for diagnostics" })
+  is_virtual_line = not is_virtual_line
+end, { desc = "Toggle between virtual line and floating window for diagnostics" })
 
 -- Keymaps
 -- stylua: ignore start
@@ -37,8 +66,8 @@ local keys = {
   { "n", "gL", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", has = "codeLens" },
   { "n", "gh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", desc = "Toggle Inlay Hints", has = "inlayHint" },
   { "n", "gn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
-  { "n", "<C-p>", "<cmd>lua vim.diagnostic.jump({count= -1})<CR>", desc = "Next Diagnostic" },
-  { "n", "<C-n>", "<cmd>lua vim.diagnostic.jump({count= 1})<CR>", desc = "Previous Diagnostic" },
+  { "n", "<C-p>", function() better_diagnostic_jump(-1) end, desc = "Previous Diagnostic" },
+  { "n", "<C-n>", function() better_diagnostic_jump(1) end, desc = "Next Diagnostic" },
 }
 -- stylua: ignore end
 
