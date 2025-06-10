@@ -5,7 +5,7 @@ return {
       ensure_installed = {
         "biome",
         "cssls",
-        "css_variables",
+        -- "css_variables", -- seems to be unmaintained
         "emmet_language_server",
         "html",
         "prettierd",
