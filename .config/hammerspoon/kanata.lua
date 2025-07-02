@@ -65,20 +65,27 @@ end
 
 -- Watch for changes in active application
 AppWatcher = hs.application.watcher.new(function(_, eventType, app)
+  -- Get the application identifier to save layer settings, with fallback to app title
+  local appIdentifier
+  if app:bundleID() ~= nil then
+    appIdentifier = app:bundleID()
+  elseif app:title() ~= nil then
+    appIdentifier = app:title()
+  else
+    return
+  end
   if eventType == hs.application.watcher.deactivated then
     -- Save layer setting on switch away unless it is the default layer
-    if app:bundleID() ~= nil then
-      if recent_layer == default_layer then
-        LayerTable[app:bundleID()] = nil
-      elseif LayerTable[app:bundleID()] ~= recent_layer then
-        LayerTable[app:bundleID()] = recent_layer
-      end
-      SaveLayers(layer_file)
+    if recent_layer == default_layer then
+      LayerTable[appIdentifier] = nil
+    elseif LayerTable[appIdentifier] ~= recent_layer then
+      LayerTable[appIdentifier] = recent_layer
     end
+    SaveLayers(layer_file)
   -- Load layer setting on switch to an application
   elseif eventType == hs.application.watcher.activated then
     alertConnection()
-    local newLayer = LayerTable[app:bundleID()]
+    local newLayer = LayerTable[appIdentifier]
     if newLayer == nil or newLayer == "" or newLayer == "noop" then
       newLayer = default_layer
     end
