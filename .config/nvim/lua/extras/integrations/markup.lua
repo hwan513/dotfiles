@@ -24,7 +24,12 @@ return {
     opts = { load_langs = { "en-NZ" } },
     ft = { "markdown", "tex", "text", "typst" },
   },
-  { "OXY2DEV/markview.nvim", lazy = false, opts_extend = { "preview.filetypes" } },
+  {
+    "OXY2DEV/markview.nvim",
+    priority = 49, -- Needs to be loaded after treesitter https://github.com/OXY2DEV/markview.nvim?tab=readme-ov-file#-installation
+    lazy = false,
+    opts_extend = { "preview.filetypes" },
+  },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = { ensure_installed = { ltex_enabled and "ltex_plus" or nil, "harper_ls" } },
