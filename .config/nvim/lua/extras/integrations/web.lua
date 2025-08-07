@@ -12,6 +12,6 @@ return {
       },
     },
   },
-  { "stevearc/conform.nvim", opts = { formatters_by_ft = { css = { "biome" }, html = { "prettierd" } } } },
+  { "stevearc/conform.nvim", opts = { formatters_by_ft = { css = { "biome" }, html = { "prettierd" }, htmlangular = { "prettierd" } } } },
   { "OXY2DEV/markview.nvim", opts = { preview = { filetypes = { "html" } } } },
 }
