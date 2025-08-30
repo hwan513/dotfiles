@@ -10,6 +10,7 @@ return {
   -- Scrollbar
   {
     "lewis6991/satellite.nvim",
+    enabled = false,
     opts = {
       excluded_filetypes = ft_ignore,
       handlers = {
