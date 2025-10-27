@@ -7,9 +7,6 @@ go = "latest"
 # productivity
 "ubi:jtroo/kanata" = "latest"
 
-# apps
-"ubi:Cretezy/lazyjj" = "latest"
-
 # tools
 cargo-binstall = "latest"
 "npm:epub-wordcount" = "latest"
