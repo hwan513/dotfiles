@@ -1,0 +1,97 @@
+# fish config - mirrors the export behaviour of dot_config/zsh/dot_zshrc.tmpl.
+# Behaviour provided natively by fish (no config needed, matching the zsh plugins):
+#   - history  (SHARE_HISTORY / APPEND_HISTORY / HIST_IGNORE_SPACE)
+#   - syntax highlighting
+#   - autosuggestions
+#   - tab completions
+#   - vi keybindings (personal/zsh-vim-mode)
+fish_vi_key_bindings
+
+# Prompt (options/zsh-prompt - powerlevel10k is replaced by oh-my-posh)
+oh-my-posh init fish | source
+
+# Brew (exports/zsh-brew)
+{{ if eq .chezmoi.os "darwin" }}brew shellenv | source
+
+# rosetta version of homebrew
+alias ibrew "arch -x86_64 /usr/local/bin/brew"
+alias idotnet "arch -x86_64 /usr/local/bin/dotnet"
+alias ipipx "arch -x86_64 /usr/local/bin/pipx"
+{{ end }}
+
+# General aliases (personal/zsh-aliases)
+alias ls "lsd"
+alias n "nvim"
+alias j "just"
+alias .j "just --justfile ~/.config/just/justfile --working-directory ."
+
+# Exports
+# fzf (exports/zsh-fzf)
+set -gx FZF_DEFAULT_COMMAND "fd -H"
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+fzf --fish | source
+
+# mise (exports/zsh-mise)
+mise activate fish | source
+
+# jj (exports/zsh-jj)
+set -gx JJ_CONFIG "$XDG_CONFIG_HOME/jj/config.toml"
+alias jjj "jjui"
+alias jl "jj log"
+alias jd "jj describe"
+alias jn "jj new"
+alias je "jj edit"
+alias ja "jj abandon"
+alias js "jj squash"
+alias jb "jj bookmark list --all"
+alias jp "jj git push"
+alias jf "jj git fetch"
+alias jll "jj log -r .."
+alias jlll "jj log -r .. --reversed"
+
+# scripts (exports/zsh-scripts)
+fish_add_path "$XDG_CONFIG_HOME/zsh/scripts"
+
+# java / maven (exports/zsh-java)
+alias mco "mvn compile"
+alias mcl "mvn clean"
+alias mte "mvn test"
+alias mcc "mvn clean compile"
+alias mct "mvn clean test"
+alias mej "mvn exec:java"
+alias mjr "mvn clean javafx:run"
+alias mfc "mvn git-code-format:format-code"
+
+{{ if has "android" .profiles }}
+# Android (exports/zsh-android)
+set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
+set -gx PATH $ANDROID_HOME/cmdline-tools/tools/bin "$ANDROID_HOME/emulator" "$ANDROID_HOME/platform-tools" $PATH
+set -gx NDK_HOME "$ANDROID_HOME/ndk/"(/bin/ls -1 "$ANDROID_HOME/ndk")
+{{ end }}
+
+{{ if has "rust" .profiles }}
+# cargo (exports/zsh-cargo)
+set -gx CARGO_HOME $XDG_CONFIG_HOME/cargo
+set -gx RUSTUP_HOME $XDG_CONFIG_HOME/rustup
+fish_add_path "$CARGO_HOME/bin" # binaries installed by cargo install
+# NOTE: $CARGO_HOME/env is POSIX-sh; the env vars it exports are set above.
+alias crr "cargo run --release"
+alias crd "cargo run"
+alias ccl "cargo clean"
+alias cbu "cargo build"
+alias cte "cargo test"
+
+# bacon (exports/zsh-bacon)
+set -gx BACON_PREFS $XDG_CONFIG_HOME/bacon/prefs.toml
+{{ end }}
+
+{{ if has "orbstack" .profiles }}
+# OrbStack (exports/zsh-orbstack)
+source ~/.orbstack/shell/init.fish 2>/dev/null; or true
+{{ end }}
+
+# zoxide (dot_zshrc.tmpl: _cacheval z zoxide init zsh)
+zoxide init fish | source
+
+# for locally compiled qmk (dot_zshrc.tmpl: . "$HOME/.local/bin/env")
+fish_add_path "$HOME/.local/bin"
