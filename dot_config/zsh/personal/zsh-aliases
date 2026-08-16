@@ -1,0 +1,7 @@
+# aliases for better commands in general
+alias mkdir='nocorrect mkdir'
+alias ls='lsd'
+alias n="nvim"
+
+alias j='just'
+alias .j='just --justfile ~/.config/just/justfile --working-directory .'

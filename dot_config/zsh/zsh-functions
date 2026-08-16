@@ -1,0 +1,86 @@
+# shellcheck source=/dev/null
+# Adapted from https://github.com/Mach-OS/Machfiles/blob/master/zsh/.config/zsh/zsh-functions
+
+# Function to source files if they exist
+function _zsh_add_file() {
+  [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
+}
+
+# Adapted from code from https://github.com/QuarticCat/zsh-smartcache and https://github.com/mroth/evalcache
+# Directory to store cache files
+ZSH_CACHE=${ZSH_CACHE:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh-cache}
+ZSH_EVAL_CACHE=${ZSH_CACHE}/eval
+
+# Supply commmand to eval as a string
+mkdir -p "$ZSH_EVAL_CACHE"
+
+function _cacheval() {
+  local cache_file="$ZSH_EVAL_CACHE"/"$1".zsh
+  ZCOMPILE=true _cachewrite "$cache_file" "${@:2}"
+  source "$cache_file"
+}
+
+# Caches the output of the command and returns it, currently only accounts for single strings
+function _cachecommand() {
+  local cache_file="$ZSH_EVAL_CACHE"/"$1".zsh
+  ZCOMPILE=true _cachewrite "$cache_file" "${@:2}"
+  echo "$(<"$cache_file")"
+}
+
+function _cachewrite() {
+  (($# < 2)) && printf "Incorrect cache[val|command] usage for '%s'\nUsage: cache[val|command] <cache-key> <command>" "$1" && return 1
+  local cache_file="$1"
+  if [ ! -f "$cache_file" ]; then
+    echo "Caching output for ${*:2}"
+    # Can't seem to get piping from file to file to work for better handling
+    "${@:2}" >"$cache_file" &&
+      _cachepropagate "$cache_file" &&
+      $ZCOMPILE &&
+      zcompile "$cache_file"
+  fi
+}
+
+function cacheclear() {
+  find "${ZSH_CACHE:?}" -type f -delete
+}
+
+function zshcompile() {
+  setopt local_options glob_dots
+  local f zwc
+  for f in "$ZDOTDIR"/**/*(ND.); do
+    [[ "$f" == *.zwc ]] && continue
+    [[ "$f" == */.zsh_history ]] && continue
+    zwc="$f.zwc"
+    [[ ! -f "$zwc" || "$f" -nt "$zwc" ]] && zcompile "$f" 2>/dev/null
+  done
+}
+
+# shellcheck disable=SC2016,SC2001
+function _cachepropagate() {
+  input_file=$1
+  calculate_md5() {
+    echo -n "$1" | md5
+  }
+  touch "$input_file.temp"
+  # Read the input file line by line
+  while IFS= read -r line; do
+    # Check if the line contains 'eval "$(operation)"'
+    if echo "$line" | grep -q "^\s*eval \"\$\(.*\)\""; then
+      operation=$(echo "$line" | sed -n 's/eval "\$(\(.*\))"/\1/p')
+      md5=$(calculate_md5 "$operation")
+      # Replace 'eval "$(operation)"' with '_cacheval $md5 $operation'
+      line=$(echo "$line" | sed -r 's/eval "\$\((.*)\)";?/_cacheval '"$md5"' \1/')
+    fi
+    # Write the modified line to the output file
+    echo -E "$line" >>"$input_file.temp"
+  done <"$input_file"
+  mv "$1.temp" "$1"
+}
+
+ZSH_SITE_FUNCTIONS=${ZSH_CACHE}/site-functions
+mkdir -p "$ZSH_SITE_FUNCTIONS"
+export FPATH="$ZSH_SITE_FUNCTIONS:$FPATH"
+function _cachefpath() {
+  local cache_file="$ZSH_SITE_FUNCTIONS"/"$1"
+  ZCOMPILE=false _cachewrite "$cache_file" "${@:2}"
+}

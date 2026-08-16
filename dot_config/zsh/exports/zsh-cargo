@@ -1,0 +1,15 @@
+export CARGO_HOME=$XDG_CONFIG_HOME/cargo
+export RUSTUP_HOME=$XDG_CONFIG_HOME/rustup
+
+export PATH="$CARGO_HOME/bin:$PATH" # binaries installed by cargo install
+source "$CARGO_HOME"/env
+
+_cachefpath _rustup rustup completions zsh
+_cachefpath _cargo rustup completions zsh cargo
+
+# aliases for cargo
+alias crr="cargo run --release"
+alias crd="cargo run"
+alias ccl="cargo clean"
+alias cbu="cargo build"
+alias cte="cargo test"

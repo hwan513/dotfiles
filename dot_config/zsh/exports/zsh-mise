@@ -1,0 +1,4 @@
+# _cacheval mise "mise activate zsh" # does some weird stuff when installing new tools / trying to active venv
+eval "$(mise activate zsh)"
+# Uncomment to use a minimal mise config
+# export MISE_GLOBAL_CONFIG_FILE="$HOME/.config/mise/config_minimal.toml"

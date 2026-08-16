@@ -1,0 +1,15 @@
+export JJ_CONFIG="${XDG_CONFIG_HOME}/jj/config.toml"
+
+# aliases for jj
+alias jjj='jjui'
+alias jl='jj log'
+alias jd='jj describe'
+alias jn='jj new'
+alias je='jj edit'
+alias ja='jj abandon'
+alias js='jj squash'
+alias jb="jj bookmark list --all"
+alias jp='jj git push'
+alias jf='jj git fetch'
+alias jll="jj log -r .."
+alias jlll='jj log -r .. --reversed'

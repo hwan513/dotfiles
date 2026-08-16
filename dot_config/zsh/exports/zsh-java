@@ -1,0 +1,9 @@
+# aliases for the maven compiler
+alias mco='mvn compile'
+alias mcl='mvn clean'
+alias mte='mvn test'
+alias mcc='mvn clean compile'
+alias mct='mvn clean test'
+alias mej='mvn exec:java'
+alias mjr='mvn clean javafx:run'
+alias mfc='mvn git-code-format:format-code'
