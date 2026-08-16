@@ -28,7 +28,10 @@ Temporary Items
 .apdisk
 
 # General file ignores
-*.pdf
+# *.pdf
+
+# jj repos
+jj/repos
 
 # Rust related
 .bacon-locations

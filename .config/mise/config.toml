@@ -34,6 +34,9 @@ cargo-binstall = "latest"
 "cargo:trunk" = "latest"
 usage = "latest"
 "ubi:leptos-rs/cargo-leptos" = "latest"
+jjui = "latest"
+delta = "latest"
+opencode = "latest"
 
 [settings]
 experimental = true

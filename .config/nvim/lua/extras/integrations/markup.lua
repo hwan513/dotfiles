@@ -1,4 +1,4 @@
-local ltex_enabled = false
+local ltex_enabled = true
 vim.lsp.config("ltex_plus", {
   settings = {
     ltex = {
@@ -11,8 +11,10 @@ vim.lsp.config("ltex_plus", {
 })
 vim.lsp.config("harper_ls", {
   settings = {
-    linters = { SentenceCapitalization = false },
-    dialect = "Australian",
+    ["harper-ls"] = {
+      linters = { SentenceCapitalization = false },
+      dialect = "Australian",
+    },
   },
 })
 

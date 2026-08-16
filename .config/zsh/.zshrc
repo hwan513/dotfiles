@@ -32,3 +32,6 @@ source ${ZIM_HOME}/init.zsh
 
 # TODO: one day move fzf, mise and zoxide installation into here
 # TODO: cargo and mise boostrap in a separate file
+
+# for locally compiled qmk
+. "$HOME/.local/bin/env"
