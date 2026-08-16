@@ -1,0 +1,2 @@
+# Canonical fish plugin list; only reachable via the fish_plugins symlink.
+**/*/*.symlink

@@ -1,25 +1,3 @@
-# fish config - mirrors the export behaviour of dot_config/zsh/dot_zshrc.tmpl.
-# Behaviour provided natively by fish (no config needed, matching the zsh plugins):
-#   - history  (SHARE_HISTORY / APPEND_HISTORY / HIST_IGNORE_SPACE)
-#   - syntax highlighting
-#   - autosuggestions
-#   - tab completions
-#   - vi keybindings (personal/zsh-vim-mode)
-
-# vi and emac keybindings
-fish_vi_key_bindings
-bind -M insert \cf forward-char
-bind -M insert \cb backward-char
-bind -M insert \ca beginning-of-line
-bind -M insert \ce end-of-line
-bind -M insert \cw backward-kill-word
-bind -M insert \cy yank
-bind -M insert \ck kill-line
-
-function fish_mode_prompt
-end
-set -U fish_greeting ""
-
 # Cache `init`-style commands (oh-my-posh, brew shellenv, fzf, mise, zoxide):
 # regenerate the emitted script when the source binary or a config file passed as an arg changes.
 function cached_init --argument-names bin --description "Cache an init command's output, keyed on the binary's and config files' mtimes"
@@ -44,9 +22,6 @@ function cached_init --argument-names bin --description "Cache an init command's
     end
     source "$cache"
 end
-
-# Prompt (options/zsh-prompt - powerlevel10k is replaced by oh-my-posh)
-cached_init oh-my-posh init fish --config ~/.config/oh-my-posh/config.toml
 
 {{ if eq .chezmoi.os "darwin" }}cached_init brew shellenv
 # Brew (exports/zsh-brew)
@@ -88,24 +63,14 @@ alias jlll "jj log -r .. --reversed"
 # scripts (exports/zsh-scripts)
 fish_add_path "$XDG_CONFIG_HOME/zsh/scripts"
 
-# java / maven (exports/zsh-java)
-alias mco "mvn compile"
-alias mcl "mvn clean"
-alias mte "mvn test"
-alias mcc "mvn clean compile"
-alias mct "mvn clean test"
-alias mej "mvn exec:java"
-alias mjr "mvn clean javafx:run"
-alias mfc "mvn git-code-format:format-code"
-
-{{ if has "android" .profiles }}
+{{- if has "android" .profiles }}
 # Android (exports/zsh-android)
 set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
 set -gx PATH $ANDROID_HOME/cmdline-tools/tools/bin "$ANDROID_HOME/emulator" "$ANDROID_HOME/platform-tools" $PATH
 set -gx NDK_HOME "$ANDROID_HOME/ndk/"(/bin/ls -1 "$ANDROID_HOME/ndk")
-{{ end }}
+{{ end -}}
 
-{{ if has "rust" .profiles }}
+{{- if has "rust" .profiles }}
 # cargo (exports/zsh-cargo)
 set -gx CARGO_HOME $XDG_CONFIG_HOME/cargo
 set -gx RUSTUP_HOME $XDG_CONFIG_HOME/rustup
@@ -119,7 +84,7 @@ alias cte "cargo test"
 
 # bacon (exports/zsh-bacon)
 set -gx BACON_PREFS $XDG_CONFIG_HOME/bacon/prefs.toml
-{{ end }}
+{{ end -}}
 
 {{ if has "orbstack" .profiles }}
 # OrbStack (exports/zsh-orbstack)
