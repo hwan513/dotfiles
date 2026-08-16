@@ -1,0 +1,72 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+version = 4
+async = true
+final_space = true
+console_title = true
+console_title_template = "{{ .Shell }} in {{ .Folder }}"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+
+[[blocks.segments]]
+type = "os"
+style = "plain"
+template = "{{ .Icon }} "
+
+[[blocks.segments]]
+type = "path"
+style = "plain"
+foreground = "#0087af"
+template = "<#0087af>\uf07c</> {{ regexReplaceAll \"<#0087af>([^<>/])</>\" .Path \"<#8787af>$1</>\" }} "
+
+[blocks.segments.properties]
+style = "powerlevel"
+max_width = 40
+folder_format = "<#0087af>%s</>"
+left_format = "<#00afff>%s</>"
+right_format = "<#00afff><b>%s</></>"
+
+[[blocks.segments]]
+type = "git"
+style = "plain"
+foreground = "#5fd700"
+template = "\uf1d3 {{ if .Detached }}@{{ substr 0 8 .Hash }}{{ else }}\uf126 {{ .HEAD }}{{ end }}{{ if gt (add .Staging.Added .Staging.Modified .Staging.Deleted) 0 }} <#d7af00>+{{ add .Staging.Added .Staging.Modified .Staging.Deleted }}</>{{ end }}{{ if gt (add .Working.Modified .Working.Deleted) 0 }} <#d7af00>!{{ add .Working.Modified .Working.Deleted }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <#00afff>?{{ .Working.Untracked }}</>{{ end }}{{ if gt (add .Working.Unmerged .Staging.Unmerged) 0 }} <#ff0000>~{{ add .Working.Unmerged .Staging.Unmerged }}</>{{ end }}"
+
+[blocks.segments.properties]
+branch_icon = ""
+fetch_status = true
+
+[[blocks]]
+type = "prompt"
+alignment = "right"
+
+[[blocks.segments]]
+type = "executiontime"
+style = "plain"
+foreground = "#87875f"
+template = "\uf252 {{ .FormattedMs }} "
+
+[blocks.segments.properties]
+threshold = 500
+style = "austin"
+always_enabled = true
+
+[[blocks.segments]]
+type = "time"
+style = "plain"
+foreground = "#5f8787"
+template = "\uf017 {{ .CurrentDate | date .Format }}"
+
+[blocks.segments.properties]
+time_format = "15:04:05"
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+[[blocks.segments]]
+type = "text"
+style = "plain"
+template = "{{ if eq .Code 0 }}<#5fd700>❯</>{{ else }}<#ff0000>❯</>{{ end }}"
