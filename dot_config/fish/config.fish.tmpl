@@ -5,15 +5,51 @@
 #   - autosuggestions
 #   - tab completions
 #   - vi keybindings (personal/zsh-vim-mode)
+
+# vi and emac keybindings
 fish_vi_key_bindings
+bind -M insert \cf forward-char
+bind -M insert \cb backward-char
+bind -M insert \ca beginning-of-line
+bind -M insert \ce end-of-line
+bind -M insert \cw backward-kill-word
+bind -M insert \cy yank
+bind -M insert \ck kill-line
+
+function fish_mode_prompt
+end
+set -U fish_greeting ""
+
+# Cache `init`-style commands (oh-my-posh, brew shellenv, fzf, mise, zoxide):
+# regenerate the emitted script when the source binary or a config file passed as an arg changes.
+function cached_init --argument-names bin --description "Cache an init command's output, keyed on the binary's and config files' mtimes"
+    set -l binpath (command -v $bin) 2>/dev/null
+    or return
+    set -l args $argv[2..]
+    set -l key (string join '--' $binpath $args | string replace -a -r '[^A-Za-z0-9._-]' '_')
+    set -l cache ~/.cache/fish/init-$key.fish
+    set -l stale false
+    if not test -f "$cache"; or test "$binpath" -nt "$cache"
+        set stale true
+    end
+    for arg in $args
+        if test -f "$arg"; and test "$arg" -nt "$cache"
+            set stale true
+            break
+        end
+    end
+    if test "$stale"
+        mkdir -p (path dirname "$cache")
+        $binpath $args > "$cache"
+    end
+    source "$cache"
+end
 
 # Prompt (options/zsh-prompt - powerlevel10k is replaced by oh-my-posh)
-oh-my-posh init fish | source
+cached_init oh-my-posh init fish --config ~/.config/oh-my-posh/config.toml
 
+{{ if eq .chezmoi.os "darwin" }}cached_init brew shellenv
 # Brew (exports/zsh-brew)
-{{ if eq .chezmoi.os "darwin" }}brew shellenv | source
-
-# rosetta version of homebrew
 alias ibrew "arch -x86_64 /usr/local/bin/brew"
 alias idotnet "arch -x86_64 /usr/local/bin/dotnet"
 alias ipipx "arch -x86_64 /usr/local/bin/pipx"
@@ -29,10 +65,10 @@ alias .j "just --justfile ~/.config/just/justfile --working-directory ."
 # fzf (exports/zsh-fzf)
 set -gx FZF_DEFAULT_COMMAND "fd -H"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-fzf --fish | source
+cached_init fzf --fish
 
 # mise (exports/zsh-mise)
-mise activate fish | source
+# cached_init mise activate fish
 
 # jj (exports/zsh-jj)
 set -gx JJ_CONFIG "$XDG_CONFIG_HOME/jj/config.toml"
@@ -91,7 +127,7 @@ source ~/.orbstack/shell/init.fish 2>/dev/null; or true
 {{ end }}
 
 # zoxide (dot_zshrc.tmpl: _cacheval z zoxide init zsh)
-zoxide init fish | source
+cached_init zoxide init fish
 
 # for locally compiled qmk (dot_zshrc.tmpl: . "$HOME/.local/bin/env")
 fish_add_path "$HOME/.local/bin"
