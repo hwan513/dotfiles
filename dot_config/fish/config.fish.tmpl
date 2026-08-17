@@ -42,8 +42,9 @@ set -gx FZF_DEFAULT_COMMAND "fd -H"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 cached_init fzf --fish
 
-# mise (exports/zsh-mise)
-# cached_init mise activate fish
+if not functions -q mise 
+  cached_init mise activate fish
+end
 
 # jj (exports/zsh-jj)
 set -gx JJ_CONFIG "$XDG_CONFIG_HOME/jj/config.toml"
