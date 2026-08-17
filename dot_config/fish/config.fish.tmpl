@@ -23,7 +23,7 @@ function cached_init --argument-names bin --description "Cache an init command's
     source "$cache"
 end
 
-{{ if eq .chezmoi.os "darwin" }}cached_init brew shellenv
+{{ if eq .chezmoi.os "darwin" }}_evalcache brew shellenv
 # Brew (exports/zsh-brew)
 alias ibrew "arch -x86_64 /usr/local/bin/brew"
 alias idotnet "arch -x86_64 /usr/local/bin/dotnet"
@@ -36,15 +36,15 @@ alias n "nvim"
 alias j "just"
 alias .j "just --justfile ~/.config/just/justfile --working-directory ."
 
+if not functions -q mise 
+  _evalcache mise activate fish
+end
+
 # Exports
 # fzf (exports/zsh-fzf)
 set -gx FZF_DEFAULT_COMMAND "fd -H"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-cached_init fzf --fish
-
-if not functions -q mise 
-  cached_init mise activate fish
-end
+_evalcache fzf --fish
 
 # jj (exports/zsh-jj)
 set -gx JJ_CONFIG "$XDG_CONFIG_HOME/jj/config.toml"
@@ -93,7 +93,7 @@ source ~/.orbstack/shell/init.fish 2>/dev/null; or true
 {{ end }}
 
 # zoxide (dot_zshrc.tmpl: _cacheval z zoxide init zsh)
-cached_init zoxide init fish
+_evalcache zoxide init fish
 
 # for locally compiled qmk (dot_zshrc.tmpl: . "$HOME/.local/bin/env")
 fish_add_path "$HOME/.local/bin"
