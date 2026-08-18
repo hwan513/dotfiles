@@ -1,0 +1,24 @@
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx VISUAL nvim
+set -gx EDITOR "$VISUAL"
+
+{{- if eq .chezmoi.os "darwin" }}
+set -gx BROWSER safari
+{{- else if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+set -gx BROWSER explorer.exe
+function xdg-open
+    explorer.exe $argv
+end
+{{- else }}
+# only change browser if default isn't set (orbstack)
+set -q BROWSER; or set -gx BROWSER firefox
+{{- end }}
+
+set -U fish_greeting ""
+
+# General aliases (personal/zsh-aliases)
+alias ls "lsd"
+alias n "nvim"
+alias j "just"
+alias .j "just --justfile ~/.config/just/justfile --working-directory ."

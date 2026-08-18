@@ -1,0 +1,12 @@
+set -gx MISE_FISH_AUTO_ACTIVATE 0
+{{ if eq .chezmoi.os "darwin" }}_evalcache brew shellenv{{ end }}
+
+_evalcache mise activate fish
+
+# Tools installed by mise
+
+set -gx FZF_DEFAULT_COMMAND "fd -H"
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+_evalcache fzf --fish
+
+_evalcache zoxide init fish

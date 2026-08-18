@@ -1,0 +1,6 @@
+{{- if has "android" .profiles }}
+# Android (exports/zsh-android)
+set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
+set -gx PATH $ANDROID_HOME/cmdline-tools/tools/bin "$ANDROID_HOME/emulator" "$ANDROID_HOME/platform-tools" $PATH
+set -gx NDK_HOME "$ANDROID_HOME/ndk/"(/bin/ls -1 "$ANDROID_HOME/ndk")
+{{ end -}}
