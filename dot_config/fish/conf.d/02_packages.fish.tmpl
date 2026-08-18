@@ -1,7 +1,8 @@
 set -gx MISE_FISH_AUTO_ACTIVATE 0
-{{ if eq .chezmoi.os "darwin" }}_evalcache brew shellenv{{ end }}
+{{ if eq .chezmoi.os "darwin" }} _evalcache brew shellenv fish{{ end }}
 
-_evalcache mise activate fish
+# _evalcache mise activate fish --no-hook-env
+# _evalcache mise hook-env -s fish
 
 # Tools installed by mise
 

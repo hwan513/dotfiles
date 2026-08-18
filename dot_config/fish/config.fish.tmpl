@@ -1,12 +1,9 @@
-
-
 # scripts (exports/zsh-scripts)
 fish_add_path "$XDG_CONFIG_HOME/zsh/scripts"
 
-
-{{ if has "orbstack" .profiles }}
+{{- if has "orbstack" .profiles }}
 source ~/.orbstack/shell/init.fish 2>/dev/null; or true
-{{ end }}
+{{- end }}
 
 # for locally compiled qmk
 fish_add_path "$HOME/.local/bin"
