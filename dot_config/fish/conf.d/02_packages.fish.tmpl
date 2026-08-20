@@ -1,13 +1,23 @@
 set -gx MISE_FISH_AUTO_ACTIVATE 0
-{{ if eq .chezmoi.os "darwin" }} _evalcache brew shellenv fish{{ end }}
+{{ if eq .chezmoi.os "darwin" }}_evalcache brew shellenv fish{{ end }}
 
-# _evalcache mise activate fish --no-hook-env
-# _evalcache mise hook-env -s fish
-
+_evalcache mise activate fish --shims
 # Tools installed by mise
-
 set -gx FZF_DEFAULT_COMMAND "fd -H"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 _evalcache fzf --fish
-
 _evalcache zoxide init fish
+
+alias ls "lsd"
+alias n "nvim"
+alias j "just"
+alias .j "just --justfile ~/.config/just/justfile --working-directory ."
+
+# Defer mise activate to before the first command runs
+function __mise_full_activate --on-event fish_preexec
+    if set -q __mise_full_active
+        return
+    end
+    set -g __mise_full_active 1
+    _evalcache mise activate fish
+end

@@ -17,8 +17,5 @@ set -q BROWSER; or set -gx BROWSER firefox
 
 set -U fish_greeting ""
 
-# General aliases (personal/zsh-aliases)
-alias ls "lsd"
-alias n "nvim"
-alias j "just"
-alias .j "just --justfile ~/.config/just/justfile --working-directory ."
+set -g fish_color_command green
+set -g fish_color_option white
