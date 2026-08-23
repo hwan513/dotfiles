@@ -1,2 +1,7 @@
 # Canonical fish plugin list; only reachable via the fish_plugins symlink.
 **/*/*.symlink
+
+# Only apply the config for the shell set in .chezmoi.toml.tmpl [data] shell.
+{{ if ne .shell "fish" }}.config/fish/** {{ end }}
+{{ if ne .shell "zsh" }}.config/zsh/** {{ end }}
+.config/oh-my-posh/**
